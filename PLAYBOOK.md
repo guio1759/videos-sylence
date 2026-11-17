@@ -11,13 +11,23 @@ bash /home/claude/videos-sylence/toolkit/setup.sh
 - Código: `/home/claude/work/{palp,tat,lib21,pre,bra}` (veja "Modelos de vídeo"). Logos: `/home/claude/work/logos/<COD>.png` (20 clubes da Série A 2026; `badge(code)` em make_palp usa o logo real). SFX: `/home/claude/work/sfx/*.wav` + `sfxlib.py` + `mixsfx.py`.
 - Saída do shell para a internet: só github, pypi, texttospeech.googleapis.com e speech.platform.bing.com (voz grátis Microsoft "Antonio" via `edge-tts --proxy "$HTTPS_PROXY"`, reserva). Pesquisa = WebSearch/WebFetch.
 
+## 0.5 PADRÃO SHORTS v2 (OBRIGATÓRIO desde 17/11/2026 — os Shorts estavam flopando)
+Dados TikTok 10–17/11: vídeos de 52–122 s com média assistida de 7–19 s e só 1–8% vendo até o fim (≈500–800 views). O único hit (121k views) teve 52% até o fim. Diagnóstico do usuário: início feio, não chama a pessoa, lento.
+1. **DURAÇÃO: 20–30 s. Nunca passar de 35 s.** Um assunto por vídeo; corte tudo que não é o gancho, o porquê e o CTA.
+2. **SEGUNDO 0 já é o gancho**: a 1ª imagem e a 1ª frase são a conclusão mais polêmica/curiosa ("O Corinthians cai em 15 dias", "Fiz as contas: o Palmeiras é campeão"). Nada de logo, título, data ou "fala galera" no começo. Texto gigante na tela + voz já falando no frame 1.
+3. **Chamar a pessoa**: falar com o espectador ("olha isso", "presta atenção", "você não vai acreditar") nos primeiros 3 s e de novo no meio.
+4. **Voz rápida e com emoção**: Pedro no Speko com **elevenlabs:eleven_v3** (voice ulzsiMeCbfKyTPCNhCD5) e tags [excited] [tense] [laughs] [shouting]; depois acelerar 1.1x e cortar silêncios > 0,22 s (carreira/ep1/v2/voice.py: squeeze + atempo). Alvo ~210 palavras/min, nenhuma pausa > 0,4 s. Tempos por palavra com faster-whisper local (carreira/ep1/v2/words.py), sem custo.
+5. **Visual muda a cada 1–2 s** (zoom, carta entrando, número rolando, tremida no impacto); **legenda 1 palavra por vez** grande no balão (pular palavras curtas); **etiqueta de assunto** no topo; efeito sonoro em todo corte. Use os elementos de carreira/ep1/v2/gfx.py (chip, tag_box, odometer, newspaper, stamp, card, rays, confetti, speedlines) e o campo 3D.
+6. **Final em loop**: a última frase emenda na primeira, CTA de comentário com pergunta simples (A ou B, placar, sim/não).
+7. Antes de entregar, assista a 3 frames do primeiro segundo: se não der vontade de parar o scroll, refaça o gancho.
+
 ## 1. Escolher o tema (o que funciona)
 - Melhor desempenho até agora: SIMULAÇÃO/provocação (foto "Palmeiras campeão, Corinthians cai" = 119k views, 53% assistiram até o fim). Histórias longas flopam (400–900 views).
 - Priorizar: palpites com o porquê, simulação de tabela, pré-jogo/pós-jogo do Palmeiras, rivalidade (Corinthians/Flamengo/São Paulo), zoeira com a Seleção, histórias curtas com gancho atual.
 - Sempre pesquisar dados reais e atuais antes (valorfinal.com.br tem tabela, probabilidades, forma, mando; notícias de desfalques). Nunca inventar número, escalação ou placar. Palpites sempre com motivo concreto (desfalque, mando, sequência, o que está em jogo).
 
 ## 2. Roteiro (regras de narração — o usuário reclama de voz travada)
-- 25–35 s na maioria (60 s só para história forte). 1ª frase = a mais polêmica/curiosa (gancho em 2 s).
+- 20–30 s (ver 0.5). 1ª frase = a mais polêmica/curiosa, já no frame 1.
 - Frases inteiras e afirmativas. PROIBIDO: pergunta seguida de resposta curta ("Sabe quem...? O Grêmio." soa como pergunta), reticências, muitos dois-pontos, fragmentos soltos.
 - Números e anos por extenso no texto do TTS ("dois mil e sete", "dezessete"). Placar pode ser "2 a 1".
 - Terminar com CTA de comentário e fazer o último frame "emendar" no primeiro (loop).
@@ -25,7 +35,7 @@ bash /home/claude/videos-sylence/toolkit/setup.sh
 
 ## 3. Voz
 ### 3a. Google Chirp 3 HD (GRÁTIS — padrão desde 17/11/2026)
-- Vídeos LONGOS: voz **Charon** (grave, documentário), velocidade 1.0. Shorts com Google: voz **Fenrir** (animada), velocidade 1.1. Os demais Shorts continuam com o Pedro (Speko), alternando.
+- Google é só RESERVA (o usuário achou a Charon lenta e sem emoção). Use Fenrir 1.15 + voice.py apenas se o Speko falhar ou o saldo acabar. Padrão de voz: seção 0.5.
 - `GTTS_KEY=<chave do prompt da tarefa> bash toolkit/setup.sh` grava a chave em ~/.secrets/gtts_key. Depois: `python3 /home/claude/work/common/gvoz.py Charon roteiro.txt voz.wav 1.0`. A chave NUNCA vai para o repo (público) nem para mensagens.
 - O shell precisa do domínio texttospeech.googleapis.com liberado (já está). Cota grátis 1M caracteres/mês; uso previsto ~200k.
 - Tempos por palavra: subir o wav para o repo (branch videos, pasta audio/) e usar o raw URL em `mcp__Speko__audio_transcribe` (custa centavos), como abaixo.
