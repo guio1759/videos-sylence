@@ -1,0 +1,537 @@
+{
+"cues": [
+{
+"i": 0,
+"scene": "crewe",
+"text": "Dois de maio de dois mil e vinte e seis.",
+"t0": 0.8,
+"t1": 3.12
+},
+{
+"i": 1,
+"scene": "crewe",
+"text": "O Cambridge United está a um minuto de voltar para a terceira divisão.",
+"t0": 3.52,
+"t1": 8.0
+},
+{
+"i": 2,
+"scene": "crewe",
+"text": "Falta segurar um empate fora de casa, e a cidade inteira está com o rádio colado no ouvido.",
+"t0": 8.4,
+"t1": 14.841
+},
+{
+"i": 3,
+"scene": "crewe_goal",
+"text": "No nonagésimo terceiro minuto, a bola atravessa a área e encontra o único jogador sem marcação.",
+"t0": 15.841,
+"t1": 22.521
+},
+{
+"i": 4,
+"scene": "fall",
+"text": "O Cambridge cai para o play-off, perde a semifinal e fica mais um ano na quarta divisão.",
+"t0": 26.021,
+"t1": 30.621
+},
+{
+"i": 5,
+"scene": "fall",
+"text": "O técnico vai embora, os emprestados voltam para os seus clubes e o cofre fica vazio.",
+"t0": 31.021,
+"t1": 36.901
+},
+{
+"i": 6,
+"scene": "ourversion",
+"text": "Essa é a nossa versão da história. Na vida real o Cambridge subiu.",
+"t0": 38.701,
+"t1": 43.822
+},
+{
+"i": 7,
+"scene": "bus",
+"text": "Aqui, ele vai ter que subir do jeito mais difícil, com um homem que até semana passada dirigia o ônibus da linha três.",
+"t0": 44.822,
+"t1": 52.342
+},
+{
+"i": 8,
+"scene": "title",
+"text": "Modo Carreira. Da quarta divisão até a Champions League. Episódio um.",
+"t0": 53.342,
+"t1": 60.542
+},
+{
+"i": 9,
+"scene": "h1912",
+"text": "O Cambridge United nasceu em mil novecentos e doze com outro nome, Abbey United, num bairro operário de uma cidade famosa pelas universidades.",
+"t0": 64.042,
+"t1": 73.922
+},
+{
+"i": 10,
+"scene": "h1912",
+"text": "Durante quase sessenta anos foi amador. Só em mil novecentos e setenta entrou na liga profissional.",
+"t0": 74.322,
+"t1": 81.282
+},
+{
+"i": 11,
+"scene": "h1990",
+"text": "No começo dos anos noventa, o clube viveu o sonho.",
+"t0": 82.282,
+"t1": 85.763
+},
+{
+"i": 12,
+"scene": "h1990",
+"text": "Subiu da quarta divisão em Wembley, chegou duas vezes às quartas de final da Copa da Inglaterra e ganhou a terceira divisão.",
+"t0": 86.163,
+"t1": 93.403
+},
+{
+"i": 13,
+"scene": "h1992",
+"text": "Em mil novecentos e noventa e dois, ficou a um play-off de ser um dos fundadores da Premier League.",
+"t0": 94.403,
+"t1": 100.283
+},
+{
+"i": 14,
+"scene": "h1992",
+"text": "Não conseguiu, e nunca mais chegou tão perto.",
+"t0": 100.683,
+"t1": 104.043
+},
+{
+"i": 15,
+"scene": "h2005",
+"text": "Em dois mil e cinco veio o fundo do poço.",
+"t0": 105.043,
+"t1": 107.884
+},
+{
+"i": 16,
+"scene": "h2005",
+"text": "O clube caiu para fora da liga, entrou em administração e precisou vender o próprio estádio para não fechar as portas.",
+"t0": 108.284,
+"t1": 116.084
+},
+{
+"i": 17,
+"scene": "h2005",
+"text": "Levou nove anos para voltar.",
+"t0": 116.484,
+"t1": 118.844
+},
+{
+"i": 18,
+"scene": "kitchen",
+"text": "Rick Miguel nasceu em Cambridge na semana daquele play-off de noventa e dois.",
+"t0": 120.844,
+"t1": 125.724
+},
+{
+"i": 19,
+"scene": "kitman",
+"text": "O pai era roupeiro do Abbey Stadium.",
+"t0": 126.724,
+"t1": 129.525
+},
+{
+"i": 20,
+"scene": "kitchen",
+"text": "A mãe era paulistana e palmeirense, e gritava gol do Palmeiras na sala enquanto o filho dançava na cozinha com o rádio do Cambridge.",
+"t0": 130.525,
+"t1": 138.125
+},
+{
+"i": 21,
+"scene": "promise",
+"text": "Com treze anos, Rick viu o clube cair e o pai perder o emprego no mesmo mês.",
+"t0": 139.125,
+"t1": 145.085
+},
+{
+"i": 22,
+"scene": "promise",
+"text": "Naquela noite ele prometeu que um dia devolveria o Cambridge ao lugar dele.",
+"t0": 145.485,
+"t1": 150.405
+},
+{
+"i": 23,
+"scene": "injury",
+"text": "Com dezenove, estreou no time de cima.",
+"t0": 151.405,
+"t1": 154.285
+},
+{
+"i": 24,
+"scene": "injury",
+"text": "No terceiro jogo, uma entrada por trás rompeu o ligamento do joelho direito, e a carreira acabou antes de começar.",
+"t0": 154.685,
+"t1": 162.486
+},
+{
+"i": 25,
+"scene": "bus",
+"text": "Pelos dez anos seguintes, Rick dirigiu ônibus de dia e treinou o sub-dezesseis à noite.",
+"t0": 164.686,
+"t1": 171.206
+},
+{
+"i": 26,
+"scene": "notebook",
+"text": "Ele anotava num caderno o nome de cada garoto da cidade que ninguém olhava.",
+"t0": 172.206,
+"t1": 177.246
+},
+{
+"i": 27,
+"scene": "phone",
+"text": "Em julho de dois mil e vinte e seis, sem técnico e sem dinheiro, a diretoria liga para ele com uma proposta curta.",
+"t0": 178.246,
+"t1": 185.566
+},
+{
+"i": 28,
+"scene": "phone",
+"text": "Ele assume como interino até aparecer alguém melhor.",
+"t0": 185.966,
+"t1": 189.607
+},
+{
+"i": 29,
+"scene": "rickcard",
+"text": "Rick aceita e faz uma única exigência: levar o caderno junto.",
+"t0": 190.607,
+"t1": 194.927
+},
+{
+"i": 30,
+"scene": "budget",
+"text": "O Cambridge começa a temporada com cento e oitenta mil libras para contratar, a terceira menor folha da liga e uma meta modesta da diretoria, que é terminar no meio da tabela.",
+"t0": 197.427,
+"t1": 208.027
+},
+{
+"i": 31,
+"scene": "whiteboard",
+"text": "A meta do Rick é outra, e ele escreve na lousa do vestiário: Champions League.",
+"t0": 209.027,
+"t1": 214.787
+},
+{
+"i": 32,
+"scene": "squad",
+"text": "O elenco tem gente boa.",
+"t0": 217.287,
+"t1": 219.567
+},
+{
+"i": 33,
+"scene": "squad_kaikai",
+"text": "Sullay Kaikai é o craque, com sessenta e seis de overall.",
+"t0": 220.567,
+"t1": 224.408
+},
+{
+"i": 34,
+"scene": "squad_bauer",
+"text": "Patrick Bauer comanda a defesa.",
+"t0": 225.408,
+"t1": 227.608
+},
+{
+"i": 35,
+"scene": "squad_pelly",
+"text": "Pelly Ruddock Mpanzu é o ídolo da torcida e vira a ponte entre o vestiário e o novo técnico.",
+"t0": 228.608,
+"t1": 234.928
+},
+{
+"i": 36,
+"scene": "squad",
+"text": "Mas o grupo é curto, e qualquer lesão vira problema.",
+"t0": 235.928,
+"t1": 239.928
+},
+{
+"i": 37,
+"scene": "transfer",
+"text": "Com pouco dinheiro, Rick vai atrás de quem ninguém quer.",
+"t0": 240.928,
+"t1": 244.569
+},
+{
+"i": 38,
+"scene": "tr_tomas",
+"text": "Ele traz de graça o zagueiro português Tomás Ferreira, de trinta e três anos, que estava sem clube.",
+"t0": 245.569,
+"t1": 252.169
+},
+{
+"i": 39,
+"scene": "tr_theo",
+"text": "E pega emprestado o atacante Theo Okafor, de vinte e um, que não jogava no seu time da segunda divisão.",
+"t0": 253.169,
+"t1": 260.089
+},
+{
+"i": 40,
+"scene": "transfer",
+"text": "A terceira contratação não custa nada.",
+"t0": 261.089,
+"t1": 263.809
+},
+{
+"i": 41,
+"scene": "murrey_in",
+"text": "Rick sobe do sub-dezoito um meia de dezesseis anos, marrento, de cabelo descolorido e fone no ouvido.",
+"t0": 264.809,
+"t1": 271.53
+},
+{
+"i": 42,
+"scene": "murrey_card",
+"text": "O nome dele é Murrey.",
+"t0": 272.53,
+"t1": 274.29
+},
+{
+"i": 43,
+"scene": "table_bad",
+"text": "O começo é um desastre. Em cinco rodadas, o Cambridge vence uma vez e cai para vigésimo.",
+"t0": 277.29,
+"t1": 284.13
+},
+{
+"i": 44,
+"scene": "banner",
+"text": "Nas arquibancadas do Abbey Stadium aparece a primeira faixa pedindo um técnico de verdade.",
+"t0": 285.13,
+"t1": 291.05
+},
+{
+"i": 45,
+"scene": "murrey_assist",
+"text": "No meio dessa crise, Rick escala Murrey contra o Accrington, num jogo de copa que ninguém assiste.",
+"t0": 292.05,
+"t1": 297.57
+},
+{
+"i": 46,
+"scene": "murrey_assist",
+"text": "O garoto dá duas assistências em quinze minutos, e a primeira é de letra.",
+"t0": 297.97,
+"t1": 302.771
+},
+{
+"i": 47,
+"scene": "tactics",
+"text": "Em outubro, Rick muda tudo.",
+"t0": 305.771,
+"t1": 308.331
+},
+{
+"i": 48,
+"scene": "tactics",
+"text": "Ele adianta a marcação, abre o Kaikai na direita e manda o time pressionar desde a saída de bola.",
+"t0": 308.731,
+"t1": 314.851
+},
+{
+"i": 49,
+"scene": "table_up",
+"text": "O Cambridge emenda seis vitórias seguidas, com três gols do Kaikai contra o Bristol Rovers, e sobe do vigésimo para o oitavo lugar.",
+"t0": 315.851,
+"t1": 324.091
+},
+{
+"i": 50,
+"scene": "facup",
+"text": "Em novembro, pela Copa da Inglaterra, passa por um time da quinta divisão e garante vaga na segunda fase.",
+"t0": 327.091,
+"t1": 333.972
+},
+{
+"i": 51,
+"scene": "bike",
+"text": "Uma noite, durante o treino da base, um entregador de bicicleta para no alambrado com uma pizza.",
+"t0": 334.972,
+"t1": 341.452
+},
+{
+"i": 52,
+"scene": "race",
+"text": "Um ponta do sub-dezoito brinca e desafia o entregador para uma corrida.",
+"t0": 342.452,
+"t1": 347.212
+},
+{
+"i": 53,
+"scene": "race",
+"text": "O entregador ganha por cinco metros, de chinelo.",
+"t0": 347.612,
+"t1": 351.132
+},
+{
+"i": 54,
+"scene": "gildo",
+"text": "O nome dele é Gildo. Tem quinze anos, é filho de imigrantes brasileiros e entrega comida para ajudar em casa.",
+"t0": 353.632,
+"t1": 360.912
+},
+{
+"i": 55,
+"scene": "gildo_card",
+"text": "Rick anota o nome no caderno e oferece um teste ali mesmo.",
+"t0": 361.912,
+"t1": 366.273
+},
+{
+"i": 56,
+"scene": "newbase",
+"text": "A base também ganha dois nomes novos nessa temporada.",
+"t0": 368.773,
+"t1": 372.453
+},
+{
+"i": 57,
+"scene": "kofi",
+"text": "Kofi Mensah-Hart, volante de dezesseis anos, com cinquenta de overall e potencial setenta e nove.",
+"t0": 373.453,
+"t1": 380.613
+},
+{
+"i": 58,
+"scene": "ollie",
+"text": "E Ollie Fenwick, centroavante de quinze anos, com quarenta e seis de overall e potencial setenta e sete.",
+"t0": 381.613,
+"t1": 388.653
+},
+{
+"i": 59,
+"scene": "gaming",
+"text": "Em dezembro, Murrey falta a um treino para jogar um campeonato de videogame valendo mil libras.",
+"t0": 390.653,
+"t1": 396.854
+},
+{
+"i": 60,
+"scene": "bench",
+"text": "Rick descobre pela internet e deixa o garoto no banco no jogo seguinte.",
+"t0": 397.854,
+"t1": 402.334
+},
+{
+"i": 61,
+"scene": "boxing",
+"text": "No Boxing Day, contra o Colchester, o Cambridge perde por um a zero até os setenta minutos.",
+"t0": 403.334,
+"t1": 408.934
+},
+{
+"i": 62,
+"scene": "boxing_sub",
+"text": "Rick olha para o banco e chama o Murrey.",
+"t0": 409.934,
+"t1": 412.734
+},
+{
+"i": 63,
+"scene": "boxing_sub",
+"text": "Antes de entrar, o garoto ouve uma frase só: aqui ninguém é maior que o clube.",
+"t0": 413.134,
+"t1": 419.775
+},
+{
+"i": 64,
+"scene": "murrey_goal",
+"text": "Aos oitenta e oito, Murrey recebe na entrada da área, corta para dentro e acerta o ângulo.",
+"t0": 421.775,
+"t1": 428.055
+},
+{
+"i": 65,
+"scene": "hug",
+"text": "É o primeiro gol dele como profissional. Ele corre direto para o banco e abraça o técnico.",
+"t0": 432.555,
+"t1": 438.235
+},
+{
+"i": 66,
+"scene": "ovr_up",
+"text": "O Cambridge fecha o ano em sétimo, dentro da zona de play-off.",
+"t0": 440.735,
+"t1": 444.855
+},
+{
+"i": 67,
+"scene": "contract",
+"text": "A diretoria tira a palavra interino do contrato do Rick.",
+"t0": 445.855,
+"t1": 449.735
+},
+{
+"i": 68,
+"scene": "offer",
+"text": "No dia primeiro de janeiro chega um e-mail.",
+"t0": 452.235,
+"t1": 455.596
+},
+{
+"i": 69,
+"scene": "offer",
+"text": "Um clube da Premier League oferece um milhão e duzentas mil libras pelo Murrey.",
+"t0": 455.996,
+"t1": 461.116
+},
+{
+"i": 70,
+"scene": "offer",
+"text": "É quase sete vezes o orçamento de contratações do Cambridge.",
+"t0": 461.516,
+"t1": 465.356
+},
+{
+"i": 71,
+"scene": "ab",
+"text": "Com esse dinheiro, Rick consegue trazer três reforços prontos e brigar de verdade pelo acesso.",
+"t0": 467.356,
+"t1": 473.476
+},
+{
+"i": 72,
+"scene": "ab",
+"text": "Sem ele, o elenco continua curto, mas o maior talento da base fica em casa.",
+"t0": 473.876,
+"t1": 479.037
+},
+{
+"i": 73,
+"scene": "ab",
+"text": "A decisão é sua. Comenta A para vender o Murrey e reforçar o time. Comenta B para segurar o garoto.",
+"t0": 479.437,
+"t1": 487.037
+},
+{
+"i": 74,
+"scene": "ab",
+"text": "O comentário com mais curtidas decide o próximo episódio, e eu vou mostrar o seu comentário na tela.",
+"t0": 487.437,
+"t1": 493.597
+},
+{
+"i": 75,
+"scene": "end",
+"text": "Se inscreve para acompanhar a jornada do Cambridge da quarta divisão até a Champions League.",
+"t0": 495.097,
+"t1": 500.737
+}
+],
+"total": 503.237
+}
