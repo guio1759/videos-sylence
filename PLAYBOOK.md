@@ -40,25 +40,25 @@ bash /home/claude/videos-sylence/toolkit/setup.sh
 - Uso: whoosh nas trocas de cena (0.25), tambor_impacto/whoosh_boom em revelação de placar (0.35), chute + torcida em gol (0.3/0.25), aww em lance perdido, apito no início de pré/pós-jogo. Sem música de fundo.
 - Sons novos: só com o Mac do usuário ligado (navegador do app em api.openverse.org, licença cc0). Salvar em assets/sfx.
 
-## 6. Publicar (sem o usuário fazer nada)
-0. Acesso de escrita: numa sessão nova, se `git push` falhar por permissão/autenticação, chame `mcp__claude-code-remote__add_repo(owner="guio1759", repo="videos-sylence", access="push")`, siga o comando de clone que ele devolver (pode clonar em outro caminho; use `--depth 1 -b videos`), copie o mp4 para lá e faça o push. Nunca desista de publicar por causa disso sem tentar add_repo.
-1. Copiar o mp4 para `/home/claude/videos-sylence/2026-11/` (ou mês atual), commit e `git -c push.negotiate=true push origin videos`.
-   Mensagem de commit termina com:
+## 6. Publicar (custo zero)
+Metricool é plano GRÁTIS: só 20 publicações/mês e CADA REDE CONTA (1 vídeo em 4 redes = 4). Por isso:
+- **TikTok, Instagram e YouTube → vidIQ** (grátis, sem limite).
+- **Facebook → Metricool**, só Facebook, no máximo 20/mês (conte as publicações do mês com getScheduledPosts antes; se o limite estiver perto, pule o Facebook e diga isso no resumo).
+
+0. Acesso de escrita no GitHub: se `git push` falhar por permissão, chame `mcp__claude-code-remote__add_repo(owner="guio1759", repo="videos-sylence", access="push")`, siga o clone que ele devolver (`--depth 1 -b videos`), copie o mp4 e faça o push.
+1. Copiar o mp4 para `/home/claude/videos-sylence/<AAAA-MM>/`, commit e `git -c push.negotiate=true push origin videos`. Mensagem de commit termina com
    `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>` e `Claude-Session: <link da sessão atual>`.
-2. `mcp__Metricool_Social_Media_Management__createScheduledPost`, blogId "8152680", date com -03:00, timezone America/Sao_Paulo, media = `https://raw.githubusercontent.com/guio1759/videos-sylence/videos/<pasta>/<arquivo>.mp4`.
-   providers tiktok, instagram, youtube, facebook.
-   - tiktokData: `{"privacyOption":"PUBLIC_TO_EVERYONE","title":"<obrigatório>","isAigc":true}`
-   - instagramData: `{"type":"REEL","showReelOnFeed":true}`
-   - youtubeData: `{"title":"... #shorts","type":"short","privacy":"public","category":"SPORTS","madeForKids":false,"tags":[...]}`
-   - facebookData: `{"type":"REEL"}`
-   - `firstCommentText`: pergunta/enquete curta para puxar comentários (ex.: "Qual seu placar? 👇").
-   - `videoCoverMilliseconds`: frame com placar/escudos (não o 1º frame escuro).
-   - Legenda curta, gancho + CTA, **3–4 hashtags** específicas.
-3. Horários: **09:00, 12:30, 19:30** (America/Sao_Paulo). Conferir com getScheduledPosts quais estão livres. Se der 502, conferir e repetir uma vez.
-4. Conteúdo com escalação provável não deve sair perto do anúncio oficial (≈1h antes do jogo).
+   URL pública: `https://raw.githubusercontent.com/guio1759/videos-sylence/videos/<AAAA-MM>/<arquivo>.mp4`.
+2. vidIQ: `vidiq_video_upload(url=<URL pública>, title=...)` → uploadId. Depois `vidiq_social_post_draft_create` com media `[{"type":"video","id":uploadId}]`, `publishAt` ISO com -03:00, legenda curta (gancho + CTA + 3–4 hashtags) e destinations:
+   - TIKTOK `_000bWFGJM_1fUSMtLuMnSVpkxo60lkuvBOj` (conta "João"): `privacyLevel:"PUBLIC_TO_EVERYONE", allowComment:true, musicUsageConfirmed:true, isAiGenerated:true` (escolhas já feitas pelo usuário em 16/11/2026).
+   - INSTAGRAM `29280546794919548` (sylence_fc). NUNCA usar outra conta de Instagram.
+   - YOUTUBE `UC2yQMzFVDLJ7EYf_ryzOOXA`: `title` com "#shorts", `privacyStatus:"public"`, `categoryId:17`, tags.
+   **Publicar exige aprovação do usuário**: crie os rascunhos, NÃO chame vidiq_social_post_publish sozinho. Termine a sessão mostrando a lista (horário, vídeo, título) e pedindo "aprovado". Quando o usuário responder "aprovado" na mesma sessão, chame `vidiq_social_post_publish(postId, revision)` para cada rascunho. Se pedir verificação do YouTube, mostre o link e espere. Posts agendados no vidIQ não podem ser cancelados.
+3. Metricool (só Facebook): `createScheduledPost` blogId "8152680", providers `[{"network":"facebook"}]`, `facebookData:{"type":"REEL"}`, media = URL pública, mesmo horário. Esse pode ser agendado direto (sem aprovação).
+4. Horários: **09:00, 12:30, 19:30** (America/Sao_Paulo). Verifique os ocupados com `vidiq_social_post_list` e getScheduledPosts. Escalação provável não deve sair perto do anúncio oficial (≈1h antes do jogo).
 
 ## 7. IDs
-- Metricool blogId 8152680. Windsor: TikTok `_0000zurIXQs1nmr6sSoj_yqirB0OAhZXZI-`, YouTube 97309, Instagram 17841439094316734.
+- Metricool blogId 8152680 (plano grátis, só Facebook). Windsor: TikTok `_0000zurIXQs1nmr6sSoj_yqirB0OAhZXZI-`, YouTube 97309, Instagram 17841439094316734.
 - Repo: guio1759/videos-sylence, branch `videos`.
 - vidIQ (conector) disponível: use `vidiq_trending_videos` / `vidiq_outliers` para achar temas de futebol em alta antes de escolher o tema.
 
