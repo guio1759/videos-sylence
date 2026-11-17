@@ -41,6 +41,7 @@ bash /home/claude/videos-sylence/toolkit/setup.sh
 - Sons novos: só com o Mac do usuário ligado (navegador do app em api.openverse.org, licença cc0). Salvar em assets/sfx.
 
 ## 6. Publicar (sem o usuário fazer nada)
+0. Acesso de escrita: numa sessão nova, se `git push` falhar por permissão/autenticação, chame `mcp__claude-code-remote__add_repo(owner="guio1759", repo="videos-sylence", access="push")`, siga o comando de clone que ele devolver (pode clonar em outro caminho; use `--depth 1 -b videos`), copie o mp4 para lá e faça o push. Nunca desista de publicar por causa disso sem tentar add_repo.
 1. Copiar o mp4 para `/home/claude/videos-sylence/2026-11/` (ou mês atual), commit e `git -c push.negotiate=true push origin videos`.
    Mensagem de commit termina com:
    `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>` e `Claude-Session: <link da sessão atual>`.
@@ -59,6 +60,7 @@ bash /home/claude/videos-sylence/toolkit/setup.sh
 ## 7. IDs
 - Metricool blogId 8152680. Windsor: TikTok `_0000zurIXQs1nmr6sSoj_yqirB0OAhZXZI-`, YouTube 97309, Instagram 17841439094316734.
 - Repo: guio1759/videos-sylence, branch `videos`.
+- vidIQ (conector) disponível: use `vidiq_trending_videos` / `vidiq_outliers` para achar temas de futebol em alta antes de escolher o tema.
 
 ## 8. Modelos de vídeo (código existente)
 - `palp/make_qua.py` + `make_palp.py`: cards de jogo com motivos (`match_card2`), tabela, simulação (`scene_sim2`), história (`scene_hist`). Selecionar pelo env `WORDS=words_X`; adicionar nova cena no dict SCENE.
