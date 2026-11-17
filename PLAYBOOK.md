@@ -9,7 +9,7 @@ cd /home/claude && git clone -b videos https://github.com/guio1759/videos-sylenc
 bash /home/claude/videos-sylence/toolkit/setup.sh
 ```
 - Código: `/home/claude/work/{palp,tat,lib21,pre,bra}` (veja "Modelos de vídeo"). Logos: `/home/claude/work/logos/<COD>.png` (20 clubes da Série A 2026; `badge(code)` em make_palp usa o logo real). SFX: `/home/claude/work/sfx/*.wav` + `sfxlib.py` + `mixsfx.py`.
-- Saída do shell para a internet é bloqueada (só github/pypi). Pesquisa = WebSearch/WebFetch.
+- Saída do shell para a internet: só github, pypi, texttospeech.googleapis.com e speech.platform.bing.com (voz grátis Microsoft "Antonio" via `edge-tts --proxy "$HTTPS_PROXY"`, reserva). Pesquisa = WebSearch/WebFetch.
 
 ## 1. Escolher o tema (o que funciona)
 - Melhor desempenho até agora: SIMULAÇÃO/provocação (foto "Palmeiras campeão, Corinthians cai" = 119k views, 53% assistiram até o fim). Histórias longas flopam (400–900 views).
@@ -23,7 +23,15 @@ bash /home/claude/videos-sylence/toolkit/setup.sh
 - Terminar com CTA de comentário e fazer o último frame "emendar" no primeiro (loop).
 - Sem palavrão na narração (reduz alcance). Zoeira sim.
 
-## 3. Voz (Speko MCP)
+## 3. Voz
+### 3a. Google Chirp 3 HD (GRÁTIS — padrão desde 17/11/2026)
+- Vídeos LONGOS: voz **Charon** (grave, documentário), velocidade 1.0. Shorts com Google: voz **Fenrir** (animada), velocidade 1.1. Os demais Shorts continuam com o Pedro (Speko), alternando.
+- `GTTS_KEY=<chave do prompt da tarefa> bash toolkit/setup.sh` grava a chave em ~/.secrets/gtts_key. Depois: `python3 /home/claude/work/common/gvoz.py Charon roteiro.txt voz.wav 1.0`. A chave NUNCA vai para o repo (público) nem para mensagens.
+- O shell precisa do domínio texttospeech.googleapis.com liberado (já está). Cota grátis 1M caracteres/mês; uso previsto ~200k.
+- Tempos por palavra: subir o wav para o repo (branch videos, pasta audio/) e usar o raw URL em `mcp__Speko__audio_transcribe` (custa centavos), como abaixo.
+- Se o Google falhar (erro de cota/chave), usar o Pedro (3b) e avisar o usuário.
+
+### 3b. Speko / ElevenLabs "Pedro" (pago)
 - `mcp__Speko__audio_synthesize` body: `{"text":..., "intent":{"language":"pt-BR","optimizeFor":"accuracy"}, "voice":"ulzsiMeCbfKyTPCNhCD5", "constraints":{"allowedProviders":{"tts":["elevenlabs:eleven_multilingual_v2"]}}}` (voz "Pedro Nassif").
 - Tempos por palavra: `mcp__Speko__audio_transcribe(audio_url=<link assinado>, language="pt-BR", word_timestamps=true)`. Corrigir erros do transcritor (Athletico, Gómez, Mayke, Raphael, Z4, Sosa...) e montar o módulo `words_X.py` (W=[(palavra, ms)], END=ms).
 - NÃO comprimir pausas. NÃO ativar auto top-up do Speko (o usuário não quer). Custo ≈ US$0,15 por minuto de voz.
