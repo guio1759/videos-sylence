@@ -65,5 +65,6 @@ for i, s in enumerate(M.SHOTS):
 envf = 1 - 0.4 * np.clip(env / 0.12, 0, 1)
 mix = voice + music + fx * envf
 fo = int(0.8 * SR); mix[-fo:] *= np.linspace(1, 0, fo)
+wavfile.write("bed.wav", SR, (np.clip(music + fx * 0.6, -0.98, 0.98) * 32000).astype(np.int16))
 wavfile.write("trilha2.wav", SR, (np.clip(mix, -0.98, 0.98) * 32000).astype(np.int16))
 print("ok", round(N / SR, 1))

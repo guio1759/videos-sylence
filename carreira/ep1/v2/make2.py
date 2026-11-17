@@ -50,7 +50,7 @@ TOPIC = {"crewe": "O MINUTO 93", "crewe_goal": "O MINUTO 93", "crewe_after": "O 
          "squad_list": "O ELENCO", "squad_kaikai": "O CRAQUE", "squad_bauer": "O XERIFE", "squad_pelly": "O ÍDOLO", "squad_xi": "O TIME",
          "market": "MERCADO", "walk_tomas": "REFORÇO #1", "walk_theo": "REFORÇO #2", "walk_murrey_pre": "REFORÇO #3", "walk_murrey": "REFORÇO #3",
          "murrey_stats": "REFORÇO #3", "fixtures_bad": "COMEÇO DE TEMPORADA", "headline_out": "PRESSÃO", "assist_pre": "A APOSTA", "assist": "A APOSTA",
-         "tactics": "OUTUBRO", "kaikai_goal": "OUTUBRO", "fixtures_good": "A VIRADA", "table_up": "A VIRADA", "base_night": "A BASE", "base_race": "A CORRIDA",
+         "tactics": "OUTUBRO", "kaikai_goal": "OUTUBRO", "fixtures_good": "A VIRADA", "table_up": "A VIRADA", "base_night": "A APOSTA", "base_race": "A CORRIDA",
          "walk_gildo": "A BASE", "gildo_stats": "A BASE", "new_base": "NOVOS NA BASE", "walk_kofi": "NOVOS NA BASE", "walk_ollie": "NOVOS NA BASE",
          "drama_phone": "O PROBLEMA", "drama_bench": "O PROBLEMA", "boxing": "BOXING DAY", "boxing_sub": "BOXING DAY", "murrey_goal": "BOXING DAY",
          "murrey_goal_x": "BOXING DAY", "hug": "BOXING DAY", "ovr_up": "FIM DE 2026", "contract": "FIM DE 2026", "email": "1º DE JANEIRO",
@@ -507,7 +507,7 @@ def scene(img, sh, t):
             x = -300 + (cx + 300) * ease(t / 1.2)
             paste(img, gray("gildo", H * 0.3) if False else avatar("gildo", H * 0.42), x, H * 0.62 - H * 0.21 + 30)
             paste(img, icon_pizza(240), x + 230, H * 0.5, 1, 1, -8)
-            pop_text(img, "A MELHOR CONTRATAÇÃO VEIO DE BIKE", cx, H * 0.15 if vert else 270, t, 0, 56 if vert else 72, WHITE, 8)
+            pop_text(img, "A MAIOR APOSTA DO RICK VEIO DE BIKE", cx, H * 0.15 if vert else 270, t, 0, 56 if vert else 72, WHITE, 8)
         else:
             tr = wt(sh, "corrida"); u = clamp((t - tr) / 2.2)
             img.alpha_composite(speedlines(W, H, t, 25) if u > 0 else Image.new("RGBA", (W, H)))

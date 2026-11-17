@@ -68,7 +68,7 @@ BLOCKS = [
  ("table_up", "O Cambridge sai do vigésimo pro oitavo lugar. E ainda passa de fase na Copa da Inglaterra."),
 ]),
 ("base", "Wholesome", [
- ("base_night", "[warm] Só que a melhor contratação da temporada apareceu de bicicleta."),
+ ("base_night", "[warm] E foi de bicicleta que apareceu a maior aposta do Rick."),
  ("base_night", "Uma noite, no treino da base, um entregador para no alambrado com uma pizza."),
  ("base_race", "Um ponta do sub-dezoito tira onda e desafia ele pra uma corrida. [laughs] O entregador ganha por cinco metros. De chinelo."),
  ("walk_gildo", "O nome dele é Gildo. Quinze anos, filho de imigrantes brasileiros, e entrega comida à noite pra ajudar em casa."),
