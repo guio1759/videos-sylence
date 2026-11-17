@@ -49,6 +49,7 @@ bash /home/claude/videos-sylence/toolkit/setup.sh
 - Sons novos: só com o Mac do usuário ligado (navegador do app em api.openverse.org, licença cc0). Salvar em assets/sfx.
 
 ## 6. Publicar (custo zero)
+- **TikTok: SEMPRE incluir #ViralTikTokShop na legenda** (missão TikTok Shop do usuário desde 17/11/2026: 50 vídeos de 15 s+ com 400+ views). Vale para Shorts diários e cortes da série.
 Metricool é plano GRÁTIS: só 20 publicações/mês e CADA REDE CONTA (1 vídeo em 4 redes = 4). Por isso:
 - **TikTok, Instagram e YouTube → vidIQ** (grátis, sem limite).
 - **Facebook → Metricool**, só Facebook, no máximo 20/mês (conte as publicações do mês com getScheduledPosts antes; se o limite estiver perto, pule o Facebook e diga isso no resumo).
