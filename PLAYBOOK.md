@@ -90,6 +90,7 @@ Metricool é plano GRÁTIS: só 20 publicações/mês e CADA REDE CONTA (1 víde
 - `tat/eng3d.py`: motor 3D (Cam, draw_pitch, billboards, goals, polyline/poly).
 
 ## 9. Série longa: Modo Carreira Cambridge United (YouTube, 1 episódio a cada 2 dias + 4 Shorts)
+- **ORDEM DOS SHORTS = ORDEM DA HISTÓRIA** (o usuário reclamou no Ep.1, quando o dilema saiu antes do Gildo e do Murrey): agende os 4 Shorts na ordem em que as cenas aparecem no episódio, e o Short do DILEMA A/B sempre por ÚLTIMO, pelo menos 24 h antes da contagem de votos.
 - Bíblia da série (doc): https://claude.ai/artifact/BBKWmiy47PX4KMMFBHbCBk — premissa, história real do clube, Rick Miguel, elenco, formato.
 - Nossa versão: Cambridge ficou na League Two 2026/27 (na vida real subiu). Elenco real + técnico Rick Miguel (34, ex-motorista de ônibus, caderninho) + base inventada.
 - Estado após Ep.1 (jul–dez 2026): 7º lugar, orçamento £180K, Rick efetivado. Reforços: Tomás Ferreira (ZAG 68, POR, grátis), Theo Okafor (ATA 63, empréstimo). Base: Murrey (MEI 16a, 57 OVR, pot 91), Gildo (PE 15a, 48, pot 89, entregador de pizza, RIT 98), Kofi Mensah-Hart (VOL 16a, 50, pot 79), Ollie Fenwick (ATA 15a, 46, pot 77). Dilema do Ep.1: proposta de £1,2 mi da Premier League pelo Murrey (A vender / B segurar).
