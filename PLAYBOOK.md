@@ -19,7 +19,8 @@ Dados TikTok 10–17/11: vídeos de 52–122 s com média assistida de 7–19 s 
 4. **Voz rápida e com emoção**: Pedro no Speko com **elevenlabs:eleven_v3** (voice ulzsiMeCbfKyTPCNhCD5) e tags [excited] [tense] [laughs] [shouting]; depois acelerar 1.1x e cortar silêncios > 0,22 s (carreira/ep1/v2/voice.py: squeeze + atempo). Alvo ~210 palavras/min, nenhuma pausa > 0,4 s. Tempos por palavra com faster-whisper local (carreira/ep1/v2/words.py), sem custo.
 5. **Visual muda a cada 1–2 s** (zoom, carta entrando, número rolando, tremida no impacto); **legenda 1 palavra por vez** grande no balão (pular palavras curtas); **etiqueta de assunto** no topo; efeito sonoro em todo corte. Use os elementos de carreira/ep1/v2/gfx.py (chip, tag_box, odometer, newspaper, stamp, card, rays, confetti, speedlines) e o campo 3D.
 6. **Final em loop**: a última frase emenda na primeira, CTA de comentário com pergunta simples (A ou B, placar, sim/não).
-7. Antes de entregar, assista a 3 frames do primeiro segundo: se não der vontade de parar o scroll, refaça o gancho.
+7. **Trilha de fundo SEMPRE** (o usuário acha que a falta dela derrubou views): faixa conhecida e não genérica do Kevin MacLeod (CC BY, não muta no TikTok/Reels/YT), ex.: Hitman a partir de 50,95 s para tensão/conta, Volatile Reaction para hype, Interloper para drama. Bem baixa: ~-14 dB abaixo da voz quando ela fala (ducking), ~-9 dB nas pausas, fade de 0,6 s no fim. Créditos na descrição: "Música: Kevin MacLeod (incompetech.com) — CC BY 4.0". Exemplo pronto: toolkit/s15/mix.py.
+8. Antes de entregar, assista a 3 frames do primeiro segundo: se não der vontade de parar o scroll, refaça o gancho.
 
 ## 1. Escolher o tema (o que funciona)
 - Melhor desempenho até agora: SIMULAÇÃO/provocação (foto "Palmeiras campeão, Corinthians cai" = 119k views, 53% assistiram até o fim). Histórias longas flopam (400–900 views).
