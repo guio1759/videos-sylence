@@ -158,6 +158,9 @@ class Short:
             img.alpha_composite(Image.new("RGBA", (W, H), (255, 255, 255, int((60 if self.soft else 140) * (1 - (T - s0) / 0.12)))))
         paste(img, tag_box(self.topic, 44, WHITE, INK), W / 2, 150, 1)
         self.caption(img, T)
+        if self.music and T > self.total - 2.5:  # crédito da trilha (CC BY) na TELA, nunca na legenda/descrição (pedido do usuário)
+            name = self.music.replace("_", " ")
+            paste(img, text_el(f"Música: {name} – Kevin MacLeod (incompetech.com) CC BY 4.0", font("sb", 26), (235, 235, 235), 3), W / 2, H - 70, 0.85)
         return img.convert("RGB")
 
     def preview(self, ts, out):
