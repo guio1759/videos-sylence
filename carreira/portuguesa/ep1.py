@@ -6,6 +6,20 @@ sys.path.insert(0, "/home/claude/por/ep1"); from script import S as TXT
 D = "/home/claude/por/ep1"
 CAN = Image.open("/home/claude/videos-sylence/carreira/portuguesa/assets/caninde.jpg").convert("RGBA")
 GOLD = (255, 205, 60)
+IM = "/home/claude/por/img/"
+@functools.lru_cache(32)
+def cut(k, h): im = Image.open(IM + k + "_cut.png").convert("RGBA"); h = int(h); return im.resize((int(im.width * h / im.height), h), Image.LANCZOS)
+@functools.lru_cache(16)
+def _cov(k):
+    im = Image.open(IM + k + ".jpg").convert("RGBA"); sc = max(W * 1.15 / im.width, H * 1.15 / im.height)
+    return im.resize((int(im.width * sc), int(im.height * sc)), Image.LANCZOS)
+def cover(img, k, t, dim=90, dx=0.0):
+    b = _cov(k); z = 1.0 + 0.035 * t
+    bw, bh = int(W * 1.15 / z), int(H * 1.15 / z)
+    x0 = int((b.width - bw) / 2 + dx * t * 30); y0 = int((b.height - bh) / 2)
+    x0 = max(0, min(b.width - bw, x0))
+    img.alpha_composite(b.crop((x0, y0, x0 + bw, y0 + bh)).resize((W, H)))
+    if dim: img.alpha_composite(Image.new("RGBA", (W, H), (0, 0, 0, dim)))
 
 def wt(i, word, n=1):
     s0 = SH.segs[i][0]; c = 0
@@ -17,7 +31,7 @@ def wt(i, word, n=1):
 
 @functools.lru_cache(256)
 def pcard(name, ovr, pos, stats, w=420, prom=False, av="sil"):
-    a = silhouette() if av == "sil" else kid(900, shirt=(200, 30, 40)) if av == "davi" else kid(900, skin=(120, 80, 55), shirt=(40, 40, 46))
+    a = silhouette() if av in ("sil", "levi") else cut(av, 900)
     return C.make_card(a, name, ovr, pos, list(stats), w=w, promessa=prom, crest="POR.png")
 
 @functools.lru_cache(8)
@@ -33,7 +47,8 @@ def bubble(user, text, likes, w=900):
     return im
 
 def s0(img, t, T):  # Peguei a Portuguesa na Série D... meta Libertadores
-    img.alpha_composite(rays(W, H, cx, 640, T, (255, 120, 120), 14, 55))
+    cover(img, "libertadores", t, 150 if t < wt(0, "libertadores") - 0.3 else 70)
+    img.alpha_composite(rays(W, H, cx, 640, T, (255, 120, 120), 14, 40))
     if t < wt(0, "libertadores") - 0.3: paste(img, trophy(300), cx, 1360, 0.35)
     paste(img, logo("POR", 330), cx, 520, 1, 1.0 + 0.25 * max(0, 1 - t / 0.18) + 0.03 * math.sin(T * 5))
     paste(img, txt("SÉRIE D", 150, WHITE, 12), cx, 830, 1, 1.0 + 0.08 * max(0, 1 - t / 0.2), -3)
@@ -68,8 +83,8 @@ def s2(img, t, T):  # comentário mais curtido vira personagem
         t0 = wt(2, wd) - 0.15
         if t < t0: continue
         if k == 0: el = pcard("VOCÊ?", 50, "MEI", (60, 50, 55, 58, 30, 45), 230, True)
-        elif k == 1: el = kid(330, shirt=(20, 120, 60))
-        else: el = kid(330, skin=(225, 180, 150), hair=(90, 60, 40), shirt=(30, 30, 36))
+        elif k == 1: el = cut("fan", 340)
+        else: el = cut("rival", 340)
         pop(img, el, x, 1100, t, t0, 0.3); pop(img, chip(lab, 40, INK, WHITE), x, 1330, t, t0 + 0.1)
 
 def s3(img, t, T):  # cartas subindo jogo a jogo
@@ -92,10 +107,11 @@ def newspaper2(w, top, head, sub):
 def s4(img, t, T):  # história: vice 96, tapetão 2013, queda, eliminada, sem casa
     t1, t2, t3, t4, t5 = wt(4, "caiu") - 0.2, wt(4, "caindo") - 0.3, wt(4, "eliminada") - 0.2, wt(4, "sem") - 0.2, wt(4, "canindé") - 0.3
     if t < t1:
+        cover(img, "vice96", t, 110)
         paste(img, newspaper2(860, "DIÁRIO DA LUSA • 1996", "VICE DO BRASIL!", "Portuguesa 2 x 0 Grêmio na ida da final"), cx, 720, 1, 0.9 + 0.1 * ease(t / 0.4), -3 + 2 * ease(t / 0.4))
         pop(img, txt("1996", 150, AMB), cx, 1150, t, 0.4)
     elif t < t2:
-        u = t - t1
+        u = t - t1; cover(img, "tapetao", u, 80)
         paste(img, txt("2013", 170, WHITE), cx, 560, 1)
         pop(img, chip("SÉRIE A", 80, INK, WHITE), cx, 780, u, 0.0)
         pop(img, stamp("TAPETÃO", 140, RED), cx, 980, u, 0.5, 0.2, -8)
@@ -115,6 +131,7 @@ def s4(img, t, T):  # história: vice 96, tapetão 2013, queda, eliminada, sem c
         paste(img, ph2, cx + 300 - 120 * u, 900, 1)
         img.alpha_composite(Image.new("RGBA", (W, H), (0, 0, 0, int(min(150, 60 + 40 * u)))))
         pop(img, txt("SEM CASA", 140, WHITE), cx, 470, u, 0.0)
+        if t > t5 + 0.8: cover(img, "obras", t - t5, 70)
         if t > t5:
             v = t - t5
             for k, yy in enumerate((760, 900)):
@@ -123,7 +140,8 @@ def s4(img, t, T):  # história: vice 96, tapetão 2013, queda, eliminada, sem c
 def s5(img, t, T):  # Thiago Tee
     m = "open" if (t % 0.9) < 0.6 else "smile"
     tr = wt(5, "imprensa") - 0.3
-    paste(img, tee(m if t < tr else "smile", int(T * 10) % 8), cx, 1100, 1, 0.85 + 0.15 * back(t / 0.35))
+    if t > tr: cover(img, "tee_press", t - tr, 40)
+    else: paste(img, cut("tee", 900), cx, 1050, 1, 0.85 + 0.15 * back(t / 0.35))
     pop(img, chip("THIAGO TEE", 90, INK, AMB), cx, 380, t, wt(5, "thiago") - 0.1, 0.25, -3)
     for k, (wd, lab, x, y) in enumerate([("careca", "CARECA", 220, 560), ("gordinho", "GORDINHO", 860, 600), ("treinador", "TÉCNICO DE VÁRZEA", cx, 520)]):
         if wd == "treinador":
@@ -148,10 +166,11 @@ def s6(img, t, T):  # elenco real
 def s7(img, t, T):  # Davi, base, potencial 90
     tdav, tpot = wt(7, "davi") - 0.2, wt(7, "potencial") - 0.1
     if t < tdav:
+        cover(img, "davi_stadium", t, 70)
         pop(img, txt("O SEGREDO", 120, WHITE), cx, 640, t, 0.0); pop(img, txt("TÁ NA BASE", 140, AMB), cx, 820, t, 0.6)
         return
     u = t - tdav
-    paste(img, kid(620, shirt=(200, 30, 40)), 290, 900, 1, 0.9 + 0.1 * back(u / 0.3))
+    paste(img, cut("davi", 720), 290, 940, 1, 0.9 + 0.1 * back(u / 0.3))
     pop(img, chip("DAVI • 16 ANOS", 60, INK, AMB), 300, 1260, u, 0.1)
     pop(img, chip("FILHO DO PORTEIRO DO CANINDÉ", 44, INK, WHITE), cx, 420, t, wt(7, "filho") - 0.1)
     paste(img, pcard("DAVI", 52, "MEI", (66, 48, 60, 62, 25, 40), 360, True, "davi"), 800, 860, 1 if t > wt(7, "overall") - 0.2 else 0)
@@ -163,6 +182,7 @@ def s7(img, t, T):  # Davi, base, potencial 90
 def s8(img, t, T):  # A Carlão x B Levi
     ta, tb = wt(8, "carlão") - 0.4, wt(8, "levi") - 0.4
     if t < ta:
+        cover(img, "cofre", t, 80)
         pop(img, stamp("1º PROBLEMA", 120, RED), cx, 600, t, 0.0, 0.25, -6)
         pop(img, chip("SAF: SÓ 1 REFORÇO", 70, INK, AMB), cx, 900, t, 1.2)
         return
@@ -177,6 +197,7 @@ def s8(img, t, T):  # A Carlão x B Levi
             pop(img, chip(lab, 42, INK, AMB if k == 1 else WHITE), 800, 1090 + k * 90, t, wt(8, wd) - 0.1)
 
 def s9(img, t, T):  # CTA
+    cover(img, "tee_shout", t, 165)
     pop(img, txt("GOL AGORA", 100, RED), cx, 430, t, 0.0); pop(img, txt("OU FUTURO?", 100, GREEN), cx, 550, t, wt(9, "aposta") - 0.1)
     pop(img, chip("A  CARLÃO", 80, WHITE, RED), cx, 760, t, wt(9, "comenta") - 0.1, 0.25, -3)
     pop(img, chip("B  LEVI", 80, WHITE, GREEN), cx, 890, t, wt(9, "comenta") + 0.15, 0.25, 3)
