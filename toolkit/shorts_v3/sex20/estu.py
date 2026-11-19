@@ -1,6 +1,6 @@
 from com import *
 from scripts import ES
-EST = lambda h: shield_stripes(h, label="EST")
+EST = lambda h: logo("EST", h)
 
 def s0(img, t, T):  # O time que eliminou o Flamengo ... adversário na final
     img.alpha_composite(rays(W, H, cx, 800, T, (255, 150, 150), 14, 45))
