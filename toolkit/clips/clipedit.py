@@ -17,7 +17,7 @@ spec.json:
  "scoreboard": {"home": "PAL", "away": "FLA", "score": "1 x 0"}   # opcional (escudos de /home/claude/work/logos)
 }
 Layout: lance 16:9 em cima de um fundo com o próprio vídeo desfocado (preenche o 9:16); zoom/cx/cy para dar close.
-Coordenadas de desenho normalizadas (0–1) em relação ao quadro do lance.
+Coordenadas de desenho normalizadas (0–1) em relação ao QUADRO ORIGINAL do clipe. "ar": proporção do recorte (ex.: 1.33 deixa o lance maior na tela; cx/cy escolhem o centro).
 """
 import sys, json, subprocess, os, math
 import numpy as np
@@ -43,7 +43,7 @@ def frames(src, t0, t1, w, h):
 def compose(fr, c, draw=None, u=1.0):
     # quadro do lance (16:9) ocupando a largura, com zoom
     z = c.get("zoom", 1.0); cx, cy = c.get("cx", 0.5), c.get("cy", 0.5)
-    fw, fh = fr.size; cw, ch = fw / z, fh / z
+    fw, fh = fr.size; ch = fh / z; cw = min(fw / z, ch * c["ar"]) if c.get("ar") else fw / z
     x0 = min(max(0, cx * fw - cw / 2), fw - cw); y0 = min(max(0, cy * fh - ch / 2), fh - ch)
     crop = fr.crop((int(x0), int(y0), int(x0 + cw), int(y0 + ch)))
     main_h = int(W * ch / cw) if cw / ch > 0.9 else 1300
@@ -57,7 +57,7 @@ def compose(fr, c, draw=None, u=1.0):
         d = ImageDraw.Draw(img)
         for it in draw:
             col = COL.get(it.get("color", "amber"), AMB)
-            P = lambda x, y: ((x * cw + x0 - x0) / cw * W, top + y * main_h)
+            P = lambda x, y: ((x * fw - x0) / cw * W, top + (y * fh - y0) / ch * main_h)  # coords do QUADRO ORIGINAL (0–1)
             if it["type"] == "circle":
                 x, y = P(it["x"], it["y"]); r = it.get("r", 0.05) * W * (0.6 + 0.4 * back(min(1, u * 3)))
                 d.ellipse((x - r, y - r * 0.6, x + r, y + r * 0.6), outline=col, width=10)
@@ -68,7 +68,7 @@ def compose(fr, c, draw=None, u=1.0):
             elif it["type"] == "line":
                 (a, b), (e, f) = P(*it["from"]), P(*it["to"]); d.line((a, b, e, f), fill=col, width=8)
             elif it["type"] == "text":
-                paste(img, text_el(it["s"], font("blk", it.get("size", 80)), col if it.get("color") else WHITE, 8), W / 2, it["y"] * H if it.get("abs") else top - 90 if it["y"] < 0.5 else top + main_h + 90, 1, 0.8 + 0.2 * back(min(1, u * 3)))
+                paste(img, text_el(it["s"], font("blk", it.get("size", 80)), col if it.get("color") else WHITE, 8), W / 2, it["y"] * H if it.get("abs") else top - 70 if it["y"] < 0.5 else top + main_h + 80, 1, 0.8 + 0.2 * back(min(1, u * 3)))
     return img, top, main_h
 
 def main(spec, out):
@@ -84,8 +84,13 @@ def main(spec, out):
         paste(img, tag_box(S.get("topic", ""), 44, WHITE, INK), W / 2, 150, 1)
         sb = S.get("scoreboard")
         if sb:
-            paste(img, logo(sb["home"]), W / 2 - 170, 290, 1); paste(img, text_el(sb["score"], font("blk", 70), WHITE, 6), W / 2, 290, 1); paste(img, logo(sb["away"]), W / 2 + 170, 290, 1)
+            paste(img, logo(sb["home"]), W / 2 - 170, 250, 1); paste(img, text_el(sb["score"], font("blk", 70), WHITE, 6), W / 2, 290, 1); paste(img, logo(sb["away"]), W / 2 + 170, 290, 1)
         if c.get("label"): paste(img, chip(c["label"], 40, INK, AMB), W / 2, H - 420, 1)
+        for tx in c.get("texts", []):
+            if tx["at"] <= lt <= tx.get("to", 1e9):
+                u = min(1, (lt - tx["at"]) / 0.2)
+                el = chip(tx["s"], tx.get("size", 70), INK, COL.get(tx.get("color", "amber"), AMB)) if tx.get("chip") else text_el(tx["s"], font("blk", tx.get("size", 90)), COL.get(tx.get("color", "white"), WHITE), 9)
+                paste(img, el, W / 2, tx.get("y", 0.25) * H, 1, 0.7 + 0.3 * back(u), tx.get("rot", 0))
     for c in S["clips"]:
         w, h = probe(c["src"]); sp = c.get("speed", 1.0); cuts.append(T)
         fz = sorted(c.get("freeze", []), key=lambda f: f["at"])
@@ -116,6 +121,8 @@ def main(spec, out):
     if S.get("narr") and S.get("music"):
         filt.append("[m][n]sidechaincompress=threshold=0.03:ratio=6:attack=20:release=300[md]"); mix = ["[1:a]", "[md]", "[n]"]
         filt[-1] = filt[-1]; 
+    for k, (name, at, g) in enumerate(S.get("sfx", [])):
+        a.append(f"-i /home/claude/work/sfx/{name}.wav"); filt.append(f"[{idx}:a]volume={g},adelay={int(at*1000)}|{int(at*1000)}[s{k}]"); mix.append(f"[s{k}]"); idx += 1
     filt.append("".join(mix) + f"amix=inputs={len(mix)}:normalize=0,loudnorm=I=-14:TP=-1.5[a]")
     cmd = f"ffmpeg -y -loglevel error -i {tmp} {' '.join(a)} -filter_complex \"{';'.join(filt)}\" -map 0:v -map [a] -c:v copy -c:a aac -b:a 192k -shortest {out}"
     if S.get("narr") and S.get("music"):

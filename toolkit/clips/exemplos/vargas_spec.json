@@ -1,0 +1,234 @@
+{
+ "topic": "GOLAÇO DO MEIO-CAMPO",
+ "music": "/home/claude/clips/vargas/track.wav",
+ "music_off": 0,
+ "music_vol": 0.85,
+ "scoreboard": {
+  "home": "FLA",
+  "away": "CAP",
+  "score": "0 x 1"
+ },
+ "sfx": [
+  [
+   "whoosh_boom",
+   0.0,
+   0.35
+  ],
+  [
+   "chute_bola_1",
+   1.62,
+   0.5
+  ],
+  [
+   "torcida_reacao_gol",
+   5.0,
+   0.45
+  ],
+  [
+   "whoosh_2",
+   5.4,
+   0.3
+  ],
+  [
+   "camera_click",
+   9.6,
+   0.4
+  ],
+  [
+   "whoosh_1",
+   12.15,
+   0.3
+  ],
+  [
+   "torcida_comemora",
+   12.2,
+   0.25
+  ],
+  [
+   "tambor_impacto",
+   15.7,
+   0.4
+  ]
+ ],
+ "clips": [
+  {
+   "src": "v2.mp4",
+   "t0": 2.5,
+   "t1": 2.54,
+   "zoom": 1.0,
+   "freeze": [
+    {
+     "at": 2.5,
+     "dur": 1.6,
+     "draw": [
+      {
+       "type": "circle",
+       "x": 0.48,
+       "y": 0.535,
+       "r": 0.09,
+       "color": "amber"
+      },
+      {
+       "type": "arrow",
+       "from": [
+        0.5,
+        0.52
+       ],
+       "to": [
+        0.9,
+        0.45
+       ],
+       "color": "amber"
+      },
+      {
+       "type": "text",
+       "x": 0.5,
+       "y": 0.1,
+       "s": "ELE CHUTOU DAQUI",
+       "size": 96,
+       "color": "amber"
+      },
+      {
+       "type": "text",
+       "x": 0.5,
+       "y": 0.9,
+       "s": "ANTES DO MEIO-CAMPO!",
+       "size": 80
+      }
+     ]
+    }
+   ],
+   "ar": 1.33,
+   "cx": 0.62,
+   "cy": 0.5
+  },
+  {
+   "src": "v2.mp4",
+   "t0": 2.5,
+   "t1": 6.3,
+   "zoom": 1.0,
+   "texts": [
+    {
+     "at": 2.5,
+     "to": 5.4,
+     "s": "OLHA A BOLA...",
+     "y": 0.22,
+     "size": 90
+    },
+    {
+     "at": 5.5,
+     "to": 6.3,
+     "s": "GOLAÇO!",
+     "y": 0.22,
+     "size": 150,
+     "color": "amber"
+    }
+   ],
+   "ar": 1.33,
+   "cx": 0.58
+  },
+  {
+   "src": "v1.mp4",
+   "t0": 5.3,
+   "t1": 9.3,
+   "speed": 0.6,
+   "zoom": 1.0,
+   "label": "REPLAY",
+   "texts": [
+    {
+     "at": 5.3,
+     "to": 7.9,
+     "s": "DE OUTRO ÂNGULO",
+     "y": 0.22,
+     "size": 80
+    }
+   ],
+   "freeze": [
+    {
+     "at": 8.0,
+     "dur": 1.1,
+     "draw": [
+      {
+       "type": "circle",
+       "x": 0.71,
+       "y": 0.4,
+       "r": 0.06,
+       "color": "red"
+      },
+      {
+       "type": "arrow",
+       "from": [
+        0.72,
+        0.38
+       ],
+       "to": [
+        0.88,
+        0.31
+       ],
+       "color": "red"
+      },
+      {
+       "type": "text",
+       "x": 0.5,
+       "y": 0.1,
+       "s": "GOLEIRO ADIANTADO",
+       "size": 90,
+       "color": "red"
+      }
+     ]
+    }
+   ],
+   "ar": 1.33,
+   "cx": 0.62
+  },
+  {
+   "src": "v1.mp4",
+   "t0": 13.0,
+   "t1": 16.4,
+   "zoom": 1.0,
+   "texts": [
+    {
+     "at": 13.0,
+     "to": 16.4,
+     "s": "KERWIN VARGAS • 10'",
+     "y": 0.22,
+     "size": 70,
+     "chip": true
+    }
+   ],
+   "ar": 1.0,
+   "cx": 0.5
+  },
+  {
+   "src": "v2.mp4",
+   "t0": 15.7,
+   "t1": 15.74,
+   "zoom": 1.0,
+   "freeze": [
+    {
+     "at": 15.7,
+     "dur": 3.0,
+     "draw": [
+      {
+       "type": "text",
+       "x": 0.5,
+       "y": 0.1,
+       "s": "MESMO ASSIM O FLA VIROU: 2 x 1",
+       "size": 58
+      },
+      {
+       "type": "text",
+       "x": 0.5,
+       "y": 0.9,
+       "s": "GOLAÇO OU FALHA DO GOLEIRO?",
+       "size": 62,
+       "color": "amber"
+      }
+     ]
+    }
+   ],
+   "ar": 1.33,
+   "cx": 0.55
+  }
+ ]
+}
