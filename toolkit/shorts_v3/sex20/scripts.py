@@ -1,0 +1,21 @@
+AB=[('O Abel jogou a toalha!', 1.08, 0.08),
+    ('Presta atenção no que ele falou depois da derrota pro Cruzeiro.', 1.12, 0.1),
+    ('Este título está entregue.', 1.0, 0.2),
+    ('O Flamengo abriu seis pontos... e sábado, na casa do Palmeiras, um empate já dá o título pra eles!', 1.12, 0.08),
+    ('E o Abel só vai ter três dias pra preparar a final da Libertadores!', 1.12, 0.08),
+    ('Ele mesmo avisou: agora vamos fazer o que for melhor pro Palmeiras.', 1.08, 0.15),
+    ('Então me fala você: time reserva contra o Flamengo, sim ou não?', 1.1, 0.08)]
+TB=[('Faz nove anos que o Palmeiras não ganha do Flamengo em casa no Brasileirão!', 1.1, 0.08),
+    ('Olha isso: a última vitória foi em novembro de dois mil e dezessete. Dois a zero!', 1.1, 0.1),
+    ('Depois disso, oito jogos... cinco empates e três derrotas!', 1.1, 0.1),
+    ('E agora vem o pior: se empatar no sábado, o Flamengo é campeão dentro do Nubank Parque!', 1.12, 0.12),
+    ('E não adianta só ganhar. O Palmeiras precisa vencer os três jogos, e o Flamengo não pode ganhar mais nenhum!', 1.12, 0.1),
+    ('Mas presta atenção: no primeiro turno, o Verdão meteu três a zero no Maracanã!', 1.12, 0.1),
+    ('Quebra ou não quebra o tabu? Comenta o seu placar!', 1.1, 0.08)]
+ES=[('O time que eliminou o Flamengo dentro do Maracanã é o adversário do Palmeiras na final!', 1.1, 0.08),
+    ('Você lembra? Zero a zero, e o Estudiantes ganhou nos pênaltis, três a dois!', 1.12, 0.08),
+    ('Com um jogador a menos em boa parte do segundo tempo!', 1.12, 0.12),
+    ('Horas antes, o Palmeiras despachou o Fluminense... também nos pênaltis!', 1.1, 0.1),
+    ('A final é sábado, dia vinte e oito, às cinco da tarde, no Centenário, em Montevidéu.', 1.1, 0.12),
+    ('Olha que loucura: o Flamengo pode ser campeão brasileiro em cima do Palmeiras... e uma semana depois, o Palmeiras pode ser campeão da América!', 1.12, 0.12),
+    ('Me fala aí: o que vale mais, Brasileirão ou Libertadores?', 1.1, 0.08)]
