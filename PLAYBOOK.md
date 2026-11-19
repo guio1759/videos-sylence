@@ -120,3 +120,9 @@ Metricool é plano GRÁTIS: só 20 publicações/mês e CADA REDE CONTA (1 víde
 
 ## 11. Foco do momento
 - Até 28/11/2026: FINAL DA LIBERTADORES (Palmeiras x Estudiantes, 28/11, 17h, Centenário). Para o usuário, o jogo contra o Flamengo "não importa". Pelo menos 2 de 3 shorts por dia sobre a final. Zoeira com o Flamengo permitida (eliminado pelo Vitória na Copa do Brasil e pelo Estudiantes na Libertadores; Brasileirão era obrigação), sempre sem palavrão e sem ofender torcedores, e intercalada com vídeos normais.
+
+## 12. Edits com LANCES REAIS (aprovado pelo usuário em 19/11/2026)
+- O usuário autoriza usar lances de transmissão (Globo, Premiere, CazéTV etc.). Cuidados: trechos curtos (3–8 s por lance, base Lei Pelé: flagrantes até 3% do jogo, fim jornalístico/esportivo), SEMPRE com comentário/análise por cima (freeze, setas, câmera lenta, narração) e NUNCA em vídeo de venda/TikTok Shop. Se o YouTube der claim, contestar ou trocar o trecho.
+- Daqui não dá para baixar vídeo de TV/YouTube: o USUÁRIO manda os clipes (gravação de tela ou arquivo). Fluxo: depois de cada rodada/jogo importante, listar 2–4 lances que dão edit/análise (golaço, lance polêmico, erro, jogada tática) e pedir os clipes ao usuário; quando chegarem, editar.
+- Ferramenta: toolkit/clips/clipedit.py (spec JSON: trechos com velocidade/zoom/close, freeze-frame com círculo/seta/linha/texto, placar com escudos, etiqueta, música do usuário ou Kevin MacLeod com ducking sob a narração, loudnorm). Narração: mesma voz dos shorts (Google Sadaltager) com legenda 1 palavra.
+- Músicas virais que o usuário mandar: cortar no ritmo (cortes no beat). No TikTok, preferir que o usuário escolha o som viral no app ao postar (não muta); no YouTube usar a versão com trilha Kevin MacLeod.
