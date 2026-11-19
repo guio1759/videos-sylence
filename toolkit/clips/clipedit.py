@@ -40,18 +40,27 @@ def frames(src, t0, t1, w, h):
         if len(b) < n: break
         yield Image.frombuffer("RGB", (w, h), b)
 
-def compose(fr, c, draw=None, u=1.0):
-    # quadro do lance (16:9) ocupando a largura, com zoom
-    z = c.get("zoom", 1.0); cx, cy = c.get("cx", 0.5), c.get("cy", 0.5)
+def keyed(c, key, lt, default):
+    ks = c.get(key + "_keys")
+    if not ks: return c.get(key, default)
+    if lt <= ks[0][0]: return ks[0][1]
+    for (t0, v0), (t1, v1) in zip(ks, ks[1:]):
+        if lt <= t1: u = (lt - t0) / max(1e-6, t1 - t0); u = u * u * (3 - 2 * u); return v0 + (v1 - v0) * u
+    return ks[-1][1]
+
+def compose(fr, c, draw=None, u=1.0, lt=0.0):
+    # FULL (padrão do canal): "ar": 0.5625 → o lance ocupa a tela inteira 9:16; cx_keys/zoom_keys seguem a bola
+    z = keyed(c, "zoom", lt, 1.0); cx, cy = keyed(c, "cx", lt, 0.5), c.get("cy", 0.5)
     fw, fh = fr.size; ch = fh / z; cw = min(fw / z, ch * c["ar"]) if c.get("ar") else fw / z
     x0 = min(max(0, cx * fw - cw / 2), fw - cw); y0 = min(max(0, cy * fh - ch / 2), fh - ch)
     crop = fr.crop((int(x0), int(y0), int(x0 + cw), int(y0 + ch)))
-    main_h = int(W * ch / cw) if cw / ch > 0.9 else 1300
+    main_h = min(H, int(W * ch / cw))
     main = crop.resize((W, main_h), Image.LANCZOS)
     bgi = fr.resize((int(H * fw / fh), H)).crop((0, 0, W, H)) if fw / fh > W / H else fr.resize((W, int(W * fh / fw)))
     bgi = bgi.resize((W, H)).filter(ImageFilter.GaussianBlur(28))
     img = bgi.convert("RGBA"); img.alpha_composite(Image.new("RGBA", (W, H), (0, 0, 0, 90)))
     top = (H - main_h) // 2 - 80
+    if main_h >= H - 10: main = crop.resize((W, H), Image.LANCZOS); main_h = H; top = 0
     img.alpha_composite(main.convert("RGBA"), (0, top))
     if draw:
         d = ImageDraw.Draw(img)
@@ -91,6 +100,15 @@ def main(spec, out):
                 u = min(1, (lt - tx["at"]) / 0.2)
                 el = chip(tx["s"], tx.get("size", 70), INK, COL.get(tx.get("color", "amber"), AMB)) if tx.get("chip") else text_el(tx["s"], font("blk", tx.get("size", 90)), COL.get(tx.get("color", "white"), WHITE), 9)
                 paste(img, el, W / 2, tx.get("y", 0.25) * H, 1, 0.7 + 0.3 * back(u), tx.get("rot", 0))
+    WORDS = json.load(open(S["words"]))["words"] if S.get("words") else []
+    SKIP = {"o", "a", "e", "de", "da", "do", "no", "na", "os", "as", "em", "se", "um", "uma", "que", "pra", "com"}
+    def cap(img, TT):
+        cur = None
+        for wd in WORDS:
+            if wd["t0"] - 0.03 <= TT < wd["t1"] + 0.12 and wd["w"].lower().strip(".,!?") not in SKIP: cur = wd
+        if cur:
+            s_ = cur["w"].upper().strip(".,!?…")
+            if s_: paste(img, chip(s_, 88, INK, AMB if (len(s_) > 7 or any(ch.isdigit() for ch in s_)) else WHITE, "blk", 0.5, 0.25), W / 2, H * 0.80, 1, 0.8 + 0.2 * back(min(1, (TT - cur["t0"]) / 0.15)))
     for c in S["clips"]:
         w, h = probe(c["src"]); sp = c.get("speed", 1.0); cuts.append(T)
         fz = sorted(c.get("freeze", []), key=lambda f: f["at"])
@@ -100,14 +118,14 @@ def main(spec, out):
             acc += 1 / sp
             while acc >= 1:
                 acc -= 1
-                img, _, _ = compose(fr, c); hud(img, c, t); enc.stdin.write(img.convert("RGB").tobytes()); T += 1 / FPS
+                img, _, _ = compose(fr, c, lt=t); hud(img, c, t); cap(img, T); enc.stdin.write(img.convert("RGB").tobytes()); T += 1 / FPS
             for f in list(fz):
                 if t >= f["at"]:
                     n = int(f.get("dur", 1.0) * FPS); cuts.append(T)
                     for k in range(n):
-                        img, _, _ = compose(fr, c, f.get("draw"), k / max(1, n - 1))
+                        img, _, _ = compose(fr, c, f.get("draw"), k / max(1, n - 1), lt=t)
                         if k < 4: img.alpha_composite(Image.new("RGBA", (W, H), (255, 255, 255, 120 - 30 * k)))
-                        hud(img, c, t); enc.stdin.write(img.convert("RGB").tobytes()); T += 1 / FPS
+                        hud(img, c, t); cap(img, T); enc.stdin.write(img.convert("RGB").tobytes()); T += 1 / FPS
                     fz.remove(f)
             t += 1 / FPS
     enc.stdin.close(); enc.wait()
