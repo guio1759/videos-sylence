@@ -137,12 +137,12 @@ def s4(img, t, T):  # história: vice 96, tapetão 2013, queda, eliminada, sem c
             for k, yy in enumerate((760, 900)):
                 paste(img, chip("EM OBRAS  •  EM OBRAS  •  EM OBRAS", 54, INK, AMB), cx, yy, 1, 1.0, (-8 if k else 6) * ease(v / 0.3))
 
-def s5(img, t, T):  # Thiago Tee
+def s5(img, t, T):  # Thiago Teh
     m = "open" if (t % 0.9) < 0.6 else "smile"
     tr = wt(5, "imprensa") - 0.3
     if t > tr: cover(img, "tee_press", t - tr, 40)
     else: paste(img, cut("tee", 900), cx, 1050, 1, 0.85 + 0.15 * back(t / 0.35))
-    pop(img, chip("THIAGO TEE", 90, INK, AMB), cx, 380, t, wt(5, "thiago") - 0.1, 0.25, -3)
+    pop(img, chip("THIAGO TEH", 90, INK, AMB), cx, 380, t, wt(5, "thiago") - 0.1, 0.25, -3)
     for k, (wd, lab, x, y) in enumerate([("careca", "CARECA", 220, 560), ("gordinho", "GORDINHO", 860, 600), ("treinador", "TÉCNICO DE VÁRZEA", cx, 520)]):
         if wd == "treinador":
             pop(img, chip(lab, 52, WHITE, GREEN), cx, 680, t, wt(5, wd) - 0.1, 0.25, 3)
