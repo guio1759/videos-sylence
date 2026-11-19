@@ -1,0 +1,268 @@
+{
+ "topic": "GOLAÇO DO MEIO-CAMPO",
+ "music": "/home/claude/clips/vargas2/track.wav",
+ "music_off": 0,
+ "music_vol": 0.5,
+ "narr": "/home/claude/clips/vargas2/narr.wav",
+ "words": "/home/claude/clips/vargas2/words.json",
+ "scoreboard": {
+  "home": "FLA",
+  "away": "CAP",
+  "score": "0 x 1"
+ },
+ "sfx": [
+  [
+   "whoosh_boom",
+   0.0,
+   0.3
+  ],
+  [
+   "chute_bola_1",
+   2.0,
+   0.5
+  ],
+  [
+   "whoosh_2",
+   3.9,
+   0.25
+  ],
+  [
+   "torcida_reacao_gol",
+   6.0,
+   0.4
+  ],
+  [
+   "whoosh_1",
+   6.8,
+   0.25
+  ],
+  [
+   "whoosh_2",
+   9.3,
+   0.25
+  ],
+  [
+   "tambor_impacto",
+   11.5,
+   0.35
+  ]
+ ],
+ "clips": [
+  {
+   "src": "w2.mp4",
+   "t0": 2.5,
+   "t1": 2.54,
+   "ar": 0.5625,
+   "cx": 0.5,
+   "freeze": [
+    {
+     "at": 2.5,
+     "dur": 2.0,
+     "draw": [
+      {
+       "type": "circle",
+       "x": 0.575,
+       "y": 0.54,
+       "r": 0.06,
+       "color": "amber"
+      },
+      {
+       "type": "arrow",
+       "from": [
+        0.59,
+        0.53
+       ],
+       "to": [
+        0.68,
+        0.47
+       ],
+       "color": "amber"
+      },
+      {
+       "type": "text",
+       "x": 0.5,
+       "y": 0.36,
+       "abs": true,
+       "s": "ANTES DO MEIO-CAMPO!",
+       "size": 84,
+       "color": "amber"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "src": "w2.mp4",
+   "t0": 2.5,
+   "t1": 4.4,
+   "ar": 0.5625,
+   "cx_keys": [
+    [
+     2.5,
+     0.5
+    ],
+    [
+     3.0,
+     0.68
+    ],
+    [
+     3.6,
+     0.78
+    ],
+    [
+     4.4,
+     0.76
+    ]
+   ],
+   "freeze": [
+    {
+     "at": 4.38,
+     "dur": 0.8,
+     "draw": [
+      {
+       "type": "circle",
+       "x": 0.805,
+       "y": 0.385,
+       "r": 0.04,
+       "color": "red"
+      },
+      {
+       "type": "text",
+       "x": 0.5,
+       "y": 0.36,
+       "abs": true,
+       "s": "ADIANTADO!",
+       "size": 110,
+       "color": "red"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "src": "w2.mp4",
+   "t0": 4.4,
+   "t1": 6.6,
+   "ar": 0.5625,
+   "cx_keys": [
+    [
+     4.4,
+     0.76
+    ],
+    [
+     5.0,
+     0.66
+    ],
+    [
+     5.8,
+     0.66
+    ],
+    [
+     6.6,
+     0.64
+    ]
+   ],
+   "texts": [
+    {
+     "at": 5.8,
+     "to": 6.6,
+     "s": "GOLAÇO!",
+     "y": 0.36,
+     "size": 150,
+     "color": "amber"
+    }
+   ]
+  },
+  {
+   "src": "w1.mp4",
+   "t0": 13.0,
+   "t1": 15.5,
+   "ar": 0.5625,
+   "cx_keys": [
+    [
+     13.0,
+     0.5
+    ],
+    [
+     15.5,
+     0.55
+    ]
+   ],
+   "texts": [
+    {
+     "at": 13.0,
+     "to": 15.5,
+     "s": "KERWIN VARGAS • 10'",
+     "y": 0.36,
+     "size": 70,
+     "chip": true
+    }
+   ]
+  },
+  {
+   "src": "w1.mp4",
+   "t0": 5.3,
+   "t1": 6.62,
+   "speed": 0.6,
+   "ar": 0.5625,
+   "cx_keys": [
+    [
+     5.3,
+     0.45
+    ],
+    [
+     6.0,
+     0.55
+    ],
+    [
+     6.62,
+     0.62
+    ]
+   ],
+   "label": "REPLAY",
+   "texts": [
+    {
+     "at": 5.3,
+     "to": 6.62,
+     "s": "MAS O FLA VIROU: 2 x 1",
+     "y": 0.36,
+     "size": 74,
+     "chip": true
+    }
+   ]
+  },
+  {
+   "src": "w2.mp4",
+   "t0": 6.0,
+   "t1": 6.04,
+   "ar": 0.5625,
+   "cx": 0.64,
+   "freeze": [
+    {
+     "at": 6.0,
+     "dur": 3.4,
+     "draw": [
+      {
+       "type": "text",
+       "x": 0.5,
+       "y": 0.33,
+       "abs": true,
+       "s": "GOLAÇO",
+       "size": 120,
+       "color": "amber"
+      },
+      {
+       "type": "text",
+       "x": 0.5,
+       "y": 0.41,
+       "abs": true,
+       "s": "OU FALHA?",
+       "size": 120,
+       "color": "red"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
