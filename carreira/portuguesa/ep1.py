@@ -31,7 +31,7 @@ def wt(i, word, n=1):
 
 @functools.lru_cache(256)
 def pcard(name, ovr, pos, stats, w=420, prom=False, av="sil"):
-    a = silhouette() if av in ("sil", "levi") else cut(av, 900)
+    a = silhouette() if av == "sil" else cut(av, 900)
     return C.make_card(a, name, ovr, pos, list(stats), w=w, promessa=prom, crest="POR.png")
 
 @functools.lru_cache(8)
@@ -155,13 +155,13 @@ def s5(img, t, T):  # Thiago Teh
 
 def s6(img, t, T):  # elenco real
     pop(img, chip("O ELENCO", 70, INK, WHITE), cx, 380, t, 0.0)
-    cards = [("jonas", ("JONAS TORÓ", 65, "PE", (80, 62, 66, 72, 30, 58)), 270, 760, "EX-SÃO PAULO"),
-             ("cadorini", ("CADORINI", 63, "ATA", (70, 66, 48, 58, 28, 70)), 810, 760, "ARTILHEIRO"),
-             ("romarinho", ("ROMARINHO", 64, "ATA", (62, 68, 66, 70, 30, 55)), cx, 1180, "EX-CORINTHIANS")]
-    for wd, (n, o, p, st), x, y, lab in cards:
+    cards = [("jonas", ("JONAS TORÓ", 65, "PE", (80, 62, 66, 72, 30, 58), "jonas"), 270, 690, "EX-SÃO PAULO"),
+             ("cadorini", ("CADORINI", 63, "ATA", (70, 66, 48, 58, 28, 70), "cadorini"), 810, 690, "ARTILHEIRO"),
+             ("romarinho", ("ROMARINHO", 64, "ATA", (62, 68, 66, 70, 30, 55), "romarinho"), cx, 1250, "EX-CORINTHIANS")]
+    for wd, (n, o, p, st, av), x, y, lab in cards:
         t0 = wt(6, wd) - 0.25
-        slide(img, pcard(n, o, p, st, 330), x, y, t, t0, 500 if x > cx else -500, 0.3)
-        pop(img, chip(lab, 38, INK, AMB), x, y + 260, t, t0 + 0.2)
+        slide(img, pcard(n, o, p, st, 330, False, av), x, y, t, t0, 500 if x > cx else -500, 0.3)
+        pop(img, chip(lab, 38, INK, AMB), x, y + 250, t, t0 + 0.2)
 
 def s7(img, t, T):  # Davi, base, potencial 90
     tdav, tpot = wt(7, "davi") - 0.2, wt(7, "potencial") - 0.1
@@ -186,7 +186,7 @@ def s8(img, t, T):  # A Carlão x B Levi
         pop(img, stamp("1º PROBLEMA", 120, RED), cx, 600, t, 0.0, 0.25, -6)
         pop(img, chip("SAF: SÓ 1 REFORÇO", 70, INK, AMB), cx, 900, t, 1.2)
         return
-    pop(img, pcard("CARLÃO", 66, "ATA", (52, 72, 55, 58, 35, 78), 360), 280, 760, t, ta, 0.3)
+    pop(img, pcard("CARLÃO", 66, "ATA", (52, 72, 55, 58, 35, 78), 360, False, "carlao"), 280, 760, t, ta, 0.3)
     pop(img, chip("A", 110, WHITE, RED), 280, 420, t, ta)
     for k, (wd, lab) in enumerate([("trinta", "34 ANOS"), ("artilheiro", "ARTILHEIRO"), ("graça", "DE GRAÇA"), ("salário", "SALÁRIO ALTO")]):
         pop(img, chip(lab, 48, WHITE if lab == "SALÁRIO ALTO" else INK, RED if lab == "SALÁRIO ALTO" else WHITE), 280, 1090 + k * 90, t, wt(8, wd) - 0.1)
