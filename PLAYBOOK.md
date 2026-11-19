@@ -90,6 +90,7 @@ Metricool é plano GRÁTIS: só 20 publicações/mês e CADA REDE CONTA (1 víde
 - `tat/eng3d.py`: motor 3D (Cam, draw_pitch, billboards, goals, polyline/poly).
 
 ## 9. Série longa: Modo Carreira Cambridge United (YouTube, 1 episódio a cada 2 dias + 4 Shorts)
+- **DESDE 19/11/2026 (decisão do usuário): os 4 Shorts por episódio FLOPARAM (ficavam perdidos, sem conexão). A partir do Ep.2: episódio grande no YouTube + UM vídeo curto vertical de ATÉ 3 MINUTOS, bem rápido, só com as informações mais importantes do episódio (resumo com começo-meio-fim e o dilema A/B no final), postado no TikTok/Instagram/Shorts.** As regras de 4 Shorts abaixo valem só para o Ep.1.
 - **ORDEM DOS SHORTS = ORDEM DA HISTÓRIA** (o usuário reclamou no Ep.1, quando o dilema saiu antes do Gildo e do Murrey): agende os 4 Shorts na ordem em que as cenas aparecem no episódio, e o Short do DILEMA A/B sempre por ÚLTIMO, pelo menos 24 h antes da contagem de votos.
 - Bíblia da série (doc): https://claude.ai/artifact/BBKWmiy47PX4KMMFBHbCBk — premissa, história real do clube, Rick Miguel, elenco, formato.
 - Nossa versão: Cambridge ficou na League Two 2026/27 (na vida real subiu). Elenco real + técnico Rick Miguel (34, ex-motorista de ônibus, caderninho) + base inventada.
@@ -101,3 +102,12 @@ Metricool é plano GRÁTIS: só 20 publicações/mês e CADA REDE CONTA (1 víde
 - Shorts: SEMPRE nativos na vertical (make2 renderiza 1080x1920) e SEMPRE com final (fala curta + tela com escudo, CTA e INSCREVA-SE). Um dos 4 Shorts é o dilema A/B.
 - Episódio começa com "Vocês escolheram: …" mostrando o comentário vencedor (estilo série interativa).
 - Música: /home/claude/ep1/music não existe em sessão nova: baixar de https://incompetech.com/music/royalty-free/mp3-royaltyfree/<Nome>.mp3 (Five Armies, Interloper, Dreamer, Heartbreaking, Lasting Hope, Rising Game, Volatile Reaction, Wholesome, Crossing the Chasm, Hitman).
+
+## 10. Série vertical: Modo Carreira PORTUGUESA (TikTok, Instagram, Shorts) — aprovada em 19/11/2026
+- Premissa: Portuguesa (SP) na Série D (na vida real foi eliminada na Série D 2026 e a SAF quer a Série A em 2029). Objetivo da série: sair da Série D e ganhar a LIBERTADORES.
+- Formato: vertical nativo, **60–90 s por episódio, 3 por semana**. Cada episódio = um bloco (jogos, mercado ou base) + **decisão A/B no final** (votação aberta ~48 h).
+- **Base forte**: muitos garotos da base com arcos próprios (como Gildo/Murrey no Cambridge).
+- **Contratações espertas e realistas**: jogadores REAIS, promessas de clubes pequenos e "achados", com salário/valor compatível com Série D. Sempre pesquisar antes (clube atual, idade, posição, números reais). Nunca fotos reais: avatares bonequinho 3D.
+- **Comentário mais curtido entra na série e FICA**: a cada episódio, o comentário com mais likes vira personagem fixo, com o @ e o comentário na tela. O PAPEL é decidido pela história (torcedor com faixa, garoto da base, técnico rival, olheiro, jornalista, presidente de clube rival...). Manter uma lista dos personagens-comentário e trazê-los de volta.
+- Voz: **Pedro eleven_v3 (Speko)** com tags de emoção, igual ao Modo Carreira do Cambridge (NUNCA ativar auto top-up).
+- Fluxo: igual ao do Cambridge (roteiro para revisão → "roteiro aprovado" → vídeo → rascunhos → "aprovado").
