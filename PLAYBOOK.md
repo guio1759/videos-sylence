@@ -60,7 +60,7 @@ Dados TikTok 10–17/11: vídeos de 52–122 s com média assistida de 7–19 s 
 - Sons novos: só com o Mac do usuário ligado (navegador do app em api.openverse.org, licença cc0). Salvar em assets/sfx.
 
 ## 6. Publicar (custo zero)
-- Ideia futura (não fazer ainda): vídeos de futebol vendendo produto do TikTok Shop (missão #ViralTikTokShop exige produto marcado). Só quando o usuário pedir.
+- **TikTok Shop (aprovado pelo usuário em 19/11/2026)**: 1 vídeo de venda a cada 2 dias, SÓ no TikTok (conta "João", já afiliada; vitrine ainda vazia em 19/11). Produtos de FUTEBOL (chuteira, bola, camisa, caneleira, meião, acessórios de torcedor) escolhidos pelo usuário no Mercado de Afiliados do app. Formato "futebol + produto": short no nosso estilo (gancho de futebol, dado curioso real) que puxa o produto no fim; 20–35 s. Regras: só afirmações que estão no anúncio do produto (preço, material, avaliação); NUNCA depoimento inventado nem "comprei e amei" de pessoa fictícia; marcar como conteúdo comercial. A marcação do produto é feita no app pelo usuário (pela API não dá): entregar o vídeo como rascunho/caixa de entrada do TikTok e lembrar o usuário de adicionar o link do produto. Horário: 20:30 em dias alternados (não bate com 09:00, 12:30, 19:30, 18:00 Lusa, nem 18:00/21:30 Cambridge).
 Metricool é plano GRÁTIS: só 20 publicações/mês e CADA REDE CONTA (1 vídeo em 4 redes = 4). Por isso:
 - **TikTok, Instagram e YouTube → vidIQ** (grátis, sem limite).
 - **Facebook → Metricool**, só Facebook, no máximo 20/mês (conte as publicações do mês com getScheduledPosts antes; se o limite estiver perto, pule o Facebook e diga isso no resumo).
