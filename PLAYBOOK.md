@@ -117,3 +117,6 @@ Metricool é plano GRÁTIS: só 20 publicações/mês e CADA REDE CONTA (1 víde
 - Escudo real: carreira/portuguesa/assets/POR.png (também assets/logos/POR.png). Foto do Canindé: carreira/portuguesa/assets/caninde.jpg (referência; na versão da série a Lusa começa 2027 sem casa, jogando em Diadema, e volta ao Canindé como marco).
 - **Início de TODO Ep.1/trailer**: bem chamativo e explicando claramente como a série funciona (meta Série D → Libertadores, você decide A/B, comentário mais curtido vira personagem, evolução estilo FIFA) nos primeiros ~15 s, para o público entender e ficar.
 - **AGENDA DA SÉRIE LUSA (decisão do usuário 19/11/2026): Segunda, Quarta e Sexta às 18:00 (America/Sao_Paulo).** Ep.1 estreia sexta 20/11 às 18:00. A tarefa diária dos Shorts (09:00, 12:30, 19:30) não usa esse horário. Votação A/B de cada episódio fica aberta até o próximo (48 h).
+
+## 11. Foco do momento
+- Até 28/11/2026: FINAL DA LIBERTADORES (Palmeiras x Estudiantes, 28/11, 17h, Centenário). Para o usuário, o jogo contra o Flamengo "não importa". Pelo menos 2 de 3 shorts por dia sobre a final. Zoeira com o Flamengo permitida (eliminado pelo Vitória na Copa do Brasil e pelo Estudiantes na Libertadores; Brasileirão era obrigação), sempre sem palavrão e sem ofender torcedores, e intercalada com vídeos normais.
