@@ -1,0 +1,24 @@
+CAM=[('O Palmeiras chegou na final sofrendo... e é exatamente por isso que ele é perigoso!', 1.1, 0.08),
+     ('Olha a campanha: segundo lugar no grupo, atrás do Cerro Porteño.', 1.12, 0.1),
+     ('Nas oitavas, deu o troco no próprio Cerro: gol do Gustavo Gómez, lá no Paraguai!', 1.12, 0.1),
+     ('Nas quartas, a LDU virou em Quito... e o Carlos Miguel pegou dois pênaltis!', 1.12, 0.1),
+     ('Na semi, o Fluminense empatou no agregado... e de novo, pênaltis! O Marlon Freitas bateu o último!', 1.12, 0.1),
+     ('Duas decisões nos pênaltis até a final. Fala aí: esse Palmeiras é casca-grossa ou teve sorte? Comenta!', 1.1, 0.08)]
+ABL=[('Se o Palmeiras ganhar sábado, o Abel entra num clube que só tem dois técnicos na história!', 1.1, 0.08),
+     ('Presta atenção: só dois técnicos ganharam a Libertadores três vezes ou mais.', 1.12, 0.1),
+     ('Carlos Bianchi, com quatro! E Osvaldo Zubeldía, com três... pelo Estudiantes!', 1.1, 0.1),
+     ('O Abel já tem duas: dois mil e vinte e dois mil e vinte e um. E sábado faz a quarta final pelo Palmeiras!', 1.12, 0.1),
+     ('E olha a coincidência: o adversário é justamente o Estudiantes, o time do Zubeldía!', 1.12, 0.1),
+     ('Fala você: o Abel vai ser tri? Comenta sim ou não!', 1.1, 0.08)]
+DSF=[('Faltam cinco dias pra final... e o Abel pode perder peças importantes!', 1.1, 0.08),
+     ('O Piquerez machucou a coxa na Data Fifa, pelo Uruguai. Está em tratamento, mas sem garantia de ser titular.', 1.12, 0.1),
+     ('Se não der, o Arthur, cria da Academia, é o favorito pra lateral esquerda!', 1.12, 0.1),
+     ('O Paulinho ainda sente a panturrilha e deve ficar no banco, pra jogar poucos minutos.', 1.12, 0.1),
+     ('A boa notícia: o zagueiro Murilo já está na transição física e é quem tem mais chance de voltar!', 1.12, 0.1),
+     ('E fala você: na final, Piquerez ou Arthur? Comenta aí!', 1.1, 0.08)]
+PEN=[('Se a final for pros pênaltis, o Palmeiras tem um problema chamado Muslera!', 1.1, 0.08),
+     ('No Maracanã, o goleiro do Estudiantes pegou TRÊS pênaltis e eliminou o Flamengo!', 1.12, 0.1),
+     ('Só que o Palmeiras também tem o seu paredão: o Carlos Miguel!', 1.12, 0.1),
+     ('Ele pegou dois contra a LDU e mais um contra o Fluminense. Três defesas, duas classificações!', 1.12, 0.1),
+     ('E presta atenção: a final é jogo único. Se empatar, tem prorrogação e pênaltis!', 1.12, 0.1),
+     ('Fala você: quem pega mais, Carlos Miguel ou Muslera? Comenta!', 1.1, 0.08)]
