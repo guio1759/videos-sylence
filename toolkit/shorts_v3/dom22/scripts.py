@@ -22,3 +22,9 @@ PEN=[('Se a final for pros pênaltis, o Palmeiras tem um problema chamado Musler
      ('Ele pegou dois contra a LDU e mais um contra o Fluminense. Três defesas, duas classificações!', 1.12, 0.1),
      ('E presta atenção: a final é jogo único. Se empatar, tem prorrogação e pênaltis!', 1.12, 0.1),
      ('Fala você: quem pega mais, Carlos Miguel ou Muslera? Comenta!', 1.1, 0.08)]
+SEQ=[('Sete anos seguidos de campeão brasileiro na Libertadores... e sábado um argentino pode acabar com isso!', 1.1, 0.08),
+     ('Olha a sequência: Flamengo, Palmeiras, Palmeiras, Flamengo, Fluminense, Botafogo e Flamengo!', 1.12, 0.1),
+     ('O último argentino campeão foi o River Plate, em dois mil e dezoito.', 1.12, 0.1),
+     ('E o Estudiantes já tem quatro Libertadores. Se ganhar, chega à quinta!', 1.12, 0.1),
+     ('Mas presta atenção: se o Palmeiras ganhar, chega à quarta e iguala o Flamengo, o brasileiro com mais títulos!', 1.12, 0.1),
+     ('Fala você: a sequência brasileira continua? Comenta sim ou não!', 1.1, 0.08)]
