@@ -126,7 +126,38 @@ class Short:
 
     SKIP = {"o", "a", "e", "de", "da", "do", "no", "na", "os", "as", "em", "se", "um", "uma", "ele", "que", "pra", "pro", "com", "nos", "ao"}
 
+    CAPSTYLE = "chunk"   # referência BreuHistórias (23/11): 2–3 palavras por vez, palavra falada em amarelo, sem caixa
+    def chunks(self):
+        if getattr(self, "_chunks", None) is not None: return self._chunks
+        out, cur = [], []
+        for k, w in enumerate(self.caps):
+            cur.append(k)
+            end = re.search(r"[.,!?:;…]$", w["w"]) is not None
+            if len(cur) >= 3 or end or (k + 1 < len(self.caps) and self.caps[k + 1]["t0"] - w["t1"] > 0.35): out.append(cur); cur = []
+        if cur: out.append(cur)
+        self._chunks = out; return out
+
     def caption(self, img, T):
+        if self.CAPSTYLE != "chunk": return self.caption_word(img, T)
+        ch = None
+        for c in self.chunks():
+            a, b = self.caps[c[0]]["t0"] - 0.05, self.caps[c[-1]]["t1"] + 0.15
+            if a <= T < b: ch = c
+        if not ch: return
+        words = [re.sub(r"[.,!?:;…]+", "", self.caps[k]["w"]).upper() for k in ch]
+        cur = max([k for k in ch if self.caps[k]["t0"] - 0.03 <= T] or [ch[0]])
+        f = font("blk", 86); sp = 22
+        ws = [f.getlength(x) for x in words]; tot = sum(ws) + sp * (len(ws) - 1)
+        if tot > W - 80: f = font("blk", int(86 * (W - 80) / tot)); ws = [f.getlength(x) for x in words]; tot = sum(ws) + sp * (len(ws) - 1)
+        x = W / 2 - tot / 2; y = H * 0.80
+        st = self.caps[ch[0]]["t0"]; sc = 0.85 + 0.15 * back((T - st) / 0.14)
+        for k, wd, wl in zip(ch, words, ws):
+            col = AMB if k == cur else WHITE
+            el = text_el(wd, f, col, 9)
+            paste(img, el, x + wl / 2, y, 1, sc * (1.08 if k == cur else 1.0))
+            x += wl + sp
+
+    def caption_word(self, img, T):
         cur = None
         for w in self.caps:
             if w["t0"] - 0.03 <= T < w["t1"] + 0.1: cur = w
@@ -154,6 +185,10 @@ class Short:
         img = bg(W, H, pal, T)
         self.scenes[i](img, t, T)
         s0 = self.segs[i][0]
+        if getattr(self, "DRIFT", True):  # câmera sempre andando (zoom lento contínuo em cada cena), estilo da referência
+            dur = max(1.0, self.segs[i][1] - s0); z = 1.0 + 0.06 * min(1.0, t / dur); dx = 12 * math.sin(T * 0.7)
+            cw, ch_ = W / z, H / z; x0 = (W - cw) / 2 + dx; y0 = (H - ch_) / 2
+            img = img.crop((int(x0), int(y0), int(x0 + cw), int(y0 + ch_))).resize((W, H), Image.BILINEAR)
         if i and 0 <= T - s0 < 0.12:
             img.alpha_composite(Image.new("RGBA", (W, H), (255, 255, 255, int((60 if self.soft else 140) * (1 - (T - s0) / 0.12)))))
         paste(img, tag_box(self.topic, 44, WHITE, INK), W / 2, 150, 1)

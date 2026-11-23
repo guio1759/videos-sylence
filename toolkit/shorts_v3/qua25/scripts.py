@@ -16,3 +16,12 @@ BOL=[('Falam que a oitava Bola de Ouro do Messi foi roubada... mas olha os núme
      ('Na final, fez dois gols, bateu o primeiro pênalti... e foi campeão do mundo!', 1.12, 0.1),
      ('O Haaland fez cinquenta e dois gols pelo City e ganhou a tríplice coroa. Mas perdeu por cento e cinco pontos!', 1.12, 0.1),
      ('Fala você: foi justo ou foi roubo? Comenta!', 1.1, 0.08)]
+PAR=[('O Pelé fez o milésimo gol de paradinha... e quarenta e um anos depois, a FIFA proibiu!', 1.1, 0.08),
+     ('Dezenove de novembro de mil novecentos e sessenta e nove, Maracanã. Pênalti contra o Vasco. O Pelé dá uma paradinha... e engana o goleiro Andrada!', 1.12, 0.1),
+     ('Pronto: o truque virou marca do futebol brasileiro.', 1.1, 0.1),
+     ('Mas presta atenção: em mil novecentos e oitenta e dois, a regra chegou a punir quem parava... e três anos depois, liberou de novo!', 1.12, 0.1),
+     ('Aí veio dois mil e dez. O Neymar, com dezoito anos, deu uma paradinha tão longa que deixou o Rogério Ceni no chão!', 1.12, 0.1),
+     ('O Ceni reclamou: isso não é paradinha, é paradão! Só que ele mesmo já tinha feito paradinha antes.', 1.12, 0.1),
+     ('Em maio de dois mil e dez, a regra mudou: parar depois de terminar a corrida virou cartão amarelo.', 1.12, 0.1),
+     ('Hoje, se fizer, o gol não vale. Por isso o Jorginho dá aquele pulinho durante a corrida: isso pode!', 1.12, 0.1),
+     ('Fala você: a paradinha devia voltar? Comenta sim ou não!', 1.1, 0.08)]

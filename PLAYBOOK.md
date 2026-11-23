@@ -24,6 +24,18 @@ Dados TikTok 10–17/11: vídeos de 52–122 s com média assistida de 7–19 s 
 7b. **RODÍZIO DE TRILHA (pedido do usuário 23/11: "ta sempre a msm")**: NUNCA repetir a mesma faixa em vídeos seguidos. Antes de escolher, leia `musicas_usadas.txt` (raiz do repo, uma linha por vídeo: data hora faixa) e use uma faixa que NÃO apareça nas últimas 8 linhas; depois anote a escolhida e faça commit junto com o vídeo. Faixas Kevin MacLeod disponíveis (setup_carreira.sh baixa todas): tensão/conta = Hitman, Interloper, Malicious, Night of Chaos, Ouroboros; hype/torcida = Volatile Reaction, Killers, Exhilarate, Movement Proposition, Clash Defiant, Rynos Theme, Galactic Rap, Take a Chance, Rising Game; épico/final = Five Armies, Impact Prelude, Crossing the Chasm, Lasting Hope; emoção = Heartbreaking, Dreamer, Wholesome. Escolha também um trecho (offset) diferente quando repetir faixa depois de muitos dias.
 8. Antes de entregar, assista a 3 frames do primeiro segundo: se não der vontade de parar o scroll, refaça o gancho.
 
+## 0.6 REFERÊNCIA DE RETENÇÃO (vídeo que o usuário mandou em 23/11, canal @BreuHistórias26, ~14 mil curtidas, 42 s)
+O usuário gostou porque é "bem fluido e prende". Manter NOSSO formato (gráficos, escudos, campo, dados reais), mas aplicar:
+1. **Legenda em blocos de 2–3 palavras**, branca com contorno preto, SEM caixa, e a palavra que está sendo falada em AMARELO (engine.py de toolkit/shorts_v3 já faz isso por padrão: CAPSTYLE="chunk"). Posição ~80% da altura.
+2. **Câmera nunca parada**: zoom lento contínuo em cada cena + leve deslize lateral (engine.py: DRIFT=True). Transições por zoom para dentro de um detalhe (punho, cronômetro, rosto), não só cortes secos.
+3. **Ilustrar LITERALMENTE cada frase**: falou "os carros" → mostra carros; falou "7 gols" → número gigante. Uma imagem nova a cada ~1–1,5 s, mas no MESMO cenário (continuidade), não telas soltas.
+4. **Premissa em 1ª pessoa/curiosidade no 1º segundo** + **loop aberto** logo depois ("mas toda vez que eu paro... um homem chega mais perto"): a pessoa fica para descobrir.
+5. **Motivo visual recorrente (callback)**: o mesmo objeto volta 2–3 vezes (o cronômetro de 10 s). Nos nossos: o placar, a bola de ouro, o relógio 93'.
+6. **Etiquetas inclinadas de tempo/estado** ("15 ANOS", "1 SEMANA DEPOIS", "SEGREDO") pequenas no topo da cena.
+7. **Mudança de cor para mudar de estado** (cinza quando o tempo para, colorido quando volta): usar paleta diferente em momentos de virada.
+8. Final com reviravolta + gancho para a próxima parte.
+O vídeo de referência NÃO vai para o repositório (é de outro criador e o repo é público); só estas notas.
+
 ## 1. Escolher o tema (o que funciona) — atualizado 23/11/2026 (relatório semanal, dados 10–22/11)
 **Números da semana 16–22/11 (TikTok + Instagram + YouTube):**
 - Top: lance Kerwin Vargas (21 s) 5.044 views no YT com 80% assistido; tabu "9 anos sem vencer o Flamengo em casa" (28 s) 3.311 somando redes (IG 2.059 e 28 shares, TikTok 12% até o fim); "Abel tri?" (25 s) IG 2.651 e 17 comentários, TikTok 16% até o fim (melhor conclusão de vídeo).
