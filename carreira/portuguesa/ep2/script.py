@@ -1,0 +1,13 @@
+S = [
+ "[tense] Última rodada do Paulistão. Se perder, a Lusa cai. Minuto noventa e três... [shouting] PÊNALTI!",
+ "[excited] Mas volta três meses! Vocês escolheram a letra B: Levi Santos, joia do Rio Branco!",
+ "E o comentário mais curtido virou personagem! O Benny pediu: bota eu no time. [laughs] E o Thiago botou! O Benny apareceu na peneira de chinelo... e passou!",
+ "[sad] Sem casa, a Lusa estreia emprestada, em Diadema... contra o Corinthians.",
+ "[tense] Minuto oitenta e oito, perdendo de um a zero. O Levi levanta a cabeça... e acha o Davi, dezesseis anos. [shouting] GOL! E o primeiro a sair do banco pra abraçar... foi o Benny!",
+ "[sad] Só que depois veio o pesadelo. Três derrotas seguidas. A torcida pendurou faixa: Fora, Thiago. E a SAF marcou reunião.",
+ "[tense] Até a última rodada, contra o São Paulo. Um a um, minuto noventa e três. Pênalti pra Lusa. E quem pega a bola... é o Cauari. O mesmo que perdeu o pênalti contra o Corinthians, no Paulistão do ano passado.",
+ "[whispers] Ele fecha o olho... [shouting] GOL! A Lusa fica na primeira divisão!",
+ "[excited] Evolução do trimestre! Davi, de cinquenta e dois pra cinquenta e oito. Levi, de sessenta pra sessenta e três. Cauari, de cinquenta e oito pra sessenta e um. E o Benny estreou com quarenta e sete.",
+ "E esse é o time titular da Lusa agora.",
+ "[tense] Só que o Romarinho, ídolo, perdeu a vaga... e não gostou. A: o Romarinho volta pro time. B: o time continua como está. Comenta A ou B... o mais curtido entra no episódio três!",
+]
