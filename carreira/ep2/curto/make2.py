@@ -483,8 +483,8 @@ def scene(img, sh, t):
         B("night"); img.alpha_composite(speedlines(W, H, t, 15))
         av = avatar("gildo", H * X(0.42, 0.72)); paste(img, av, X(cx, W * 0.32), H - av.height / 2 - X(H * 0.15, 0))
         paste(img, icon_pizza(W * X(0.3, 0.14)), X(cx + 250, W * 0.48), X(H * 0.45, cy), 1, 1, -8)
-        pop_text(img, "23:59", X(cx, W * 0.72), X(H * 0.17, 330), t, 0, 140, AMB, 10)
-        if t > wt(sh, "dormindo"): paste(img, chip("Zzz • TREINO ÀS 8H", 50, WHITE, (60, 60, 70)), X(cx, W * 0.72), X(H * 0.27, 520), 1, back((t - wt(sh, "dormindo")) / 0.3))
+        pop_text(img, "23:59", X(cx, W * 0.72), X(H * 0.2, 330), t, 0, 140, AMB, 10)
+        if t > wt(sh, "dormindo"): paste(img, chip("Zzz • TREINO ÀS 8H", 50, WHITE, (60, 60, 70)), X(cx, W * 0.72), X(H * 0.29, 520), 1, back((t - wt(sh, "dormindo")) / 0.3))
     elif sc == "jan_contract":
         B("dark"); p = panel(W * X(0.86, 0.5), 520, (245, 242, 232, 255), 14, (0, 0, 0, 0)); pd = ImageDraw.Draw(p)
         pd.text((50, 50), "CONTRATO PROFISSIONAL", font=font("blk", 52), fill=INK); pd.text((50, 150), "Gildo • 15 anos", font=font("bd", 46), fill=INK)
@@ -600,8 +600,8 @@ def scene(img, sh, t):
         else:
             B("amber"); img.alpha_composite(rays(W, H, cx, cy, t))
             av = avatar("gildo", H * X(0.45, 0.78)); paste(img, av, X(cx, W * 0.32), H - av.height / 2 - X(H * 0.12, 0))
-            paste(img, chip("OBRIGADO, MÃE", X(70, 80), INK, WHITE), X(cx, W * 0.32), X(H * 0.8, H * 0.82), 1, back((t - wt(sh, "obrigado")) / 0.3), rot=-3)
-            pop_text(img, "1º GOL PROFISSIONAL", X(cx, W * 0.7), X(H * 0.2, 300), t, tg, X(66, 80), WHITE, 8)
+            paste(img, chip("OBRIGADO, MÃE", X(70, 80), INK, WHITE), X(cx, W * 0.7), X(H * 0.3, 470), 1, back((t - wt(sh, "obrigado")) / 0.3), rot=-3)
+            pop_text(img, "1º GOL PROFISSIONAL", X(cx, W * 0.7), X(H * 0.21, 300), t, tg, X(66, 80), WHITE, 8)
     elif sc == "lg_kofi":
         B("blue"); card_in(img, "f_kofi", X(cx, W * 0.3), X(cy - 150, cy + 20), X(440, 420), t)
         if t > wt(sh, "titular"): paste(img, chip("TITULAR DO MEIO", 54, INK, AMB), X(cx, W * 0.68), X(H * 0.72, 380), 1, back((t - wt(sh, "titular")) / 0.3), rot=-3)
