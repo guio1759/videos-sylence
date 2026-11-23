@@ -13,7 +13,7 @@ BLOCKS = [
 ]),
 ("vote", "Take_a_Chance", [
  ("vote_card", "[excited] Vocês escolheram: B. Segurar o Murrey."),
- ("vote_comment", "O comentário mais curtido foi do vayard vinte e três, lá no TikTok. Uma letra só: B. Direto ao ponto."),
+ ("vote_comment", "E deu empate entre os mais curtidos: o Gabriel M, lá no YouTube, e o vayard vinte e três, no TikTok. Os dois com uma letra só: B. Direto ao ponto."),
  ("vote_reply", "Então o Rick abre o e-mail da Premier League e responde com uma frase: o garoto não tá à venda."),
  ("vote_murrey", "[warm] No dia seguinte, o Murrey chega no treino uma hora antes de todo mundo. Primeira vez na vida."),
  ("vote_kaikai", "E o efeito é imediato. O Kaikai tinha proposta de um time da terceira divisão, mas fala pro Rick: se o moleque fica, eu também fico."),
@@ -56,7 +56,7 @@ BLOCKS = [
  ("lg_ollie", "E lá no sub-dezoito, o Ollie Fenwick faz quatro gols num jogo só. O Rick anota mais uma vez no caderninho."),
  ("lg_table", "Faltando dez rodadas, o acesso direto tá a quatro pontos. A cidade começa a acreditar."),
 ]),
-("crisis", "Interloper", [
+("crisis", "Ouroboros", [
  ("cr_march", "[serious] Aí vem março. E março quase acaba com tudo."),
  ("cr_injury", "O Murrey joga onze partidas seguidas, sente a coxa contra o Grimsby, e sai de maca. Quatro semanas fora."),
  ("cr_run", "Sem ele, o time trava. Derrota, derrota, empate, derrota. O Cambridge despenca pro nono."),
@@ -98,7 +98,7 @@ BLOCKS = [
  ("sf_murrey_pen", "O Murrey pega a bola. O estádio inteiro em silêncio."),
  ("sf_goal", "[shouting] Gol! O Cambridge tá em Wembley!"),
 ]),
-("wembley", "Five_Armies", [
+("wembley", "Lasting_Hope", [
  ("wb_arrive", "[excited] Final do play-off. Cambridge contra Walsall. Trinta e cinco mil torcedores amarelos em Londres."),
  ("wb_mum", "[warm] Na arquibancada, a mãe do Rick vestida com a camisa do Cambridge e o terço do Palmeiras na mão."),
  ("wb_tunnel", "No túnel, o Rick não fala de tática. Ele mostra a primeira página do caderninho, escrita quando ele tinha treze anos: devolver o Cambridge pro lugar dele."),

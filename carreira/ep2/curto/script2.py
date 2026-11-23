@@ -1,0 +1,47 @@
+# Vídeo curto vertical do Ep.2 (resumo rápido, até 3 min). Mesmo formato: (id, trilha, [(cena, frase)]).
+BLOCKS = [
+("hook", "Night_of_Chaos", [
+ ("ff_wembley", "[tense] Minuto cento e dezoito em Wembley. Se essa bola entra, um time da quarta divisão inglesa sobe. E o técnico era motorista de ônibus."),
+ ("ff_cut", "[dramatic] Volta cinco meses comigo."),
+]),
+("inicio", "Clash_Defiant", [
+ ("vote_card", "[excited] Vocês escolheram B: segurar o Murrey, o garoto de dezesseis anos que a Premier League queria comprar."),
+ ("vote_kaikai", "E o efeito foi imediato. Até o craque do time recusou proposta pra ficar com ele."),
+ ("jan_gildo", "[warm] Em janeiro, o Rick descobre que o Gildo ainda entregava pizza até meia-noite."),
+ ("jan_contract", "E dá pra ele o primeiro contrato profissional, com um salário que paga as contas de casa."),
+ ("fa_draw_x", "[excited] Aí vem a Copa da Inglaterra. Tottenham contra Cambridge."),
+ ("fa_twist", "Justamente o clube que tentou comprar o Murrey."),
+ ("fa_goal1", "[tense] Com vinte minutos, um a zero. Com quarenta, dois a zero pro Tottenham."),
+ ("fa_gildo_run", "[fast] O Gildo entra, dispara pela direita e cruza."),
+ ("fa_murrey_goal", "[shouting] E o Murrey faz! Dois a um!"),
+ ("fa_equal", "No fim, o Bauer sobe de cabeça. Dois a dois!"),
+ ("fa_miss", "[sad] Mas nos pênaltis, o Kofi acerta a trave. Cambridge fora."),
+ ("fa_viral", "Só que o pique do Gildo viraliza. Dez milhões de visualizações, e o time ganha um apelido: os entregadores."),
+]),
+("meio", "Ouroboros", [
+ ("cr_injury", "[serious] Em março, o Murrey sente a coxa. Quatro semanas fora, e o time despenca pro nono."),
+ ("cr_meeting", "A diretoria avisa: sem play-off, o Rick tá fora."),
+ ("cr_pelly_x", "[warm] E o elenco responde entrando em campo com o nome do técnico na munhequeira."),
+ ("ev_murrey", "[excited] A base explode. O Murrey sobe pra sessenta e seis de overall."),
+ ("ev_gildo", "E o Gildo, pra cinquenta e oito."),
+]),
+("fim", "Lasting_Hope", [
+ ("fs_tense", "[tense] Última rodada. Um a um, minuto oitenta e sete. O Rick chama o Ollie, de quinze anos."),
+ ("fs_ollie_x", "[shouting] Gol de cabeça! Cambridge no play-off!"),
+ ("sf_flash", "Na semifinal, o Crewe. O mesmo time que tirou o acesso do Cambridge um ano antes."),
+ ("sf_93", "[fast] Minuto noventa e três. Pênalti."),
+ ("sf_goal", "[shouting] O Murrey bate e manda o Cambridge pra Wembley!"),
+ ("wb_goal_w", "[tense] Na final, o Walsall sai na frente. O Kaikai empata."),
+ ("wb_choice", "Prorrogação. Minuto cento e dezoito. O Murrey podia chutar."),
+ ("wb_pass", "[fast] Mas ele toca pro Gildo, que corta o goleiro e toca pro gol vazio."),
+ ("wb_goal", "[shouting] Gol! Gol dos entregadores!"),
+ ("wb_whistle", "[excited] O Cambridge United tá na terceira divisão!"),
+ ("wb_rick", "[warm] E o Rick risca a primeira linha do caderninho."),
+]),
+("dilema", "Heartbreaking", [
+ ("dl_call", "[serious] Só que no ônibus de volta, o Palmeiras liga. Eles querem o Gildo na base."),
+ ("dl_ab", "A família dele sonha em voltar pro Brasil, e o Palmeiras oferece oitocentas mil libras. Mas o Rick pode contratar o pai do Gildo no clube e convencer a família a ficar."),
+ ("dl_vote", "[dramatic] Comenta A pra deixar o Gildo ir pro Palmeiras. Comenta B pra segurar o garoto em Cambridge."),
+ ("end", "[excited] O episódio completo tá no canal. Me segue pra ver o próximo capítulo."),
+]),
+]
