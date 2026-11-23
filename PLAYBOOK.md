@@ -9,6 +9,7 @@ cd /home/claude && git clone -b videos https://github.com/guio1759/videos-sylenc
 bash /home/claude/videos-sylence/toolkit/setup.sh
 ```
 - Código: `/home/claude/work/{palp,tat,lib21,pre,bra}` (veja "Modelos de vídeo"). Logos: `/home/claude/work/logos/<COD>.png` (20 clubes da Série A 2026; `badge(code)` em make_palp usa o logo real). SFX: `/home/claude/work/sfx/*.wav` + `sfxlib.py` + `mixsfx.py`.
+- **Fotos livres (23/11)**: `python3 toolkit/common/fotos.py "termo" prefixo n` busca no Pixabay (chave em ~/.secrets/pixabay_key; o usuário passa no prompt como PIXABAY_KEY) e no Openverse (sem chave, CC: crédito pequeno na tela). Só estádios, cidades, torcida, bola, objetos. NUNCA baixar foto de jogador/pessoa real da internet; foto de jogador só se o usuário mandar. Jogadores e personagens = bonecos 3D (cfimg, chaves Cloudflare em ~/.secrets/cf_account e cf_token).
 - Saída do shell para a internet: só github, pypi, texttospeech.googleapis.com e speech.platform.bing.com (voz grátis Microsoft "Antonio" via `edge-tts --proxy "$HTTPS_PROXY"`, reserva). Pesquisa = WebSearch/WebFetch.
 
 ## 0.5 PADRÃO SHORTS v2 (OBRIGATÓRIO desde 17/11/2026 — os Shorts estavam flopando)
