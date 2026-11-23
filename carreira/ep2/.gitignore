@@ -1,0 +1,7 @@
+# intermediários de render (os finais ficam em 2026-11/carreira/ep2)
+*.wav
+*.mp4
+*.log
+cat.txt
+__pycache__/
+_chk.py
