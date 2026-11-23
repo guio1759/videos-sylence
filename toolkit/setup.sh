@@ -9,6 +9,5 @@ cp /home/claude/work/common/mixsfx.py /home/claude/work/sfx/
 # Chave do Google TTS: vem do prompt da tarefa (GTTS_KEY), nunca do repo publico
 if [ -n "$GTTS_KEY" ]; then mkdir -p ~/.secrets; umask 077; printf '%s' "$GTTS_KEY" > ~/.secrets/gtts_key; fi
 if [ -n "$PIXABAY_KEY" ]; then mkdir -p ~/.secrets; umask 077; printf "%s" "$PIXABAY_KEY" > ~/.secrets/pixabay_key; fi
-if [ -n "$CF_ACCOUNT" ] && [ -n "$CF_TOKEN" ]; then mkdir -p ~/.secrets; umask 077; printf "%s" "$CF_ACCOUNT" > ~/.secrets/cf_account; printf "%s" "$CF_TOKEN" > ~/.secrets/cf_token; fi
 if [ -n "$CF_ACCOUNT" ]; then mkdir -p ~/.secrets; umask 077; printf '%s' "$CF_ACCOUNT" > ~/.secrets/cf_account; printf '%s' "$CF_TOKEN" > ~/.secrets/cf_token; fi
 echo "ok: /home/claude/work pronto"
