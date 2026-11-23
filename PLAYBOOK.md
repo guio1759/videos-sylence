@@ -23,9 +23,16 @@ Dados TikTok 10–17/11: vídeos de 52–122 s com média assistida de 7–19 s 
 7b. **RODÍZIO DE TRILHA (pedido do usuário 23/11: "ta sempre a msm")**: NUNCA repetir a mesma faixa em vídeos seguidos. Antes de escolher, leia `musicas_usadas.txt` (raiz do repo, uma linha por vídeo: data hora faixa) e use uma faixa que NÃO apareça nas últimas 8 linhas; depois anote a escolhida e faça commit junto com o vídeo. Faixas Kevin MacLeod disponíveis (setup_carreira.sh baixa todas): tensão/conta = Hitman, Interloper, Malicious, Night of Chaos, Ouroboros; hype/torcida = Volatile Reaction, Killers, Exhilarate, Movement Proposition, Clash Defiant, Rynos Theme, Galactic Rap, Take a Chance, Rising Game; épico/final = Five Armies, Impact Prelude, Crossing the Chasm, Lasting Hope; emoção = Heartbreaking, Dreamer, Wholesome. Escolha também um trecho (offset) diferente quando repetir faixa depois de muitos dias.
 8. Antes de entregar, assista a 3 frames do primeiro segundo: se não der vontade de parar o scroll, refaça o gancho.
 
-## 1. Escolher o tema (o que funciona)
-- Melhor desempenho até agora: SIMULAÇÃO/provocação (foto "Palmeiras campeão, Corinthians cai" = 119k views, 53% assistiram até o fim). Histórias longas flopam (400–900 views).
-- Priorizar: palpites com o porquê, simulação de tabela, pré-jogo/pós-jogo do Palmeiras, rivalidade (Corinthians/Flamengo/São Paulo), zoeira com a Seleção, histórias curtas com gancho atual.
+## 1. Escolher o tema (o que funciona) — atualizado 23/11/2026 (relatório semanal, dados 10–22/11)
+**Números da semana 16–22/11 (TikTok + Instagram + YouTube):**
+- Top: lance Kerwin Vargas (21 s) 5.044 views no YT com 80% assistido; tabu "9 anos sem vencer o Flamengo em casa" (28 s) 3.311 somando redes (IG 2.059 e 28 shares, TikTok 12% até o fim); "Abel tri?" (25 s) IG 2.651 e 17 comentários, TikTok 16% até o fim (melhor conclusão de vídeo).
+- FOTO/CARROSSEL de simulação no TikTok é o melhor formato da conta: 124k views (52% até o fim) e, no 19/11, 439 views (38%) contra média de ~170 dos vídeos do dia. **Postar 1 carrossel de simulação/tabela por semana no TikTok** (o usuário posta foto pelo app; entregar as imagens prontas).
+- Shorts de 20–30 s: conclusão TikTok mediana 8,4% (vs 2,2% nos de 60 s+) e 65–82% assistido no YT. Manter 20–30 s. Mas o TikTok entregou pouco (mediana 166 views/vídeo, contra ~600 na semana anterior): o gargalo agora é o GANCHO/1º frame, não a duração.
+- Instagram decolou com o tema FINAL DA LIBERTADORES (6 Reels de 1.400–2.650 views entre 20 e 22/11, contra ~150 antes). Tema final/Abel/Estudiantes/tabu = prioridade até 28/11.
+- Comentários vêm de pergunta SIM/NÃO ou placar direto ligada a uma pessoa ("O Abel vai ser tri?" = 17; "Qual o SEU placar da final?" = 7). Perguntas abertas ("Casca-grossa ou sorte?") quase não geram comentário.
+- FLOPAM: Shorts do Modo Carreira (Cambridge 127–514 views no TikTok, 8–389 no YT; skip 74% no IG), notícia pura sem conflito (Arthur/Veiga no TikTok 57–127), TikTok Shop (135), homenagem (228). Zoeira com o Flamengo às 09:00 foi fraca (138–168 no TikTok, 168 no IG em 22/11).
+- Horários: 19:30 e 12:30 foram os melhores no Instagram (todos os Reels > 1.400 desde 20/11); 09:00 o mais fraco no TikTok (mediana 144). Manter a grade, com o tema mais forte do dia às 19:30.
+**Prioridade de temas:** 1) rivalidade/tabu com número forte (9 anos, 58 anos, tri) 2) simulação/conta (carrossel no TikTok) 3) lance real comentado 4) pré-jogo/palpite curto (1 jogo só; palpites de rodada inteira = 2,9% até o fim) 5) Seleção. Histórias só com gancho atual e em 25–30 s.
 - Sempre pesquisar dados reais e atuais antes (valorfinal.com.br tem tabela, probabilidades, forma, mando; notícias de desfalques). Nunca inventar número, escalação ou placar. Palpites sempre com motivo concreto (desfalque, mando, sequência, o que está em jogo).
 
 ## 2. Roteiro (regras de narração — o usuário reclama de voz travada)
