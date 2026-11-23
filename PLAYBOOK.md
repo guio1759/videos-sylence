@@ -113,6 +113,13 @@ Metricool é plano GRÁTIS: só 20 publicações/mês e CADA REDE CONTA (1 víde
 - Voz: **Pedro eleven_v3 (Speko)** com tags de emoção, igual ao Modo Carreira do Cambridge (NUNCA ativar auto top-up).
 - Fluxo: igual ao do Cambridge (roteiro para revisão → "roteiro aprovado" → vídeo → rascunhos → "aprovado").
 - **Tom e mecânica (pedido do usuário 19/11)**: MUITO drama e emoção (viradas, lesões, propostas, briga com diretoria, garoto que quase desiste, gol no último minuto) e foco forte em EVOLUÇÃO estilo FIFA: cada jogador tem carta com OVR e POTENCIAL; mostrar o OVR subindo na tela (+2, +3 com animação de carta melhorando: bronze → prata → ouro → especial), atributos (RIT, FIN, PAS, DRI, DEF, FÍS) crescendo, e um "placar de evolução" recorrente dos garotos da base. Toda evolução precisa de motivo na história (jogou bem, treino extra, mentor). Usar card()/odometer de gfx.py e as cartas tipo pacote FIFA do Ep.1 do Cambridge.
+- **AJUSTES DO USUÁRIO (23/11, valem para todos os episódios a partir do Ep.2):**
+  1. **Mais tempo por episódio**: cada episódio cobre VÁRIOS MESES da temporada (ex.: Ep.2 = jan–mar 2027, Paulistão inteiro), com saltos de tempo ("volta três meses", "fevereiro passou voando") e resultados resumidos entre os momentos grandes.
+  2. **Mais emoção**: flash-forward do momento mais tenso no 1º segundo, viradas, crise (faixa "Fora Thiago", reunião da SAF), redenção, gol no fim. Pelo menos 2 picos por episódio.
+  3. **Evolução só em UM bloco por episódio** ("Evolução do mês/trimestre"): lista rápida só de quem subiu (nome, OVR antes → depois). NÃO falar de overall no meio da história.
+  4. **ESCALAÇÃO TITULAR SEMPRE no fim** (antes do A/B): campinho com os 11 titulares, nome e OVR de cada um, formação e média do time, para o público acompanhar o time.
+  5. Comentarista sem foto (personagem-comentário): criar um jogador aleatório (avatar bonequinho 3D com cfimg, nunca foto real) com o @ na tela.
+  6. Contagem de votos e comentário mais curtido = soma de TODAS as redes (TikTok, Instagram, YouTube). Se a ferramenta não ler comentários, pedir ao usuário um print.
 - **Bíblia da série (doc)**: https://claude.ai/artifact/1oz8ymCJPjRRxHN1dfu53A — elenco real, base inventada (Davi "Canindé", Kauã Bala, Pedro Lusitano, Gui Muralha), alvos reais de mercado, mecânicas e roteiro do Ep.1.
 - Técnico: **Thiago Teh** — careca e gordinho (pedido do usuário), ex-técnico de várzea, ninguém acredita nele.
 - Escudo real: carreira/portuguesa/assets/POR.png (também assets/logos/POR.png). Foto do Canindé: carreira/portuguesa/assets/caninde.jpg (referência; na versão da série a Lusa começa 2027 sem casa, jogando em Diadema, e volta ao Canindé como marco).
