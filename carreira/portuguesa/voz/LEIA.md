@@ -1,5 +1,11 @@
 # Biblioteca de voz do Pedro (eleven_v3, Speko) — reutilizar para economizar
 - `bordoes/`: frases fixas que se repetem em todo episódio. Use sempre que a frase for igual, sem gerar de novo.
   - time_titular_da_lusa_agora.mp3 — "E esse é o time titular da Lusa agora."
+  - agora_quem_decide_e_voce.mp3 — "Agora quem decide é você!"
+  - comenta_a_ou_b_proximo_episodio.mp3 — "Comenta A ou B... o mais curtido entra no próximo episódio!"
+  - novos_episodios_seg_qua_sex_18h.mp3 — "Novos episódios toda segunda, quarta e sexta, às seis da tarde!"
+  - evolucao_do_mes.mp3 — "Evolução do mês!"
+  - comentario_mais_curtido_virou_personagem.mp3 — "E o comentário mais curtido virou personagem!"
 - `epN/raw_k.mp3`: falas originais de cada episódio (texto em carreira/portuguesa/epNb/script.py), para recaps ("no episódio passado...").
 - Regra: só gerar no Speko o que é novo (nomes, placares, história). Frases genéricas → bordões. Não emendar palavras soltas de áudios antigos (fica robótico).
+- Evolução e escalação: só música + texto na tela (sem narração), exceto o bordão "Evolução do mês!" e "E esse é o time titular da Lusa agora."

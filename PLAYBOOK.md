@@ -126,6 +126,7 @@ Metricool é plano GRÁTIS: só 20 publicações/mês e CADA REDE CONTA (1 víde
   3. **Evolução só em UM bloco por episódio** ("Evolução do mês/trimestre"): lista rápida só de quem subiu (nome, OVR antes → depois). NÃO falar de overall no meio da história.
   4. **ESCALAÇÃO TITULAR SEMPRE no fim** (antes do A/B): campinho com os 11 titulares, nome e OVR de cada um, formação e média do time, para o público acompanhar o time.
   5. Comentarista sem foto (personagem-comentário): criar um jogador aleatório (avatar bonequinho 3D com cfimg, nunca foto real) com o @ na tela.
+  8. **Economia de voz (23/11)**: antes de gerar voz no Speko, usar a biblioteca carreira/portuguesa/voz/ (LEIA.md): bordões fixos já gravados + falas antigas. Só gerar o que é novo. Evolução e escalação sem narração (só bordão + texto na tela). Salvar SEMPRE as falas novas do episódio em voz/epN/ (o Speko apaga em 24 h).
   7. **Aviso de agenda na tela** (pedido do usuário 23/11, a partir do Ep.3): em todo episódio mostrar escrito "NOVOS EPISÓDIOS: SEGUNDA, QUARTA E SEXTA • 18H" (chip fixo nos últimos segundos, junto do A/B, e também na legenda do post).
   6. Contagem de votos e comentário mais curtido = soma de TODAS as redes (TikTok, Instagram, YouTube). Se a ferramenta não ler comentários, pedir ao usuário um print.
 - **Bíblia da série (doc)**: https://claude.ai/artifact/1oz8ymCJPjRRxHN1dfu53A — elenco real, base inventada (Davi "Canindé", Kauã Bala, Pedro Lusitano, Gui Muralha), alvos reais de mercado, mecânicas e roteiro do Ep.1.
