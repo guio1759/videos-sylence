@@ -6,9 +6,12 @@ import numpy as np, soundfile as sf
 from nscript import NEY
 D = "/home/claude/ed26/"
 J = json.load(open(D + "n/words.json")); SEGS = J["segs"]
-VIC0, VICL = 10.75, 9.8
-PLACE = [0.0, 3.62, 20.65, 25.75, 31.85, 34.35]
-TOTAL = 38.1
+VICL = 6.35
+PLACE = [0.0, 3.0]
+VIC0 = PLACE[1] + 2.6 / 0.6 + 2.8
+PLACE.append(VIC0 + VICL + 0.12)
+for _i in (2, 3, 4): PLACE.append(PLACE[_i] + (SEGS[_i][1] - SEGS[_i][0]) + 0.12)
+TOTAL = PLACE[5] + (SEGS[5][1] - SEGS[5][0]) + 0.6
 SH = [PLACE[i] - SEGS[i][0] for i in range(len(SEGS))]
 MUSIC, MOFF = "Hitman", 50.95
 def build_caps():
@@ -96,21 +99,24 @@ def render():
         img, top, mh = CE.compose(FR0, {"ar": 0.5625, "cx": 0.41, "cy": 0.35, "zoom": z})
         img.alpha_composite(Image.new("RGBA", (W, H), (0, 0, 0, 60))); hud(img)
         sc = 1.0 + 0.05 * math.sin(min(t, 0.4) * 8)
-        paste(img, txt("MARRA DE", 120, WHITE, 12), W / 2, 330, 1, sc, -3)
-        paste(img, txt("CAMPEÃO", 150, AMB, 14), W / 2, 470, 1, sc, -3)
+        paste(img, txt("PINTOU O CABELO", 104, WHITE, 12), W / 2, 330, 1, sc, -3)
+        paste(img, txt("PRA COMEMORAR...", 104, AMB, 12), W / 2, 460, 1, sc, -3)
         d = ImageDraw.Draw(img)
         if t > 0.5:
             r = 100 * back(min(1, (t - 0.5) / 0.3))
             for hx, hy in ((430, 850), (664, 885)): d.ellipse((hx - r, hy - r, hx + r, hy + r), outline=AMB, width=10)
-            pop(img, chip("PLATINADOS", 64, INK, AMB), W / 2, 1140, t, 0.6, 0.25, 3)
-        pop(img, stamp("EM 9º LUGAR", 110, RED), W / 2, 1300, t, wt(0, "nono") - 0.15, 0.25, -6 + shake(t, wt(0, "nono"), 8))
+            if t < wt(0, "nono") - 0.15: pop(img, chip("PLATINADOS", 64, INK, AMB), W / 2, 1140, t, 0.6, 0.25, 3)
+        tn = wt(0, "nono") - 0.15
+        if t > tn:
+            pop(img, trophy(260), W / 2, 1330, t, tn); paste(img, txt("9º", 90, INK, 0), W / 2, 1290, 1 if t > tn + 0.2 else 0)
+            pop(img, stamp("O 9º LUGAR!", 110, RED), W / 2, 1110, t, tn + 0.1, 0.25, -6 + shake(t, tn + 0.1, 8))
         emit(img)
     # B firula em câmera lenta + rápida
     def b_over(img, t, lt):
-        pop(img, chip("A FIRULA", 70, INK, AMB), W / 2, 330, t, 0.1, 0.25, -3)
+        pop(img, chip("MODO FINAL DE COPA", 64, INK, AMB), W / 2, 330, t, 0.1, 0.25, -3)
         if lt > 2.3: paste(img, chip("CÂMERA LENTA", 44, WHITE, INK), W / 2, 440, 1)
     play(0.0, 2.6, PLACE[1] + 2.6 / 0.6, 0.6, b_over)
-    def b2(img, t, lt): pop(img, chip("E SEGUE O BAILE...", 60, INK, WHITE), W / 2, 330, t, 0.1, 0.25, 2)
+    def b2(img, t, lt): pop(img, chip("9º COLOCADO, HEIN...", 60, INK, WHITE), W / 2, 330, t, 0.1, 0.25, 2)
     play(2.6, 5.4, VIC0, 1.0, b2)
     # C Vicari (áudio dele)
     s0 = T[0]; cuts.append(s0); VF = list(frames(D + "vic.mp4", 0, VICL + 0.2, 30)); k = 0
@@ -131,8 +137,9 @@ def render():
         paste(img, scorebox("SAN", "GRE", 0, 2, 150), W / 2 + shake(t, wt(2, "dois"), 14), 640, 1, 0.85 + 0.15 * back(t / 0.25))
         pop(img, chip("AMUZU • 1º TEMPO", 52, WHITE, (60, 130, 200)), W / 2, 860, t, wt(2, "dois"), 0.25, -2)
         pop(img, chip("BRAITHWAITE • PÊNALTI", 52, WHITE, (60, 130, 200)), W / 2, 960, t, wt(2, "dois") + 0.3, 0.25, 2)
-        pop(img, logo("GRE", 220), W / 2, 1200, t, wt(2, "saiu") - 0.3)
-        pop(img, stamp("SAIU DO Z4", 100, GREEN), W / 2, 1400, t, wt(2, "z4") - 0.1, 0.25, -5)
+        pop(img, logo("GRE", 200), W / 2, 1160, t, wt(2, "saiu") - 0.3)
+        pop(img, stamp("SAIU DO Z4", 96, GREEN), W / 2, 1340, t, wt(2, "z4") - 0.1, 0.25, -5)
+        pop(img, chip("OBRIGADO, LOIRINHOS!", 60, INK, AMB), W / 2, 1490, t, wt(2, "loirinhos") - 0.2, 0.25, 3)
         flash(img, s0); hud(img); emit(img)
     # E comentário 1
     s0 = T[0]; cuts.append(s0)
@@ -140,23 +147,26 @@ def render():
         t = T[0] - s0; img = bg(W, H, "dark", T[0])
         pop(img, chip("DEPOIS DO JOGO...", 62, INK, WHITE), W / 2, 330, t, 0.0)
         pop(img, logo("SAN", 200), W / 2, 560, t, 0.2)
-        pop(img, chip("TORCEDOR CRITICA O TIME", 54, WHITE, RED), W / 2, 760, t, wt(3, "criticou") - 0.2, 0.25, -2)
-        tr = wt(3, "neymar") - 0.2
+        pop(img, chip("BRIGOU NA INTERNET...", 56, WHITE, RED), W / 2, 760, t, wt(3, "foi") - 0.2, 0.25, -2)
+        pop(img, chip("...COM TORCEDOR DE INTERNET", 50, INK, WHITE), W / 2, 860, t, wt(3, "reclamar") - 0.1, 0.25, 2)
+        tr = wt(3, "torcedor") + 1.4
         if t > tr: paste(img, C1, W / 2, 1050, 1, 0.3 + 0.7 * back(min(1, (t - tr) / 0.3)), shake(t, tr + 0.3, 4))
-        pop(img, chip("NEYMAR RESPONDE", 60, INK, AMB), W / 2, 1300, t, tr + 0.2, 0.25, 3)
+        pop(img, chip("IRONIA?", 60, INK, AMB), W / 2, 1300, t, tr + 0.2, 0.25, 3)
         flash(img, s0); hud(img); emit(img)
     # F comentário 2
     s0 = T[0]; cuts.append(s0)
     while T[0] < PLACE[5] - 0.1:
         t = T[0] - s0; img = bg(W, H, "red", T[0])
         paste(img, C2, W / 2 + shake(t, 0.2, 10), 800, 1, 0.3 + 0.7 * back(min(1, t / 0.3)))
-        pop(img, stamp("XINGOU!", 120, AMB), W / 2, 1250, t, wt(4, "xingou") - 0.1, 0.25, -6)
+        pop(img, stamp("XINGOU!", 110, AMB), W / 2, 1180, t, wt(4, "xingou") - 0.1, 0.25, -6)
+        pop(img, chip("PERDEU O JOGO", 60, WHITE, INK), W / 2, 1340, t, wt(4, "perdeu") - 0.1, 0.25, -2)
+        pop(img, chip("GANHOU NO INSTAGRAM", 60, INK, GREEN), W / 2, 1450, t, wt(4, "ganhou") - 0.1, 0.25, 2)
         flash(img, s0); hud(img); emit(img)
     # G CTA
     s0 = T[0]; cuts.append(s0)
     while T[0] < TOTAL:
         t = T[0] - s0; img, _, _ = CE.compose(FR0, {"ar": 0.5625, "cx": 0.41, "cy": 0.35, "zoom": 1.3 + 0.03 * t}); img.alpha_composite(Image.new("RGBA", (W, H), (0, 0, 0, 120))); hud(img)
-        pop(img, txt("O NEYMAR", 120, WHITE), W / 2, 420, t, 0.0); pop(img, txt("ERROU?", 160, AMB), W / 2, 570, t, 0.3)
+        pop(img, txt("VEM PLATINADO", 110, WHITE), W / 2, 420, t, 0.0); pop(img, txt("DE NOVO?", 150, AMB), W / 2, 570, t, wt(5, "platinado") - 0.2)
         pop(img, chip("SIM", 120, WHITE, GREEN), 330, 900, t, wt(5, "sim") - 0.2, 0.25, -4)
         pop(img, chip("NÃO", 120, WHITE, RED), 750, 900, t, wt(5, "não") - 0.2, 0.25, 4)
         pop(img, chip("COMENTA AÍ", 64, INK, WHITE), W / 2, 1110, t, wt(5, "comenta") - 0.1)
@@ -188,7 +198,7 @@ def mix():
     for c in json.load(open(D + "cuts.json"))[1:]: add("whoosh_2", c - 0.1, 0.14)
     add("tambor_impacto", 0.0, 0.4); add("whoosh_boom", wt(0, "nono"), 0.3)
     add("tambor_impacto", PLACE[2] + wt(2, "dois"), 0.35); add("torcida_comemora", PLACE[2] + wt(2, "saiu"), 0.12)
-    add("camera_click", PLACE[3] + wt(3, "neymar"), 0.3); add("tambor_impacto", PLACE[4] + 0.2, 0.3); add("torcida_aww", PLACE[4] + wt(4, "xingou"), 0.15)
+    add("camera_click", PLACE[3] + wt(3, "torcedor") + 1.4, 0.3); add("torcida_aww", PLACE[0] + wt(0, "nono"), 0.15); add("tambor_impacto", PLACE[4] + 0.2, 0.3); add("torcida_aww", PLACE[4] + wt(4, "xingou"), 0.15); add("whoosh_boom", PLACE[4] + wt(4, "ganhou"), 0.25)
     out = vo + m + fx; out /= max(1.0, np.abs(out).max() / 0.98)
     sf.write(D + "mix.wav", out, SR)
     subprocess.run(f"ffmpeg -loglevel error -y -i {D}mix.wav -af loudnorm=I=-14:TP=-1.5 -ar 44100 {D}mixn.wav", shell=True, check=True)
