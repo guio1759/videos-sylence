@@ -172,7 +172,7 @@ Tudo grátis, já no repo; setup.sh instala o que falta (Rhubarb, soundfile). Ex
 4. **Emojis ANIMADOS** (toolkit/common/emoji.py, Noto Animated Emoji do Google, CC BY 4.0, 26 em assets/emoji: rindo, fogo, grito, palhaco, olhos, caveira, coracao_verde, trofeu...). Crédito pequeno na tela final (emoji.CREDIT), nunca na legenda. Use 1 emoji por cena no momento da piada/dado.
 5. **Fontes novas** (toolkit/common/fonts.py: `F("luckiest"|"bangers"|"anton"|"bebas", tam)`), OFL/Apache. Luckiest/Bangers para zoeira e títulos de gancho; Anton/Bebas para manchete séria.
 6. Manim NÃO instala aqui (falta pango); gráficos animados continuam no PIL (engine/gfx).
-7. Chaves grátis opcionais que o usuário pode passar no prompt da tarefa: PEXELS_KEY (pexels.com/api) e FOOTBALL_KEY (football-data.org). setup.sh grava em ~/.secrets.
+7. **Dados oficiais (football-data.org, chave grátis do usuário desde 25/11, vem no prompt da tarefa como FOOTBALL_KEY)**: `python3 toolkit/common/futdata.py tabela BSA | jogos CLI SCHEDULED | artilheiros BSA`. Usar para conferir tabela, placares e artilharia antes de cada vídeo. Pexels: emissão de chaves pausada (25/11), seguir só com Pixabay.
 
 ## 14. ENGAJAMENTO (25/11/2026)
 - **Carrossel de foto no TikTok 1x por semana** (melhor formato da conta): gerar as imagens 1080x1920 e entregar com SendUserFile para o usuário postar pelo app. Exemplo: toolkit/carrossel/final_libertadores (6 telas, feito em 25/11 para postar até sábado 28/11).
