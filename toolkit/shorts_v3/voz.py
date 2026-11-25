@@ -1,4 +1,6 @@
-"""Voz Google Sadaltager por frase -> narr.wav + segs.json + words.json"""
+"""Voz Google Sadaltager por frase -> narr.wav + segs.json + words.json
+Diálogo com vários personagens: cada frase pode ter um 4º item = nome da voz Chirp 3 HD (ex.: "Charon", "Puck", "Kore").
+words.json ganha "spk" (voz de cada frase) para o talk.py mexer só a boca de quem está falando."""
 import sys, json, subprocess, numpy as np, soundfile as sf, importlib.util
 sys.path.insert(0, '/home/claude/videos-sylence/toolkit/common'); import gvoz
 SR = 24000
@@ -15,8 +17,10 @@ def squeeze(a, maxgap=0.22, keep=0.16, thr=0.012):
     return np.concatenate(out)
 def build(d, sents, tempo=1.1, voice="Sadaltager"):
     parts, segs, t = [], [], 0.0
-    for i, (txt, rate, gap) in enumerate(sents):
-        open('/tmp/g.wav', 'wb').write(gvoz.synth_chunk(txt, voice, rate))
+    spk = []
+    for i, it in enumerate(sents):
+        txt, rate, gap = it[:3]; v = it[3] if len(it) > 3 else voice; spk.append(v)
+        open('/tmp/g.wav', 'wb').write(gvoz.synth_chunk(txt, v, rate))
         subprocess.run(f"ffmpeg -loglevel error -y -i /tmp/g.wav -ac 1 -ar {SR} /tmp/g24.wav", shell=True, check=True)
         a, _ = sf.read('/tmp/g24.wav', dtype='float32'); a = squeeze(a)
         sf.write('/tmp/s.wav', a, SR)
@@ -31,5 +35,5 @@ def build(d, sents, tempo=1.1, voice="Sadaltager"):
     m = WhisperModel('small', device='cpu', compute_type='int8')
     sg, _ = m.transcribe(x, language='pt', word_timestamps=True, initial_prompt=sents[0][0][:200])
     W = [{"w": w.word.strip(), "t0": round(w.start, 3), "t1": round(w.end, 3)} for s in sg for w in s.words]
-    json.dump({"words": W, "segs": segs, "total": round(t + 0.6, 2)}, open(f'{d}/words.json', 'w'), ensure_ascii=False)
+    json.dump({"words": W, "segs": segs, "spk": spk, "total": round(t + 0.6, 2)}, open(f'{d}/words.json', 'w'), ensure_ascii=False)
     print(d, round(t, 2), "s"); print(' '.join(w['w'] for w in W))

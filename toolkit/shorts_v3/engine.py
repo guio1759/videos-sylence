@@ -99,6 +99,14 @@ def heartbeat(w, h, t, col=(60, 220, 120)):
     d.line(pts, fill=col, width=6); return im
 
 
+_BGV = {}
+def _bgv(spec):
+    if spec not in _BGV:
+        sys.path.insert(0, "/home/claude/videos-sylence/toolkit/common"); import bgvideo
+        p = spec[4:].split("@"); _BGV[spec] = bgvideo.BG(p[0], float(p[1]) if len(p) > 1 else 0.0, 6.0, int(p[2]) if len(p) > 2 else 120, int(p[3]) if len(p) > 3 else 0)
+    return _BGV[spec]
+
+
 class Short:
     def __init__(self, d, sents, scenes, topic, palette, music, music_off, sfx_soft=False):
         self.d = d; j = json.load(open(os.path.join(d, "words.json")))
@@ -149,7 +157,7 @@ class Short:
         f = font("blk", 86); sp = 22
         ws = [f.getlength(x) for x in words]; tot = sum(ws) + sp * (len(ws) - 1)
         if tot > W - 80: f = font("blk", int(86 * (W - 80) / tot)); ws = [f.getlength(x) for x in words]; tot = sum(ws) + sp * (len(ws) - 1)
-        x = W / 2 - tot / 2; y = H * 0.80
+        x = W / 2 - tot / 2; y = H * getattr(self, "CAPY", 0.80)
         st = self.caps[ch[0]]["t0"]; sc = 0.85 + 0.15 * back((T - st) / 0.14)
         for k, wd, wl in zip(ch, words, ws):
             col = AMB if k == cur else WHITE
@@ -182,7 +190,9 @@ class Short:
     def frame(self, T):
         i, t = self.seg_at(T)
         pal = self.pal[i] if isinstance(self.pal, list) else self.pal
-        img = bg(W, H, pal, T)
+        if isinstance(pal, str) and pal.startswith("vid:"):  # fundo em vídeo real (bgvideo.py): "vid:arquivo.mp4[@t0[@dim[@blur]]]"
+            img = _bgv(pal).frame(T)
+        else: img = bg(W, H, pal, T)
         self.scenes[i](img, t, T)
         s0 = self.segs[i][0]
         if getattr(self, "DRIFT", True):  # câmera sempre andando (zoom lento contínuo em cada cena), estilo da referência
