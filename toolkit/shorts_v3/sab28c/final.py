@@ -11,7 +11,11 @@ def wt(i, w, d=0.5):
     return d
 @functools.lru_cache(8)
 def taca(h):
-    im = Image.open("/home/claude/doc/escudos/TACA2_cut.png").convert("RGBA"); h = int(h); return im.resize((int(im.width * h / im.height), h), Image.LANCZOS)
+    im = Image.open("/home/claude/sab28c/taca_new.png").convert("RGBA"); h = int(h); im = im.resize((int(im.width * h / im.height), h), Image.LANCZOS)
+    pad = int(h * 0.25); out = Image.new("RGBA", (im.width + 2 * pad, im.height + 2 * pad), (0, 0, 0, 0))
+    g = Image.new("RGBA", out.size, (255, 210, 90, 0)); a = Image.new("L", out.size, 0); a.paste(im.getchannel("A"), (pad, pad))
+    g.putalpha(a.filter(ImageFilter.MaxFilter(9)).filter(ImageFilter.GaussianBlur(pad / 2.2)).point(lambda v: int(v * 0.85)))
+    out.alpha_composite(g); out.alpha_composite(im, (pad, pad)); return out
 def emo(img, name, x, y, t, t0, sz=170):
     if t >= t0: paste(img, emoji.get(name, sz, t - t0), x, y, 1, 0.3 + 0.7 * back(min(1, (t - t0) / 0.25)))
 def flag_br(w):
@@ -46,10 +50,14 @@ def cups(img, years, y, t, t0s, h=170, col=GOLD):
 def c0(img, t, T):
     img.alpha_composite(rays(W, H, cx, 850, T, (255, 220, 120), 16, 60)); img.alpha_composite(confetti(W, H, t + 0.5))
     sc = 1.0 + 0.05 * math.sin(min(t, 0.4) * 8)
-    paste(img, taca(620), cx, 760, 1, sc)
+    paste(img, taca(700), cx, 760, 1, sc)
+    k = int((T * 3) % 6); d = ImageDraw.Draw(img)
+    for j in range(6):
+        a = j * 1.05 + T * 0.8; x, y = cx + 230 * math.cos(a), 700 + 300 * math.sin(a); r = 10 + 8 * abs(math.sin(T * 4 + j))
+        d.polygon([(x, y - r * 2), (x + r * 0.5, y), (x, y + r * 2), (x - r * 0.5, y)], fill=(255, 240, 180)); d.polygon([(x - r * 2, y), (x, y + r * 0.5), (x + r * 2, y), (x, y - r * 0.5)], fill=(255, 240, 180))
     paste(img, txt("TETRA", 220, GOLD, 16), cx, 1180, 1, sc, -3)
     paste(img, chip("CAMPEÃO DA LIBERTADORES 2026", 54, INK, WHITE), cx, 1360, 1, sc)
-    paste(img, logo("PAL", 170), cx, 330, 1, sc)
+    paste(img, logo("PAL", 140), 160, 330, 1, sc)
 def c1(img, t, T):
     pop(img, chip("58 ANOS DEPOIS", 70, INK, AMB), cx, 400, t, 0.0, 0.25, -3)
     pop(img, logo("PAL", 220), 290, 760, t, wt(1, "mesmo") - 0.2, 0.3, -5); pop(img, txt("x", 110, AMB), cx, 760, t, wt(1, "mesmo"))
@@ -62,7 +70,7 @@ def c2(img, t, T):
     ys = ["1999", "2020", "2021", "2026"]; t0s = [wt(2, "noventa") - 0.15, wt(2, "vinte") - 0.3, wt(2, "um") - 0.3, wt(2, "agora") - 0.1]
     for k, (yr, t0) in enumerate(zip(ys, t0s)):
         x = cx + (k - 1.5) * 240
-        pop(img, taca(260 if k < 3 else 320), x, 930, t, t0, 0.3, (-4, 4)[k % 2])
+        pop(img, taca(330 if k < 3 else 400), x, 900, t, t0, 0.3, (-4, 4)[k % 2])
         pop(img, chip(yr, 50, INK, GOLD if k == 3 else WHITE), x, 1140, t, t0 + 0.1)
     if t > t0s[3]: img.alpha_composite(confetti(W, H, t - t0s[3]))
 def c3(img, t, T):
@@ -70,7 +78,7 @@ def c3(img, t, T):
     if t < tb:
         pop(img, chip("ABEL FERREIRA", 70, INK, WHITE), cx, 500, t, 0.0)
         pop(img, txt("TRICAMPEÃO", 140, GOLD), cx, 760, t, wt(3, "tricampeão") - 0.25)
-        for k in range(3): pop(img, taca(200), cx + (k - 1) * 220, 1080, t, wt(3, "tricampeão") + 0.1 * k)
+        for k in range(3): pop(img, taca(300), cx + (k - 1) * 260, 1070, t, wt(3, "tricampeão") + 0.1 * k)
     else:
         u = t - tb; pop(img, chip("TÍTULOS DA LIBERTADORES", 56, INK, WHITE), cx, 450, u, 0.0)
         pop(img, vs_box(flag_br(200), flag_ar(200), 26, 25, 140, AMB), cx, 760, u, 0.1)
@@ -83,7 +91,7 @@ def c4(img, t, T):
     emo(img, "dinheiro", cx, 1110, t, wt(4, "dólares") - 0.2, 220)
 def c5(img, t, T):
     img.alpha_composite(rays(W, H, cx, 850, T, (255, 220, 120), 14, 45))
-    pop(img, taca(380), cx, 650, t, 0.0)
+    pop(img, taca(470), cx, 620, t, 0.0)
     pop(img, txt("QUEM FOI", 120, WHITE), cx, 990, t, 0.2); pop(img, txt("O HERÓI?", 140, GOLD), cx, 1140, t, 0.4)
     pop(img, chip("COMENTA O NOME", 64, INK, AMB), cx, 1320, t, wt(5, "comenta") - 0.2, 0.25, -3)
     if T > S.total - 2.5: paste(img, text_el(emoji.CREDIT, font("sb", 24), (235, 235, 235), 3), W / 2, H - 125, 0.85)
