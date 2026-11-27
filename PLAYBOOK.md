@@ -110,7 +110,8 @@ Metricool é plano GRÁTIS: só 20 publicações/mês e CADA REDE CONTA (1 víde
 - `bra/make_bra.py`: seleção/zoeira 2D (bandeiras, placares, campinho 2D, despertador).
 - `tat/eng3d.py`: motor 3D (Cam, draw_pitch, billboards, goals, polyline/poly).
 
-## 9. Série longa: Modo Carreira Cambridge United (YouTube, 1 episódio a cada 2 dias + 4 Shorts)
+## 9. Série longa: Modo Carreira Cambridge United — **PAUSADA (decisão do usuário 27/11/2026: "não tá dando certo")**
+- NÃO produzir nem agendar mais episódios/curtos do Cambridge. Os horários 18:00 ter/qui/sáb e 21:30 ficam livres. Modo Carreira continua SÓ com a série da PORTUGUESA em Shorts (seção 10). O histórico abaixo fica só como referência.
 - **DESDE 19/11/2026 (decisão do usuário): os 4 Shorts por episódio FLOPARAM (ficavam perdidos, sem conexão). A partir do Ep.2: episódio grande no YouTube + UM vídeo curto vertical de ATÉ 3 MINUTOS, bem rápido, só com as informações mais importantes do episódio (resumo com começo-meio-fim e o dilema A/B no final), postado no TikTok/Instagram/Shorts.** As regras de 4 Shorts abaixo valem só para o Ep.1.
 - **ORDEM DOS SHORTS = ORDEM DA HISTÓRIA** (o usuário reclamou no Ep.1, quando o dilema saiu antes do Gildo e do Murrey): agende os 4 Shorts na ordem em que as cenas aparecem no episódio, e o Short do DILEMA A/B sempre por ÚLTIMO, pelo menos 24 h antes da contagem de votos.
 - Bíblia da série (doc): https://claude.ai/artifact/BBKWmiy47PX4KMMFBHbCBk — premissa, história real do clube, Rick Miguel, elenco, formato.
@@ -188,3 +189,13 @@ Tudo grátis, já no repo; setup.sh instala o que falta (Rhubarb, soundfile). (O
 - **Crédito obrigatório, pequeno NA TELA** enquanto a foto aparece (`fotofx.credit(img, fotos_cc.credito(path))`). Nunca na legenda do post. NUNCA foto de agência/TV/site de clube (Getty, Globo, Lance, sites oficiais) — só Commons ou as que o usuário mandar. Isto substitui a regra antiga "nunca foto de jogador": agora pode, desde que seja do Commons com crédito.
 - **Como animar** (toolkit/common/fotofx.py): `pan_wide` (panorâmica atravessando o estádio no gancho), `pop3d` (foto do jogador desfocada ao fundo + jogador recortado com contorno branco "saltando" da foto, paralaxe 2.5D), `polaroid` (cartão com borda e sombra entrando de lado, bom para técnico/torcida), `kb` (Ken Burns lento), `sticker` (recortes pequenos lado a lado no CTA), `whip` (transição chicote). Sempre por cima: o estilo de sempre (números grandes, odômetro, chips, carimbos, escudos reais, 1 emoji animado pontual). Fontes: Anton nos nomes.
 - **Modelo**: toolkit/shorts_v3/sex27b/tres.py ("3 nomes decidem a final": Centenário, Flaco, Abel, Muslera) — aguardando aprovação do usuário em 25/11; se aprovado, vira padrão.
+
+## 16. VÍDEOS LONGOS NO YOUTUBE (pesquisa vidIQ 27/11/2026, para substituir o Cambridge)
+O que está performando em vídeo longo de futebol em pt-BR (outliers/trending, canais pequenos sem rosto):
+- **"X explicados" em lista temática, 15–25 min**: "6 grandes KARMAS do futebol brasileiro explicados" (Ataco Fut, 51k inscritos: 83k views em 2 dias); "Os ESTEREÓTIPOS de cada torcida explicados" (Rabisco Real, 5k inscritos: 40k, 16x a média).
+- **Mini-documentário de personagem com gancho atual, 10–20 min**: "O maior gringo do futebol brasileiro? (Arrascaeta)" (Foi Histórico, 700 inscritos: 17,7k em 1 dia); "Sócrates, o gênio que nunca treinava" (Por Trás da Bola, 1,6k inscritos: 41,6k); "O jogador que foi humilhado e hoje é o dono do futebol brasileiro" (20k em 2 dias).
+- **"O caso X" sobre polêmica do momento, ~17 min**: "Muita soberba e pouco futebol… o caso Neymar" (Five Fut, 44k inscritos: 104k em 2 dias).
+- **Série histórica de clube em episódios, 30+ min**: "A Reinvenção do Palmeiras – Ep 1" (48k views, 965x a média do canal); "O dia em que o Palmeiras arrancou um Brasileirão do Corinthians" (16,5k, 5,8x).
+- Evitar: react/cortes (precisa de vídeo alheio), notícias diárias e "ao vivo".
+- Padrão em comum: título com conflito/pergunta em CAIXA ALTA parcial, narrador sem rosto, fotos/arquivo + gráficos, capítulos, 10–25 min. Combina com o nosso pipeline (voz Google, gfx.py, campo 3D, fotos do Commons com crédito).
+- Status: aguardando o usuário escolher o formato e o 1º tema (27/11).
