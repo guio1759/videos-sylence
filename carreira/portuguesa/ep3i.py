@@ -127,24 +127,26 @@ def cmt(user, text, likes, w=940): return bubble(user, text, likes, w)
 def i0(img, t, T):
     img.alpha_composite(rays(W, H, cx, 900, T, (255, 220, 120), 16, 55))
     sc = 1.0 + 0.05 * math.sin(min(t, 0.4) * 8)
-    paste(img, txt("VOCÊ PODE", 120, WHITE, 12), cx, 330, 1, sc, -2)
-    paste(img, txt("ENTRAR NO TIME!", 112, AMB, 12), cx, 470, 1, sc, 2)
-    tj, tc, td = wt(0, "jogador") - 0.3, wt(0, "curtido") - 0.3, wt(0, "decide") - 0.2
-    if t < td:
-        paste(img, cmt("ALL Vs Chelsea • TikTok", "coloca eu na lusa", "4", 860), cx, 700, 1, 0.85 + 0.15 * back(min(1, t / 0.25)))
-        if t > tj:
-            u = t - tj; d = ImageDraw.Draw(img); ln = 160 * ease(u / 0.3)
-            d.line((cx, 840, 340, 840 + ln), fill=AMB, width=14)
-            pop(img, pcard("LEONARDO", 50, "LE", (70, 40, 56, 55, 52, 58), 330, True, "leonardo"), 320, 1180, t, tj + 0.2, 0.3)
-        pop(img, chip("O MAIS CURTIDO", 50, WHITE, RED), 770, 1120, t, tc, 0.25, -3)
-        pop(img, chip("ENTRA NO TIME", 50, INK, AMB), 770, 1220, t, tc + 0.2, 0.25, 3)
+    te, tv = wt(0, "entrou") - 0.25, wt(0, "você") - 0.45
+    if t < tv:
+        paste(img, chip("COMENTÁRIO MAIS CURTIDO DO EP.2", 50, INK, AMB), cx, 330, 1, sc, -2)
+        paste(img, cmt("ALL Vs Chelsea • TikTok", "coloca eu na lusa", "4", 900), cx, 560, 1, sc)
+        if t <= te:
+            pop(img, pcard("???", 50, "LE", (70, 40, 56, 55, 52, 58), 360, True, "sil"), cx, 1080, t, 0.4, 0.3, 3 * math.sin(T * 6))
+        if t > te:
+            u = t - te; d = ImageDraw.Draw(img); ln = 120 * ease(u / 0.25)
+            d.line((cx, 700, cx, 700 + ln), fill=AMB, width=14)
+            pop(img, pcard("LEONARDO", 50, "LE", (70, 40, 56, 55, 52, 58), 360, True, "leonardo"), cx, 1080, t, te + 0.1, 0.3)
+            pop(img, stamp("ENTROU NO TIME!", 96, GREEN), cx, 1370, t, te + 0.4, 0.25, -5)
     else:
-        u = t - td; img.alpha_composite(Image.new("RGBA", (W, H), (255, 255, 255, int(max(0, 180 * (1 - u / 0.15))))))
-        pop(img, chip("A", 260, WHITE, RED), 300, 900, u, 0.0, 0.3, -6)
-        pop(img, chip("B", 260, WHITE, GREEN), 780, 900, u, 0.12, 0.3, 6)
-        pop(img, stamp("VOCÊ DECIDE A HISTÓRIA", 76, AMB), cx, 1240, u, 0.3, 0.25, -4)
+        u = t - tv; img.alpha_composite(Image.new("RGBA", (W, H), (255, 255, 255, int(max(0, 180 * (1 - u / 0.15))))))
+        pop(img, txt("COMENTA", 130, WHITE, 12), cx, 380, u, 0.0, 0.25, -2)
+        pop(img, txt("VOCÊ TAMBÉM!", 110, AMB, 12), cx, 520, u, 0.15, 0.25, 2)
+        pop(img, chip("A", 240, WHITE, RED), 300, 900, u, wt(0, "a", 1) - tv - 0.2 if False else 0.6, 0.3, -6)
+        pop(img, chip("B", 240, WHITE, GREEN), 780, 900, u, 0.75, 0.3, 6)
+        pop(img, stamp("VOCÊ DECIDE A HISTÓRIA", 74, AMB), cx, 1230, u, 0.9, 0.25, -4)
 SH = Short(D, [(s,) for s in TXT], [i0], "MODO CARREIRA • LUSA • EP.3", ["green"], "Crossing_the_Chasm", 0)
 S = SH
 SH.CREDIT = False
 if __name__ == "__main__":
-    main(SH, extra=[("tambor_impacto", 0.0, 0.5), ("whoosh_boom", wt(0, "jogador"), 0.3), ("tambor_impacto", wt(0, "decide"), 0.4)])
+    main(SH, extra=[("tambor_impacto", 0.0, 0.5), ("torcida_comemora", wt(0, "entrou"), 0.3), ("tambor_impacto", wt(0, "você") - 0.35, 0.4)])
