@@ -5,8 +5,28 @@ sys.path.insert(0, "/home/claude/por/ep3"); from script import S as RAW
 TXT = [re.sub(r"\[[a-z ]+\] ?", "", s) for s in RAW]
 D = "/home/claude/por/ep3"; IM = "/home/claude/por/img/"
 GOLD = (255, 205, 60)
-@functools.lru_cache(32)
-def cut(k, h): im = Image.open(IM + k + "_cut.png").convert("RGBA"); h = int(h); return im.resize((int(im.width * h / im.height), h), Image.LANCZOS)
+TOK = {"benny": ("BENNY", "5"), "leonardo": ("LEONARDO", "6"), "cadorini": ("CADORINI", "9"), "levi3d": ("LEVI", "10"), "romarinho3d": ("ROMARINHO", "11"),
+       "davi": ("DAVI", "8"), "tee": ("THIAGO TEH", "T"), "cauari3d": ("CAUARI", "7")}
+LRED, LGRN = (196, 28, 40), (22, 140, 70)
+@functools.lru_cache(64)
+def disc(num, d, col=LRED, ring=LGRN, fg=WHITE, coach=False):
+    d = int(d); im = Image.new("RGBA", (d + 24, d + 24), (0, 0, 0, 0)); dr = ImageDraw.Draw(im)
+    dr.ellipse((14, 18, d + 14, d + 18), fill=(0, 0, 0, 110))
+    dr.ellipse((4, 4, d + 4, d + 4), fill=(20, 20, 26) if coach else col, outline=ring, width=max(6, d // 11))
+    dr.ellipse((d * 0.18 + 4, d * 0.1 + 4, d * 0.82 + 4, d * 0.42 + 4), fill=(255, 255, 255, 40))
+    dr.text((d / 2 + 4, d / 2 + 6), num, font=font("blk", int(d * (0.5 if len(num) < 2 else 0.42))), fill=fg, anchor="mm", stroke_width=max(2, d // 40), stroke_fill=INK)
+    return im
+@functools.lru_cache(64)
+def cut(k, h):
+    nm, num = TOK.get(k, (k.upper(), "?")); h = int(h); d = int(h * 0.62); coach = k == "tee"
+    im = Image.new("RGBA", (max(d + 24, int(h * 0.95)), h), (0, 0, 0, 0)); dc = disc(num, d, coach=coach)
+    im.alpha_composite(dc, ((im.width - dc.width) // 2, int(h * 0.04)))
+    lab = chip(nm, int(h * 0.075), WHITE, INK if not coach else (60, 60, 70))
+    if lab.width > im.width: lab = lab.resize((im.width, int(lab.height * im.width / lab.width)))
+    im.alpha_composite(lab, ((im.width - lab.width) // 2, int(h * 0.04) + d + int(h * 0.04)))
+    if coach:
+        sub = chip("TÉCNICO", int(h * 0.055), INK, AMB); im.alpha_composite(sub, ((im.width - sub.width) // 2, int(h * 0.04) + d + int(h * 0.15)))
+    return im
 @functools.lru_cache(16)
 def _cov(k):
     im = Image.open(IM + k + ".jpg").convert("RGBA"); sc = max(W * 1.15 / im.width, H * 1.15 / im.height)
@@ -29,7 +49,9 @@ def wt(i, word, n=1):
     return 0.0
 @functools.lru_cache(256)
 def pcard(name, ovr, pos, stats, w=420, prom=False, av="sil"):
-    a = silhouette() if av == "sil" else cut(av, 900)
+    if av == "sil": a = silhouette()
+    else:
+        a = Image.new("RGBA", (760, 600), (0, 0, 0, 0)); dc = disc(TOK.get(av, ("", "?"))[1], 500); a.alpha_composite(dc, (130, 60))
     return C.make_card(a, name, ovr, pos, list(stats), w=w, promessa=prom, crest="POR.png")
 def bubble(user, text, likes, w=900):
     h = 260; im = Image.new("RGBA", (w, h), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
@@ -125,10 +147,10 @@ def s3(img, t, T):  # Leonardo
             pop(img, chip("EX-VÁRZEA DO THIAGO", 46, INK, AMB), 760, 1310, v, 0.3, 0.25, 3)
             pop(img, chip("CHUTEIRA EMPRESTADA", 46, WHITE, INK), 760, 1410, t, wt(3, "chuteira") - 0.2, 0.25, -3)
     else:
-        u = t - tp; cover(img, "alojamento", u, 70)
+        u = t - tp; img.alpha_composite(rays(W, H, cx, 1100, T, (255, 200, 140), 12, 30))
         pop(img, chip("ALOJAMENTO DA LUSA", 56, INK, AMB), cx, 420, u, 0.0)
-        slide(img, cut("benny", 700), 300, 1200, u, 0.0, -600); slide(img, cut("leonardo", 700), 790, 1200, u, 0.1, 600)
-        pop(img, chip("BENNY (EP.2)", 48, WHITE, RED), 300, 1600, u, 0.3); pop(img, chip("LEONARDO (EP.3)", 48, WHITE, RED), 790, 1600, u, 0.4)
+        slide(img, cut("benny", 560), 300, 1000, u, 0.0, -600); slide(img, cut("leonardo", 560), 790, 1000, u, 0.1, 600)
+        pop(img, chip("COMENTÁRIO DO EP.2", 36, WHITE, RED), 300, 1340, u, 0.3); pop(img, chip("COMENTÁRIO DO EP.3", 36, WHITE, RED), 790, 1340, u, 0.4)
 
 def s4(img, t, T):  # Série D explicada
     img.alpha_composite(rays(W, H, cx, 900, T, (150, 255, 170), 14, 30))
@@ -153,9 +175,9 @@ def s5(img, t, T):  # R1 e R2
         cover(img, "diadema", t, 110); hud(img, 1, 1)
         pop(img, chip("RODADA 1 • DIADEMA", 56, INK, AMB), cx, 400, t, 0.0)
         pop(img, score("POR", "AGS", 2, 0, 120), cx + shake(t, wt(5, "dois"), 12), 620, t, wt(5, "dois") - 0.3)
-        pop(img, pcard("LEVI SANTOS", 64, "MEI", (72, 60, 64, 70, 30, 50), 340, False, "levi3d"), 330, 1060, t, wt(5, "levi") - 0.3)
-        pop(img, chip("GOL DO LEVI", 56, INK, AMB), 330, 1360, t, wt(5, "levi"), 0.25, -3)
-        if t > wt(5, "levi") + 0.4: paste(img, table(t - wt(5, "levi") - 0.4, 1, 560).resize((560, 434)), 780, 1220, 1)
+        pop(img, pcard("LEVI SANTOS", 64, "MEI", (72, 60, 64, 70, 30, 50), 280, False, "levi3d"), 200, 1060, t, wt(5, "levi") - 0.3)
+        pop(img, chip("GOL DO LEVI", 50, INK, AMB), 200, 1310, t, wt(5, "levi"), 0.25, -3)
+        if t > wt(5, "levi") + 0.4: paste(img, table(t - wt(5, "levi") - 0.4, 1, 960).resize((600, 465)), 720, 1100, 1)
     else:
         u = t - tc; img.alpha_composite(Image.new("RGBA", (W, H), (12, 60, 30, 120)))
         hud(img, 2, 2)
@@ -195,17 +217,49 @@ def s8(img, t, T):  # tabela antes da última
     pop(img, logo("PAF", 140), 250, 1640, t, wt(8, "pouso") - 0.3)
     pop(img, stamp("EMPATE NÃO SERVE", 92, RED), 640, 1640, t, wt(8, "empate") - 0.2, 0.25, -5)
 
-def s9(img, t, T):  # o gol
+def board(img, X0=90, Y0=430, PW=900, PH=1080):
+    d = ImageDraw.Draw(img)
+    for k in range(8): d.rectangle((X0, Y0 + k * PH / 8, X0 + PW, Y0 + (k + 1) * PH / 8), fill=(34, 120, 58) if k % 2 else (40, 134, 66))
+    L = (235, 245, 235); d.rectangle((X0, Y0, X0 + PW, Y0 + PH), outline=L, width=5)
+    d.rectangle((X0 + PW * 0.2, Y0, X0 + PW * 0.8, Y0 + PH * 0.2), outline=L, width=4); d.rectangle((X0 + PW * 0.37, Y0, X0 + PW * 0.63, Y0 + PH * 0.08), outline=L, width=4)
+    d.rectangle((X0 + PW * 0.42, Y0 - 26, X0 + PW * 0.58, Y0), outline=WHITE, width=6)
+    d.arc((X0 + PW * 0.35, Y0 + PH * 0.12, X0 + PW * 0.65, Y0 + PH * 0.28), 20, 160, fill=L, width=4)
+    d.line((X0, Y0 + PH, X0 + PW, Y0 + PH), fill=L, width=4); d.arc((X0 + PW * 0.38, Y0 + PH * 0.88, X0 + PW * 0.62, Y0 + PH * 1.12), 180, 360, fill=L, width=4)
+    return X0, Y0, PW, PH
+def lerp(a, b, u): u = max(0.0, min(1.0, u)); return (a[0] + (b[0] - a[0]) * u, a[1] + (b[1] - a[1]) * u)
+def qbez(a, c, b, u):
+    u = max(0.0, min(1.0, u)); return ((1 - u) ** 2 * a[0] + 2 * (1 - u) * u * c[0] + u * u * b[0], (1 - u) ** 2 * a[1] + 2 * (1 - u) * u * c[1] + u * u * b[1])
+def tok(img, xy, num, name, d=84, col=LRED, ring=LGRN, lab=True):
+    paste(img, disc(num, d, col, ring), xy[0], xy[1], 1)
+    if lab: paste(img, chip(name, 26, WHITE, INK if col == LRED else (60, 60, 70)), xy[0], xy[1] + d * 0.75, 1)
+def s9(img, t, T):  # o gol: prancheta tática
     tg = wt(9, "goool") - 0.1; tq = wt(9, "quarto") - 0.3
     if t < tg:
-        cam, d = pitch3d(img, T, 200, 4, dist=55, hgt=26, tgt=(30, 0, 0), dim=30)
-        paste(img, score("POR", "PAF", 0, 0, 100), cx, 380, 1); paste(img, clock("90:00", 100), cx, 560, 1)
-        tb, tl, tc = wt(9, "benny") - 0.2, wt(9, "leonardo") - 0.2, wt(9, "cadorini") - 0.2
-        if t > tb: pop(img, cut("benny", 420), 260, 1050, t, tb); pop(img, chip("ROUBA", 54, WHITE, RED), 260, 1290, t, tb)
-        if t > tl:
-            u = min(1, (t - tl) / 0.5); dd = ImageDraw.Draw(img); dd.line((340, 950, 340 + 300 * u, 950 - 120 * u), fill=AMB, width=14)
-            pop(img, cut("leonardo", 420), 640, 1000, t, tl + 0.2); pop(img, chip("CRUZA", 54, INK, AMB), 640, 1240, t, tl + 0.4)
-        if t > tc: pop(img, pcard("CADORINI", 63, "ATA", (64, 70, 52, 58, 30, 68), 300, False, "cadorini"), 860, 1450, t, tc)
+        X0, Y0, PW, PH = board(img); P = lambda fx, fy: (X0 + fx * PW, Y0 + fy * PH)
+        paste(img, score("POR", "PAF", 0, 0, 90), 330, 300, 1); paste(img, clock("90:00", 80), 780, 300, 1)
+        tb, tl, tx, tc = wt(9, "benny") - 0.1, wt(9, "leonardo") - 0.2, wt(9, "cruzamento") - 0.1, wt(9, "cadorini") - 0.1
+        opp = [((0.55, 0.62), (0.52, 0.6)), ((0.35, 0.3), (0.42, 0.18)), ((0.6, 0.25), (0.55, 0.16)), ((0.25, 0.5), (0.22, 0.4))]
+        for k, (a, b) in enumerate(opp): tok(img, P(*lerp(a, b, (t - tl) / 2.5)), "", "", 70, (150, 150, 160), (60, 60, 70), False)
+        benny = P(*lerp((0.55, 0.72), (0.55, 0.64), (t - tb + 0.6) / 0.6)); leo = P(*lerp((0.12, 0.6), (0.1, 0.18), (t - tl - 0.4) / (tx - tl)))
+        cado = P(*lerp((0.6, 0.45), (0.44, 0.1), (t - tl) / (tc - tl + 0.2)))
+        tok(img, cado, "9", "CADORINI"); tok(img, leo, "6", "LEONARDO"); tok(img, benny, "5", "BENNY")
+        tok(img, P(0.5, 0.03), "", "", 64, (240, 200, 40), INK, False)
+        # bola
+        if t < tb: ball = P(0.55, 0.6)
+        elif t < tl: ball = (benny[0], benny[1] - 30)
+        elif t < tl + 0.5: ball = lerp(benny, leo, (t - tl) / 0.5)
+        elif t < tx: ball = (leo[0] + 30, leo[1] - 30)
+        elif t < tc: ball = qbez((leo[0] + 30, leo[1] - 30), P(0.3, -0.05), (cado[0], cado[1] - 20), (t - tx) / (tc - tx))
+        else: ball = lerp((cado[0], cado[1] - 20), P(0.47, -0.01), (t - tc) / 0.35)
+        d = ImageDraw.Draw(img)
+        if t > tl: d.line((benny, leo if t > tl + 0.5 else ball), fill=AMB, width=8)
+        if t > tx:
+            pts = [qbez((leo[0] + 30, leo[1] - 30), P(0.3, -0.05), (cado[0], cado[1] - 20), u / 20) for u in range(0, 21)]
+            d.line(pts, fill=WHITE, width=6)
+        d.ellipse((ball[0] - 18, ball[1] - 18, ball[0] + 18, ball[1] + 18), fill=WHITE, outline=INK, width=4)
+        pop(img, chip("ROUBA!", 54, WHITE, RED), benny[0], benny[1] - 110, t, tb, 0.25, -4)
+        pop(img, chip("CRUZA!", 54, INK, AMB), leo[0] + 120, leo[1] - 90, t, tx, 0.25, 4)
+        pop(img, chip("CABEÇADA!", 54, INK, WHITE), cado[0] + 60, cado[1] + 120, t, tc, 0.25, -3)
     elif t < tq:
         u = t - tg; img.alpha_composite(rays(W, H, cx, 800, T, (255, 220, 120), 16, 70)); img.alpha_composite(confetti(W, H, u))
         img.alpha_composite(Image.new("RGBA", (W, H), (255, 255, 255, int(max(0, 200 * (1 - u / 0.15))))))
