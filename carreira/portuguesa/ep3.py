@@ -48,7 +48,7 @@ def wt(i, word, n=1):
             if c == n: return w["t0"] - s0
     return 0.0
 REAL = {"benny": "benny_r", "leonardo": "leonardo_r", "davi": "davi_r", "tee": "tee_r",   # criados: estilo base do FIFA
-        "romarinho3d": "romarinho_foto", "levi3d": "levi_foto", "cadorini": "cadorini_foto", "cauari3d": "cauari_foto"}  # reais: foto real (enviada pelo usuário)
+        "romarinho3d": "romarinho", "levi3d": "levi", "cadorini": "cadorini", "cauari3d": "cauari_foto"}  # reais: foto real (enviada pelo usuário)
 import os
 def portrait_src(k):
     f = IM + REAL.get(k, k) + "_cut.png"
@@ -127,7 +127,7 @@ def s0(img, t, T):  # flash-forward
     paste(img, score("POR", "PAF", 0, 0, 110), cx, 400, 1)
     pop(img, chip("ÚLTIMA RODADA • SÉRIE D", 50, INK, WHITE), cx, 580, t, 0.0)
     if t > wt(0, "minuto") - 0.1: paste(img, clock("90:00", 120), cx, 740, 1, 1 + 0.04 * math.sin(T * 12))
-    pop(img, stamp("SE NÃO GANHAR, ACABOU", 84, RED), cx + shake(t, wt(0, "acaba"), 10), 960, t, wt(0, "acaba") - 0.2, 0.25, -5)
+    pop(img, stamp("SE NÃO GANHAR, ACABOU", 66, RED), cx + shake(t, wt(0, "acaba"), 10), 960, t, wt(0, "acaba") - 0.2, 0.25, -5)
     tc = wt(0, "dois") - 0.2
     if t > tc:
         pop(img, cut("benny", 440), 300, 1220, t, tc, 0.3); pop(img, cut("leonardo", 440), 790, 1220, t, tc + 0.15, 0.3)
@@ -140,9 +140,9 @@ def s1(img, t, T):  # volta 2 meses
     pop(img, chip("O TIME CONTINUA", 50, INK, WHITE), cx, 720, t, wt(1, "continua") - 0.2)
     tr = wt(1, "romarinho") - 0.2
     if t > tr:
-        paste(img, cut("romarinho3d", 640), cx, 1150, 1, 0.85 + 0.15 * back(min(1, (t - tr) / 0.3)))
-        pop(img, chip("NO BANCO", 60, WHITE, INK), cx, 900, t, wt(1, "banco") - 0.2, 0.25, 3)
-        pop(img, stamp("NÃO GOSTOU NADA", 96, RED), cx, 1600, t, wt(1, "gostou") - 0.2, 0.25, -6)
+        paste(img, cut("romarinho3d", 540), cx, 1120, 1, 0.85 + 0.15 * back(min(1, (t - tr) / 0.3)))
+        pop(img, chip("NO BANCO", 56, WHITE, INK), cx, 810, t, wt(1, "banco") - 0.2, 0.25, 3)
+        pop(img, stamp("NÃO GOSTOU NADA", 84, RED), cx, 1300, t, wt(1, "gostou") - 0.2, 0.25, -6)
 
 def s2(img, t, T):  # bordão comentário
     img.alpha_composite(rays(W, H, cx, 900, T, (255, 220, 120), 14, 45))
@@ -156,13 +156,13 @@ def s3(img, t, T):  # Leonardo
         pop(img, cmt("ALL Vs Chelsea • TikTok", "nome: Leonardo", "4"), cx, 520, t, 0.0)
         pop(img, cut("leonardo", 680), cx, 1100, t, 0.3, 0.3)
     elif t < tp:
-        u = t - tt; paste(img, cut("tee", 520), 290, 1150, 1, 0.9 + 0.1 * back(min(1, u / 0.3)))
+        u = t - tt; paste(img, cut("tee", 460), 270, 1180, 1, 0.9 + 0.1 * back(min(1, u / 0.3)))
         pop(img, txt("O THIAGO", 100, WHITE), cx, 400, u, 0.0); pop(img, txt("CONHECIA!", 120, AMB), cx, 540, u, 0.2, 0.25, -3)
         if t > tl:
             v = t - tl
-            pop(img, pcard("LEONARDO", 50, "LE", (70, 40, 56, 55, 52, 58), 380, True, "leonardo"), 780, 1000, v, 0.0, 0.3)
-            pop(img, chip("EX-VÁRZEA DO THIAGO", 46, INK, AMB), 760, 1310, v, 0.3, 0.25, 3)
-            pop(img, chip("CHUTEIRA EMPRESTADA", 46, WHITE, INK), 760, 1410, t, wt(3, "chuteira") - 0.2, 0.25, -3)
+            pop(img, pcard("LEONARDO", 50, "LE", (70, 40, 56, 55, 52, 58), 360, True, "leonardo"), 790, 950, v, 0.0, 0.3)
+            pop(img, chip("EX-VÁRZEA DO THIAGO", 40, INK, AMB), 790, 1250, v, 0.3, 0.25, 3)
+            pop(img, chip("CHUTEIRA EMPRESTADA", 40, WHITE, INK), 790, 1340, t, wt(3, "chuteira") - 0.2, 0.25, -3)
     else:
         u = t - tp; img.alpha_composite(rays(W, H, cx, 1100, T, (255, 200, 140), 12, 30))
         pop(img, chip("ALOJAMENTO DA LUSA", 56, INK, AMB), cx, 420, u, 0.0)
@@ -176,15 +176,14 @@ def s4(img, t, T):  # Série D explicada
     order = ["POR", "MAD", "AME", "PRJ", "AGS", "PAF"]
     ts = wt(4, "seis") - 0.2
     for k, c in enumerate(order):
-        x = 230 + (k % 3) * 310; y = 720 + (k // 3) * 300
+        x = 230 + (k % 3) * 310; y = 680 + (k // 3) * 270
         pop(img, logo(c, 170), x, y, t, ts + 0.1 * k, 0.3)
         pop(img, text_el(NM[c], font("blk", 34), WHITE, 5), x, y + 125, t, ts + 0.1 * k + 0.1)
-    pop(img, chip("10 RODADAS", 50, WHITE, INK), 250, 1350, t, wt(4, "dez") - 0.2, 0.25, -3)
-    pop(img, chip("TOP 4 → MATA-MATA", 50, INK, GREEN), 760, 1350, t, wt(4, "quatro") - 0.2, 0.25, 3)
+    pop(img, chip("10 RODADAS", 46, WHITE, INK), 260, 1170, t, wt(4, "dez") - 0.2, 0.25, -3)
+    pop(img, chip("TOP 4 → MATA-MATA", 46, INK, GREEN), 760, 1170, t, wt(4, "quatro") - 0.2, 0.25, 3)
     tm = wt(4, "meta") - 0.2
     if t > tm:
-        u = t - tm; paste(img, stamp("META: SÉRIE C", 110, AMB), cx, 1560, 1, 0.6 + 0.4 * back(min(1, u / 0.3)), -4)
-        pop(img, chip("D  →  C", 60, WHITE, RED), cx, 1730, u, 0.4)
+        u = t - tm; paste(img, stamp("META: SUBIR PRA SÉRIE C", 74, AMB), cx, 1330, 1, 0.6 + 0.4 * back(min(1, u / 0.3)), -3)
 
 def s5(img, t, T):  # R1 e R2
     tc = wt(5, "clássico") - 0.3
@@ -200,8 +199,8 @@ def s5(img, t, T):  # R1 e R2
         hud(img, 2, 2)
         pop(img, chip("RODADA 2 • NO RIO", 56, INK, AMB), cx, 400, u, 0.0)
         pop(img, txt("CLÁSSICO DAS", 110, WHITE), cx, 560, u, 0.1); pop(img, txt("PORTUGUESAS", 120, GREEN), cx, 700, u, 0.25)
-        pop(img, logo("PRJ", 260), 300, 1030, u, 0.3, 0.3, -5); pop(img, txt("x", 120, AMB), cx, 1030, u, 0.4); pop(img, logo("POR", 260), 780, 1030, u, 0.5, 0.3, 5)
-        pop(img, score("PRJ", "POR", 1, 1, 110), cx, 1400, u, 1.3)
+        pop(img, logo("PRJ", 240), 300, 960, u, 0.3, 0.3, -5); pop(img, txt("x", 120, AMB), cx, 960, u, 0.4); pop(img, logo("POR", 240), 780, 960, u, 0.5, 0.3, 5)
+        pop(img, score("PRJ", "POR", 1, 1, 110), cx, 1250, u, 1.3)
 
 def s6(img, t, T):  # R3 derrota, Davi lesão
     img.alpha_composite(Image.new("RGBA", (W, H), (120, 0, 0, 70))); hud(img, 3, 3)
@@ -209,32 +208,33 @@ def s6(img, t, T):  # R3 derrota, Davi lesão
     pop(img, score("MAD", "POR", 1, 0, 120), cx, 600, t, wt(6, "derrota") - 0.3)
     td = wt(6, "davi") - 0.3
     if t > td:
-        u = t - td; paste(img, cut("davi", 600), cx, 1180, 1, 0.85 + 0.15 * back(min(1, u / 0.3)), -4)
-        pop(img, stamp("LESÃO NO TORNOZELO", 84, RED), cx, 920, t, wt(6, "tornozelo") - 0.2, 0.25, -5)
-        pop(img, chip("3 SEMANAS FORA", 64, WHITE, INK), cx, 1620, t, wt(6, "semanas") - 0.3, 0.25, 3)
+        u = t - td; paste(img, cut("davi", 440), cx, 1190, 1, 0.85 + 0.15 * back(min(1, u / 0.3)), -4)
+        pop(img, stamp("LESÃO NO TORNOZELO", 72, RED), cx, 770, t, wt(6, "tornozelo") - 0.2, 0.25, -5)
+        pop(img, chip("3 SEMANAS FORA", 50, WHITE, INK), cx, 890, t, wt(6, "semanas") - 0.3, 0.25, 3)
 
 def s7(img, t, T):  # Romarinho pede pra sair, treino
     tt = wt(7, "todo") - 0.3
     if t < tt:
         pop(img, mail(900, "Romarinho", "PEDIDO DE SAÍDA"), cx, 650, t, 0.0, 0.3, -2)
         pop(img, stamp("RECUSADO", 120, RED), cx + shake(t, wt(7, "segura"), 10), 930, t, wt(7, "segura") - 0.1, 0.25, -8)
-        pop(img, cut("tee", 460), 300, 1230, t, wt(7, "preciso") - 0.3)
-        pop(img, chip("\"PRECISO DE VOCÊ COM OS NOVATOS\"", 40, INK, AMB), cx, 1680, t, wt(7, "novatos") - 0.4)
+        pop(img, cut("tee", 400), 220, 1180, t, wt(7, "preciso") - 0.3)
+        pop(img, chip("\"PRECISO DE VOCÊ\"", 44, INK, AMB), 720, 1130, t, wt(7, "preciso") - 0.1)
+        pop(img, chip("\"COM OS NOVATOS\"", 44, INK, AMB), 720, 1220, t, wt(7, "novatos") - 0.3)
     else:
         u = t - tt; cam, d = pitch3d(img, T, 90, 4, dist=50, hgt=24, dim=60)
         pop(img, chip("TREINO EXTRA • TODO DIA", 56, INK, AMB), cx, 400, u, 0.0)
-        pop(img, tcut("romarinho3d", 620), cx, 900, u, 0.1, 0.3)
-        pop(img, tcut("benny", 520), 280, 1380, u, wt(7, "benny") - tt - 0.2, 0.3); pop(img, tcut("leonardo", 520), 800, 1380, u, wt(7, "leonardo") - tt - 0.2, 0.3)
+        pop(img, tcut("romarinho3d", 500), cx, 760, u, 0.1, 0.3)
+        pop(img, tcut("benny", 420), 280, 1170, u, wt(7, "benny") - tt - 0.2, 0.3); pop(img, tcut("leonardo", 420), 800, 1170, u, wt(7, "leonardo") - tt - 0.2, 0.3)
 
 def s8(img, t, T):  # tabela antes da última
     hud(img, 9, 5)
     pop(img, chip("FALTA 1 RODADA", 60, INK, AMB), cx, 380, t, 0.0, 0.25, -2)
-    paste(img, table(t - 0.2, 9, 960, "red"), cx, 930, 1, 0.9 + 0.1 * back(min(1, t / 0.3)))
-    pop(img, chip("1 PONTO ATRÁS DO AMERICA", 48, WHITE, RED), cx, 1430, t, wt(8, "menos") - 0.3, 0.25, -2)
-    pop(img, logo("PAF", 140), 250, 1640, t, wt(8, "pouso") - 0.3)
-    pop(img, stamp("EMPATE NÃO SERVE", 92, RED), 640, 1640, t, wt(8, "empate") - 0.2, 0.25, -5)
+    paste(img, table(t - 0.2, 9, 960, "red"), cx, 860, 1, 0.82 + 0.08 * back(min(1, t / 0.3)))
+    pop(img, chip("1 PONTO ATRÁS DO AMERICA", 44, WHITE, RED), cx, 1225, t, wt(8, "menos") - 0.3, 0.25, -2)
+    pop(img, logo("PAF", 120), 200, 1360, t, wt(8, "pouso") - 0.3)
+    pop(img, stamp("EMPATE NÃO SERVE", 74, RED), 620, 1360, t, wt(8, "empate") - 0.2, 0.25, -5)
 
-def board(img, X0=90, Y0=430, PW=900, PH=1080):
+def board(img, X0=110, Y0=430, PW=860, PH=960):
     d = ImageDraw.Draw(img)
     for k in range(8): d.rectangle((X0, Y0 + k * PH / 8, X0 + PW, Y0 + (k + 1) * PH / 8), fill=(34, 120, 58) if k % 2 else (40, 134, 66))
     L = (235, 245, 235); d.rectangle((X0, Y0, X0 + PW, Y0 + PH), outline=L, width=5)
@@ -285,8 +285,8 @@ def s9(img, t, T):  # o gol: prancheta tática
         pop(img, chip("CADORINI • 90'", 64, INK, WHITE), cx, 1180, u, 0.5, 0.25, 3)
     else:
         u = t - tq; hud(img, 10, 4); img.alpha_composite(confetti(W, H, u + 1))
-        paste(img, table(u, 10, 960, "green"), cx, 900, 1)
-        pop(img, stamp("CLASSIFICADA!", 110, GREEN), cx, 1440, u, 0.6, 0.25, -5)
+        paste(img, table(u, 10, 960, "green"), cx, 850, 0.98, 0.88)
+        pop(img, stamp("CLASSIFICADA!", 90, GREEN), cx, 1310, u, 0.6, 0.25, -5)
 
 EVO = [("benny", "BENNY", "VOL", 47, 53, (64, 40, 54, 54, 56, 50), "benny", True), ("leonardo", "LEONARDO", "LE", 50, 54, (72, 42, 58, 56, 54, 58), "leonardo", True),
        ("levi", "LEVI SANTOS", "MEI", 64, 66, (74, 62, 66, 72, 32, 52), "levi3d", False), ("cadorini", "CADORINI", "ATA", 63, 65, (66, 72, 54, 60, 30, 70), "cadorini", False)]
@@ -306,7 +306,7 @@ XI = [("BERTINATO", 60, 0.50, 0.90), ("JOÃO VITOR", 58, 0.86, 0.72), ("BOTTEGHI
       ("HUDSON", 58, 0.50, 0.57), ("LEVI", 66, 0.76, 0.48), ("TONTINI", 60, 0.24, 0.48),
       ("TORÓ", 65, 0.84, 0.26), ("CADORINI", 65, 0.50, 0.20), ("CAUARI", 62, 0.16, 0.26)]
 def s11(img, t, T):
-    X0, Y0, PW, PH = 70, 420, 940, 1130; d = ImageDraw.Draw(img)
+    X0, Y0, PW, PH = 110, 400, 860, 1020; d = ImageDraw.Draw(img)
     for k in range(8): d.rectangle((X0, Y0 + k * PH / 8, X0 + PW, Y0 + (k + 1) * PH / 8), fill=(34, 120, 58) if k % 2 else (40, 134, 66))
     L = (235, 245, 235); d.rectangle((X0, Y0, X0 + PW, Y0 + PH), outline=L, width=5); d.line((X0, Y0 + PH / 2, X0 + PW, Y0 + PH / 2), fill=L, width=4)
     d.ellipse((W / 2 - 110, Y0 + PH / 2 - 110, W / 2 + 110, Y0 + PH / 2 + 110), outline=L, width=4)
@@ -320,15 +320,15 @@ def s11(img, t, T):
         r = 46 * u; d.ellipse((x - r, y - r, x + r, y + r), fill=(240, 60, 60) if new else col, outline=INK, width=5)
         paste(img, text_el(str(o), font("blk", 44), INK, 0, shadow=False), x, y, u)
         paste(img, chip(nm, 30, WHITE, RED if new else INK), x, y + 72, u)
-    pop(img, chip("4-3-3  •  MÉDIA 60", 54, INK, AMB), cx, 1640, t, 2.0)
-    pop(img, chip("BANCO: BENNY 53 • ROMARINHO 64 • DAVI 59", 34, WHITE, (30, 30, 36)), cx, 1740, t, 2.4)
+    pop(img, chip("4-3-3  •  MÉDIA 60", 50, INK, AMB), cx, 1680, t, 2.0)
+    pop(img, chip("BANCO: BENNY 53 • ROMARINHO 64 • DAVI 59", 32, WHITE, (30, 30, 36)), cx, 1775, t, 2.4)
 
 def s12(img, t, T):  # proposta Cadorini A/B
     ta, tb = wt(12, "vende") - 0.6, wt(12, "segura") - 0.6
     if t < ta:
         pop(img, mail(900, "Clube da Série B", "R$ 1,5 MILHÃO PELO CADORINI"), cx, 640, t, 0.0, 0.3, 2)
-        pop(img, pcard("CADORINI", 65, "ATA", (66, 72, 54, 60, 30, 70), 400, False, "cadorini"), cx, 1250, t, wt(12, "cadorini") - 0.3)
-        pop(img, chip("O ARTILHEIRO", 56, INK, AMB), cx, 1600, t, wt(12, "artilheiro") - 0.2)
+        pop(img, pcard("CADORINI", 65, "ATA", (66, 72, 54, 60, 30, 70), 330, False, "cadorini"), cx, 1100, t, wt(12, "cadorini") - 0.3)
+        pop(img, chip("O ARTILHEIRO", 50, INK, AMB), cx, 1390, t, wt(12, "artilheiro") - 0.2)
         return
     pop(img, chip("A", 120, WHITE, RED), 280, 420, t, ta)
     pop(img, polaroid_c(), 280, 760, t, ta + 0.05, 0.3, -4)
@@ -339,7 +339,6 @@ def s12(img, t, T):  # proposta Cadorini A/B
         pop(img, chip("B", 120, WHITE, GREEN), 800, 420, t, tb)
         pop(img, pcard("CADORINI", 65, "ATA", (66, 72, 54, 60, 30, 70), 330, False, "cadorini"), 800, 820, t, tb, 0.3)
         pop(img, chip("SEGURA", 54, INK, WHITE), 800, 1110, t, tb + 0.2)
-    paste(img, logo("POR", 120), cx, 1450, 1)
 
 @functools.lru_cache(2)
 def polaroid_c():
