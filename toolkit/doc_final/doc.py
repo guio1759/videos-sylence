@@ -12,7 +12,7 @@ FC = "/home/claude/videos-sylence/assets/fotos_cc/"; DF = "/home/claude/doc/foto
 P = dict(cent=DF + "cent/cc_25ab1e64.jpg", pennant=DF + "est68/cc_f931b322.jpg", allianz=DF + "torcida/cc_04452f33.jpg", torcida=DF + "torcida/cc_49d3645c.jpg",
          campo=DF + "torcida/cc_bca833ce.jpg", laplata=DF + "veron/cc_085710b0.jpg", brujas=DF + "veron/cc_093efe19.jpg", veron=DF + "veron/cc_a24691a9.jpg",
          abel1=FC + "abel/cc_e1b75bde.jpg", abel2=FC + "abel/cc_e4571f8d.jpg", centw=FC + "est/cc_a8e55cb3.jpg", centw2=FC + "est/cc_b4477b36.jpg",
-         centst=FC + "est/cc_fbfbb3a9.jpg", flaco=FC + "fl/cc_cf8f1bef.jpg", musgs=FC + "mus/cc_30d9a437.jpg", musuy=FC + "mus/cc_bc7b8486.jpg", musgol=FC + "mus/cc_c408ab38.jpg")
+         centst=FC + "est/cc_fbfbb3a9.jpg", cent30="/home/claude/doc/escudos/CENT30.jpg", flaco=FC + "fl/cc_cf8f1bef.jpg", musgs=FC + "mus/cc_30d9a437.jpg", musuy=FC + "mus/cc_bc7b8486.jpg", musgol=FC + "mus/cc_c408ab38.jpg")
 GOLD = (255, 205, 60); NAVY = (12, 18, 32); SEP = (214, 190, 150)
 
 
@@ -108,7 +108,9 @@ def badge(txt, h, c1, c2, stripes=True):
 
 CREST = {"PEÑ": ("PEÑ", (250, 200, 0), (20, 20, 20)), "BOC": ("BOCA", (20, 40, 120), (250, 200, 0)), "CAL": ("CALI", (30, 120, 60), (240, 240, 240)),
          "CER": ("CERRO", (200, 20, 30), (20, 40, 140)), "LDU": ("LDU", (245, 245, 245), (200, 20, 40)), "UC": ("UC", (20, 60, 160), (245, 245, 245))}
+ALIAS = {"PEÑ": "PEN"}
 def crest(k, h):
+    k = ALIAS.get(k, k)
     if os.path.exists(LOG + k + ".png"): return logo(k, h)
     t, a, b = CREST[k]; return badge(t, h, a, b, k not in ("LDU", "UC"))
 
@@ -145,7 +147,20 @@ def datestamp(s, sz=44):
     return chip(s, sz, INK, AMB)
 
 
+@functools.lru_cache(16)
+def taca(h):
+    im = Image.open("/home/claude/doc/escudos/TACA2_cut.png").convert("RGBA"); h = int(h * 1.25)
+    im = im.resize((int(im.width * h / im.height), h), Image.LANCZOS)
+    sh = Image.new("RGBA", (im.width + 60, im.height + 60), (0, 0, 0, 0)); a = im.getchannel("A").filter(ImageFilter.GaussianBlur(12))
+    s2 = Image.new("RGBA", im.size, (0, 0, 0, 170)); s2.putalpha(Image.eval(a, lambda x: int(x * 0.6))); sh.alpha_composite(s2, (40, 40)); sh.alpha_composite(im, (30, 30))
+    return sh
+
+
 def trophy(h, col=GOLD):
+    return taca(h)
+
+
+def trophy_draw(h, col=GOLD):
     h = int(h); w = int(h * 0.8); im = Image.new("RGBA", (w, h), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
     d.pieslice((w * 0.12, -h * 0.25, w * 0.88, h * 0.62), 0, 180, fill=col, outline=INK, width=6)
     d.arc((0, h * 0.05, w * 0.26, h * 0.38), 90, 270, fill=INK, width=8); d.arc((w * 0.74, h * 0.05, w, h * 0.38), -90, 90, fill=INK, width=8)

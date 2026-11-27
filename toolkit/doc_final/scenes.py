@@ -92,7 +92,7 @@ def _(img, t, d, T):
 
 @sc("cent68")
 def _(img, t, d, T):
-    kb(img, "cent", t, d, "sepia", (1.0, 1.18), (0.5, 0.6), (0.5, 0.45), dim=120)
+    kb(img, "cent30", t, d, "sepia", (1.0, 1.15), (0.5, 0.55), (0.5, 0.45), dim=110)
     pop(img, datestamp("16 DE MAIO DE 1968", 60), cx, 200, t, w("dezesseis") - 0.2)
     pop(img, tx("ESTÁDIO CENTENÁRIO", 140, WHITE, "anton", 8), cx, 820, t, w("centenário") - 0.25)
     pop(img, tx("MONTEVIDÉU", 70, AMB), cx, 940, t, w("montevidéu") - 0.2)
