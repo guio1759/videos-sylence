@@ -17,7 +17,7 @@ def disc(num, d, col=LRED, ring=LGRN, fg=WHITE, coach=False):
     dr.text((d / 2 + 4, d / 2 + 6), num, font=font("blk", int(d * (0.5 if len(num) < 2 else 0.42))), fill=fg, anchor="mm", stroke_width=max(2, d // 40), stroke_fill=INK)
     return im
 @functools.lru_cache(64)
-def cut(k, h):
+def tcut(k, h):
     nm, num = TOK.get(k, (k.upper(), "?")); h = int(h); d = int(h * 0.62); coach = k == "tee"
     im = Image.new("RGBA", (max(d + 24, int(h * 0.95)), h), (0, 0, 0, 0)); dc = disc(num, d, coach=coach)
     im.alpha_composite(dc, ((im.width - dc.width) // 2, int(h * 0.04)))
@@ -47,11 +47,28 @@ def wt(i, word, n=1):
             c += 1
             if c == n: return w["t0"] - s0
     return 0.0
+REAL = {"benny": "benny_r", "leonardo": "leonardo_r", "davi": "davi_r", "tee": "tee_r",   # criados: estilo base do FIFA
+        "romarinho3d": "romarinho_foto", "levi3d": "levi_foto", "cadorini": "cadorini_foto", "cauari3d": "cauari_foto"}  # reais: foto real (enviada pelo usuário)
+import os
+def portrait_src(k):
+    f = IM + REAL.get(k, k) + "_cut.png"
+    return f if os.path.exists(f) else None
+@functools.lru_cache(64)
+def cut(k, h):
+    h = int(h); f = portrait_src(k)
+    if f is None:
+        im = silhouette().convert("RGBA")
+    else: im = Image.open(f).convert("RGBA")
+    im = im.resize((int(im.width * h / im.height), h), Image.LANCZOS)
+    nm = TOK.get(k, (k.upper(), ""))[0]
+    out = Image.new("RGBA", (max(im.width, 10), h + int(h * 0.06)), (0, 0, 0, 0)); out.alpha_composite(im, (0, 0))
+    lab = chip(nm, max(30, int(h * 0.07)), WHITE, (20, 20, 26) if k != "tee" else (60, 60, 70))
+    out.alpha_composite(lab, ((out.width - lab.width) // 2, out.height - lab.height))
+    return out
 @functools.lru_cache(256)
 def pcard(name, ovr, pos, stats, w=420, prom=False, av="sil"):
-    if av == "sil": a = silhouette()
-    else:
-        a = Image.new("RGBA", (760, 600), (0, 0, 0, 0)); dc = disc(TOK.get(av, ("", "?"))[1], 500); a.alpha_composite(dc, (130, 60))
+    f = None if av == "sil" else portrait_src(av)
+    a = silhouette() if f is None else Image.open(f).convert("RGBA")
     return C.make_card(a, name, ovr, pos, list(stats), w=w, promessa=prom, crest="POR.png")
 def bubble(user, text, likes, w=900):
     h = 260; im = Image.new("RGBA", (w, h), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
@@ -113,7 +130,7 @@ def s0(img, t, T):  # flash-forward
     pop(img, stamp("SE NÃO GANHAR, ACABOU", 84, RED), cx + shake(t, wt(0, "acaba"), 10), 960, t, wt(0, "acaba") - 0.2, 0.25, -5)
     tc = wt(0, "dois") - 0.2
     if t > tc:
-        pop(img, cut("benny", 560), 300, 1340, t, tc, 0.3); pop(img, cut("leonardo", 560), 790, 1340, t, tc + 0.15, 0.3)
+        pop(img, cut("benny", 440), 300, 1220, t, tc, 0.3); pop(img, cut("leonardo", 440), 790, 1220, t, tc + 0.15, 0.3)
         pop(img, chip("VIERAM DOS COMENTÁRIOS", 54, WHITE, RED), cx, 1640, t, wt(0, "comentários") - 0.3, 0.25, -2)
 
 def s1(img, t, T):  # volta 2 meses
@@ -123,7 +140,7 @@ def s1(img, t, T):  # volta 2 meses
     pop(img, chip("O TIME CONTINUA", 50, INK, WHITE), cx, 720, t, wt(1, "continua") - 0.2)
     tr = wt(1, "romarinho") - 0.2
     if t > tr:
-        paste(img, cut("romarinho3d", 760), cx, 1230, 1, 0.85 + 0.15 * back(min(1, (t - tr) / 0.3)))
+        paste(img, cut("romarinho3d", 640), cx, 1150, 1, 0.85 + 0.15 * back(min(1, (t - tr) / 0.3)))
         pop(img, chip("NO BANCO", 60, WHITE, INK), cx, 900, t, wt(1, "banco") - 0.2, 0.25, 3)
         pop(img, stamp("NÃO GOSTOU NADA", 96, RED), cx, 1600, t, wt(1, "gostou") - 0.2, 0.25, -6)
 
@@ -137,9 +154,9 @@ def s3(img, t, T):  # Leonardo
     tt, tl, tp = wt(3, "thiago") - 0.2, wt(3, "lateral") - 0.2, wt(3, "parceiro") - 0.3
     if t < tt:
         pop(img, cmt("ALL Vs Chelsea • TikTok", "nome: Leonardo", "4"), cx, 520, t, 0.0)
-        pop(img, cut("leonardo", 800), cx, 1250, t, 0.3, 0.3)
+        pop(img, cut("leonardo", 680), cx, 1100, t, 0.3, 0.3)
     elif t < tp:
-        u = t - tt; paste(img, cut("tee", 600), 300, 1250, 1, 0.9 + 0.1 * back(min(1, u / 0.3)))
+        u = t - tt; paste(img, cut("tee", 520), 290, 1150, 1, 0.9 + 0.1 * back(min(1, u / 0.3)))
         pop(img, txt("O THIAGO", 100, WHITE), cx, 400, u, 0.0); pop(img, txt("CONHECIA!", 120, AMB), cx, 540, u, 0.2, 0.25, -3)
         if t > tl:
             v = t - tl
@@ -192,7 +209,7 @@ def s6(img, t, T):  # R3 derrota, Davi lesão
     pop(img, score("MAD", "POR", 1, 0, 120), cx, 600, t, wt(6, "derrota") - 0.3)
     td = wt(6, "davi") - 0.3
     if t > td:
-        u = t - td; paste(img, cut("davi", 700), cx, 1220, 1, 0.85 + 0.15 * back(min(1, u / 0.3)), -8)
+        u = t - td; paste(img, cut("davi", 600), cx, 1180, 1, 0.85 + 0.15 * back(min(1, u / 0.3)), -4)
         pop(img, stamp("LESÃO NO TORNOZELO", 84, RED), cx, 920, t, wt(6, "tornozelo") - 0.2, 0.25, -5)
         pop(img, chip("3 SEMANAS FORA", 64, WHITE, INK), cx, 1620, t, wt(6, "semanas") - 0.3, 0.25, 3)
 
@@ -201,13 +218,13 @@ def s7(img, t, T):  # Romarinho pede pra sair, treino
     if t < tt:
         pop(img, mail(900, "Romarinho", "PEDIDO DE SAÍDA"), cx, 650, t, 0.0, 0.3, -2)
         pop(img, stamp("RECUSADO", 120, RED), cx + shake(t, wt(7, "segura"), 10), 930, t, wt(7, "segura") - 0.1, 0.25, -8)
-        pop(img, cut("tee", 560), 300, 1350, t, wt(7, "preciso") - 0.3)
+        pop(img, cut("tee", 460), 300, 1230, t, wt(7, "preciso") - 0.3)
         pop(img, chip("\"PRECISO DE VOCÊ COM OS NOVATOS\"", 40, INK, AMB), cx, 1680, t, wt(7, "novatos") - 0.4)
     else:
         u = t - tt; cam, d = pitch3d(img, T, 90, 4, dist=50, hgt=24, dim=60)
         pop(img, chip("TREINO EXTRA • TODO DIA", 56, INK, AMB), cx, 400, u, 0.0)
-        pop(img, cut("romarinho3d", 620), cx, 900, u, 0.1, 0.3)
-        pop(img, cut("benny", 520), 280, 1380, u, wt(7, "benny") - tt - 0.2, 0.3); pop(img, cut("leonardo", 520), 800, 1380, u, wt(7, "leonardo") - tt - 0.2, 0.3)
+        pop(img, tcut("romarinho3d", 620), cx, 900, u, 0.1, 0.3)
+        pop(img, tcut("benny", 520), 280, 1380, u, wt(7, "benny") - tt - 0.2, 0.3); pop(img, tcut("leonardo", 520), 800, 1380, u, wt(7, "leonardo") - tt - 0.2, 0.3)
 
 def s8(img, t, T):  # tabela antes da última
     hud(img, 9, 5)
