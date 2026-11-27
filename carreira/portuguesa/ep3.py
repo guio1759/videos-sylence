@@ -140,8 +140,8 @@ def s4(img, t, T):  # Série D explicada
         x = 230 + (k % 3) * 310; y = 720 + (k // 3) * 300
         pop(img, logo(c, 170), x, y, t, ts + 0.1 * k, 0.3)
         pop(img, text_el(NM[c], font("blk", 34), WHITE, 5), x, y + 125, t, ts + 0.1 * k + 0.1)
-    pop(img, chip("10 RODADAS", 54, WHITE, INK), 300, 1350, t, wt(4, "dez") - 0.2, 0.25, -3)
-    pop(img, chip("TOP 4 → MATA-MATA", 54, INK, GREEN), 760, 1350, t, wt(4, "quatro") - 0.2, 0.25, 3)
+    pop(img, chip("10 RODADAS", 50, WHITE, INK), 250, 1350, t, wt(4, "dez") - 0.2, 0.25, -3)
+    pop(img, chip("TOP 4 → MATA-MATA", 50, INK, GREEN), 760, 1350, t, wt(4, "quatro") - 0.2, 0.25, 3)
     tm = wt(4, "meta") - 0.2
     if t > tm:
         u = t - tm; paste(img, stamp("META: SÉRIE C", 110, AMB), cx, 1560, 1, 0.6 + 0.4 * back(min(1, u / 0.3)), -4)
@@ -153,8 +153,8 @@ def s5(img, t, T):  # R1 e R2
         cover(img, "diadema", t, 110); hud(img, 1, 1)
         pop(img, chip("RODADA 1 • DIADEMA", 56, INK, AMB), cx, 400, t, 0.0)
         pop(img, score("POR", "AGS", 2, 0, 120), cx + shake(t, wt(5, "dois"), 12), 620, t, wt(5, "dois") - 0.3)
-        pop(img, pcard("LEVI SANTOS", 64, "MEI", (72, 60, 64, 70, 30, 50), 340, False, "levi3d"), 330, 1180, t, wt(5, "levi") - 0.3)
-        pop(img, chip("GOL DO LEVI", 56, INK, AMB), 330, 1480, t, wt(5, "levi"), 0.25, -3)
+        pop(img, pcard("LEVI SANTOS", 64, "MEI", (72, 60, 64, 70, 30, 50), 340, False, "levi3d"), 330, 1060, t, wt(5, "levi") - 0.3)
+        pop(img, chip("GOL DO LEVI", 56, INK, AMB), 330, 1360, t, wt(5, "levi"), 0.25, -3)
         if t > wt(5, "levi") + 0.4: paste(img, table(t - wt(5, "levi") - 0.4, 1, 560).resize((560, 434)), 780, 1220, 1)
     else:
         u = t - tc; img.alpha_composite(Image.new("RGBA", (W, H), (12, 60, 30, 120)))
