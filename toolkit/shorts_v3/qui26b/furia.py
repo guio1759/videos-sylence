@@ -1,4 +1,5 @@
-from common2 import *
+from fx2 import *
+nov_shield = crest
 from scripts import FURIA
 def s0(img, t, T):
     img.alpha_composite(rays(W, H, cx, 880, T, (255, 220, 60), 14, 45))
@@ -48,6 +49,7 @@ def s5(img, t, T):
     pop(img, chip("SIM", 110, WHITE, GREEN), 330, 1100, t, wt(5, "sim") - 0.2, 0.25, -4)
     pop(img, chip("NÃO", 110, WHITE, RED), 750, 1100, t, wt(5, "não") - 0.2, 0.25, 4)
     pop(img, chip("COMENTA AÍ", 60, INK, WHITE), cx, 1290, t, wt(5, "comenta") - 0.1)
+    FX.credit(img, EM.CREDIT, y=H - 110)
 S = Short("/home/claude/x26/furia", FURIA, [s0, s1, s2, s3, s4, s5], "NOVORIZONTINO • SÉRIE A", ["amber", "dark", "amber", "red", "dark", "amber"], "Exhilarate", 8)
 wt = mkwt(S)
 if __name__ == "__main__":
