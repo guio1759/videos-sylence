@@ -237,7 +237,13 @@ class Doc:
         self.cid, self.music, self.moff, sents = c
         self.names = [s[0] for s in sents]; self.sents = [s[1] for s in sents]
         self.d = f"/home/claude/doc/{cid}"; j = json.load(open(self.d + "/words.json"))
-        self.segs = j["segs"]; self.total = j["total"] + 0.6; self.caps = self.align(j["words"]); self.cred = None
+        self.segs = j["segs"]; self.total = j["total"] + 0.6; ww = j["words"]; self.gaps = []
+        for nm, loc, dur in GAPS.get(cid, []):
+            i = self.names.index(nm); a = self.segs[i][0] + loc; self.gaps.append((a, dur))
+            for x in ww:
+                if x["t0"] >= a: x["t0"] += dur; x["t1"] += dur
+            self.segs = [[s0 + (dur if s0 >= a else 0), s1 + (dur if s1 > a else 0)] for s0, s1 in self.segs]; self.total += dur
+        self.caps = self.align(ww); self.cred = None
         self.num = int(cid[1:]) if cid[1:].isdigit() else 0
 
     def align(self, ww):
@@ -313,6 +319,8 @@ class Doc:
         from scipy.io import wavfile
         SR = 44100; _, v = wavfile.read(self.d + "/narr.wav"); v = v.astype(np.float32) / 32768
         if v.ndim > 1: v = v.mean(1)
+        for a, dur in sorted(self.gaps, reverse=True):
+            k = int(a * SR); v = np.concatenate([v[:k], np.zeros(int(dur * SR), np.float32), v[k:]])
         N = int(self.total * SR); vo = np.zeros(N, np.float32); vo[:min(N, len(v))] = v[:N]
         subprocess.run(f"ffmpeg -loglevel error -y -ss {self.moff} -t {self.total + 1} -i /home/claude/ep1/music/{self.music}.mp3 -ac 1 -ar 44100 /tmp/mus_{self.cid}.wav", shell=True, check=True)
         _, m = wavfile.read(f"/tmp/mus_{self.cid}.wav"); m = m.astype(np.float32) / 32768; m = np.pad(m, (0, max(0, N - len(m))))[:N]
@@ -331,6 +339,21 @@ class Doc:
 
 TITLES = {"c1": "A PRIMEIRA FERIDA", "c2": "O ESTÁDIO MALDITO", "c3": "O HOMEM QUE MUDOU TUDO", "c4": "O FANTASMA DE LA PLATA", "c5": "O CAMINHO MAIS SOFRIDO", "c6": "A FINAL"}
 SFX = {}
+GAPS = {"c3": [("t21c", 4.0, 5.4)]}
+def _seg(n): return lambda D: D.segs[D.names.index(n)][0]
+SFX["c3"] = [("torcida_grita_gol", lambda D: _seg("t21c")(D) + 9.5, 0.45), ("torcida_comemora", lambda D: _seg("t21c")(D) + 10.1, 0.3), ("tambor_impacto", lambda D: _seg("t21c")(D) + 9.5, 0.3)]
+
+
+@functools.lru_cache(4)
+def _clipframe(path):
+    return Image.open(path).convert("RGBA")
+
+
+def clip(img, folder, src, src0=8.8, dim=0, credit="Imagens: transmissão SBT"):
+    n = len(os.listdir(folder)); k = int(round((src - src0) * 30)) + 1; k = max(1, min(n, k))
+    img.paste(_clipframe(f"{folder}/{k:04d}.jpg"), (0, 0))
+    if dim: img.alpha_composite(Image.new("RGBA", (W, H), (0, 0, 0, dim)))
+    S.cred = credit
 SCN = {}
 S = None
 

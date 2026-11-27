@@ -209,20 +209,23 @@ def _(img, t, d, T):
 
 @sc("t21c")
 def _(img, t, d, T):
-    bgc(img, "green", T); tr = w("rouba") - 0.2; tf = w("faz") - 0.2
-    pop(img, stamp("PRORROGAÇÃO", 110, AMB), cx, 150, t, 0.0, 0.3, -3)
-    pop(img, pitch(1000, 560, t, [(0.35, 0.45), (0.5, 0.5), (0.75, 0.48), (0.9, 0.5), (0.995, 0.47)], tr, 2.2), 620, 600, t, 0.2)
-    pop(img, namecard("DEYVERSON", "ROUBA DO ANDREAS PEREIRA", 640), 1500, 430, t, tr)
-    pop(img, scorebox("PAL", "FLA", 2, 1, 110), 1500 + shake(t, tf), 700, t, tf)
-    pop(img, stamp("TRI!", 140, GREEN), 1500, 920, t, w("tricampeão") - 0.2, 0.3, -6)
-    if t > tf: img.alpha_composite(confetti(W, H, t - tf, seed=5))
+    DEY = "/home/claude/doc/clips/dey"
+    src = 9.0 + max(0.0, t - 0.5); tg = 0.5 + 9.0
+    clip(img, DEY, min(src, 19.6), dim=0 if t > 0.5 else 120)
+    if t < 0.9: pop(img, stamp("PRORROGAÇÃO", 130, AMB), cx, 480, t, 0.0, 0.3, -3)
+    pop(img, chip("DEYVERSON", 56, INK, AMB), 1500, 200, t, w("deyverson") - 0.2, 0.3, 3)
+    pop(img, chip("ROUBA DO ANDREAS PEREIRA", 40, WHITE, INK), 1500, 290, t, w("rouba") - 0.1)
+    pop(img, scorebox("PAL", "FLA", 2 if t > tg else 1, 1, 80), 330 + shake(t, tg, 20), 980 - 40, t, 0.6)
+    if tg <= t < tg + 0.15: img.alpha_composite(Image.new("RGBA", (W, H), (255, 255, 255, int(150 * (1 - (t - tg) / 0.15)))))
+    pop(img, stamp("TRICAMPEÃO!", 150, GREEN), cx, 470, t, w("tricampeão") - 0.2, 0.3, -6)
+    if t > tg: img.alpha_composite(confetti(W, H, t - tg, seed=5))
 
 @sc("t21d")
 def _(img, t, d, T):
-    u = min(1, t / 1.2)
-    kb(img, "centw", t, d, "gray" if u < 0.5 else "color", dim=110)
-    pop(img, tx("A MALDIÇÃO", 140, WHITE, "anton", 8), cx, 380, t, w("maldição") - 0.3)
-    pop(img, tx("VIROU CASA", 160, GREEN, "anton", 9), cx, 560, t, w("casa") - 0.3)
+    clip(img, "/home/claude/doc/clips/dey", min(31.0, 20.0 + 1.5 * t), dim=70)
+    pop(img, tx("NO MESMO ESTÁDIO", 90, WHITE, "anton", 7), cx, 240, t, 0.1)
+    pop(img, tx("A MALDIÇÃO", 140, WHITE, "anton", 8), cx, 520, t, w("maldição") - 0.3)
+    pop(img, tx("VIROU CASA", 170, GREEN, "anton", 9), cx, 700, t, w("casa") - 0.3)
 
 @sc("t25")
 def _(img, t, d, T):
