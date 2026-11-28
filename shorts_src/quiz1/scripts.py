@@ -1,0 +1,10 @@
+QUIZ=[('Todos esses jogadores passaram pelo Palmeiras... e só palmeirense raiz acerta os quatro pelos clubes. Valendo!', 1.12, 0.05),
+      ('Número um. Esse é de graça.', 1.1, 3.3),
+      ('Gabriel Jesus!', 1.08, 0.25),
+      ('Número dois. Passou pela Espanha.', 1.1, 3.3),
+      ('Vitor Roque!', 1.08, 0.25),
+      ('Número três. Agora complicou.', 1.1, 3.3),
+      ('Gustavo Scarpa!', 1.08, 0.25),
+      ('O último... só raiz acerta. Dica: ele usa luva.', 1.08, 3.3),
+      ('Weverton!', 1.05, 0.3),
+      ('Quantos você acertou? Comenta aí, de zero a quatro!', 1.1, 0.1)]

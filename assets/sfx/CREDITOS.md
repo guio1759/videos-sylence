@@ -15,3 +15,5 @@ Encontrados via Openverse (openverse.org), filtro de licença CC0. Arquivos cort
 | whoosh_1/2/3, whoosh_grave, whoosh_boom | Freesound 60026, 60007, 427823, 351256, 118934 |
 | tambor_impacto | Freesound 139506 "Drum Hit 2" |
 | camera_click | Freesound 170229 "Camera Shutter" |
+
+- tique.wav, ding.wav, riser.wav, buzzer.wav: sintetizados no próprio pipeline (numpy), domínio público/CC0.
