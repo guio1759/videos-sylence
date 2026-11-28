@@ -261,10 +261,12 @@ def s18(img, t, T):
     if T > S.total - 2.5: paste(img, text_el(emoji.CREDIT, font("sb", 24), (235, 235, 235), 3), W / 2, H - 170, 0.85)
 
 
-S = Short("/home/claude/mundo/m", SENTS, [s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18], "NESSE MUNDO…", "dark", "Dreamer", 0)
+S = Short("/home/claude/mundo/m", SENTS, [s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18], "NESSE MUNDO…", "dark", "Heartbreaking", 0)
+S.MUSG = 0.085; S.DUCK = 0.6
 S.total = S.total + 2.5
 if __name__ == "__main__":
     sg = S.segs
+    S.SWELL = [(sg[13][0] + wt(13, "gritou", 3.4), S.total, 1.7)]
     ev = [("whoosh_grave", 0.0, 0.3), ("torcida_aww", 1.3, 0.15), ("estadio_ambiente", sg[6][0], 0.1), ("camera_click", sg[7][0] + wt(7, "dois", 1.0), 0.2),
           ("estadio_ambiente", sg[8][0], 0.14), ("apito_curto", sg[10][0] + wt(10, "noventa", 1.2), 0.15), ("torcida_reacao_gol", sg[10][0] + wt(10, "gol", 2.6), 0.2),
           ("torcida_aww", sg[11][0] + 0.3, 0.2), ("riser", sg[13][0] + wt(13, "gritou", 3.4) - 1.0, 0.15), ("tambor_impacto", sg[13][0] + wt(13, "gritou", 3.4), 0.35),

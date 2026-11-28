@@ -16,7 +16,7 @@ def badge(name, c1, c2, h=150, stripes=False):
     d.text((w / 2, h * 0.4), name, font=font("blk", fs), fill=WHITE, anchor="mm", stroke_width=4, stroke_fill=INK)
     return im
 def crest(k, h=150):
-    if k in ("PAL", "CRU", "CAP", "FLU", "CAM", "POR", "GRE", "REM"): return logo(k, h)
+    return logo(k, h)
     return {"MCI": badge("CITY", (108, 171, 221), (28, 44, 91), h), "ARS": badge("ARSENAL", (219, 0, 7), (255, 255, 255), h),
             "BAR": badge("BARÇA", (165, 0, 68), (0, 77, 152), h, True), "BET": badge("BETIS", (0, 150, 74), (255, 255, 255), h, True),
             "NFO": badge("FOREST", (221, 0, 0), (255, 255, 255), h), "OLY": badge("OLYMPIACOS", (220, 20, 20), (255, 255, 255), h, True),
@@ -24,7 +24,7 @@ def crest(k, h=150):
 R = [  # (seg pergunta, nome, nível, cor, carreira, foto)
     (1, "GABRIEL JESUS", "FÁCIL", GREEN, ["PAL", "MCI", "ARS"], "jesus"),
     (3, "VITOR ROQUE", "MÉDIO", AMB, ["CRU", "CAP", "BAR", "BET", "PAL"], "roque"),
-    (5, "GUSTAVO SCARPA", "DIFÍCIL", (255, 120, 40), ["FLU", "RBR", "PAL", "NFO", "OLY", "CAM"], "scarpa"),
+    (5, "GUSTAVO SCARPA", "DIFÍCIL", (255, 120, 40), ["FLU", "PAL", "NFO", "OLY", "CAM"], "scarpa"),
     (7, "WEVERTON", "SÓ RAIZ", RED, ["POR", "CAP", "PAL", "GRE"], "weverton")]
 def wt(i, w, d=0.5):
     for c in S.caps:
