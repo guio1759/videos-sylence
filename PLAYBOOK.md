@@ -12,6 +12,28 @@ bash /home/claude/videos-sylence/toolkit/setup.sh
 - **Fotos livres (23/11)**: `python3 toolkit/common/fotos.py "termo" prefixo n` busca no Pixabay (chave em ~/.secrets/pixabay_key; o usuário passa no prompt como PIXABAY_KEY) e no Openverse (sem chave, CC: crédito pequeno na tela). Só estádios, cidades, torcida, bola, objetos. NUNCA baixar foto de jogador/pessoa real da internet; foto de jogador só se o usuário mandar. Jogadores e personagens = bonecos 3D (cfimg, chaves Cloudflare em ~/.secrets/cf_account e cf_token).
 - Saída do shell para a internet: só github, pypi, texttospeech.googleapis.com e speech.platform.bing.com (voz grátis Microsoft "Antonio" via `edge-tts --proxy "$HTTPS_PROXY"`, reserva). Pesquisa = WebSearch/WebFetch.
 
+## 0.3 QUADROS FIXOS (decisão de 28/11/2026 — o usuário achou os vídeos "repetitivos e sem graça"; baseado em pesquisa de shorts virais do nicho)
+Referências BR que estão crescendo: Futcerto (quiz/rivalidade de torcida, jogo da velha do futebol), storable futebol (iceberg, tier list), Futebol Máximo (opinião polêmica com a torcida no título em CAIXA ALTA), FutParódias (séries "um craque por número/letra", "e se os jogadores fossem…"), FUTFLIX (polêmica do dia postada em minutos), GOAL (adivinhe o jogador pela carreira). Lá fora: quizzes "guess the player" (olhos, sorriso, carreira) com 60–160x a média da conta.
+**Grade semanal (12:30 = quadro interativo; 19:30 = edit de lance OU polêmica/notícia do dia em 13–20 s):**
+- SEG **"Adivinhe o jogador"**: escudos da carreira entrando um a um (whoosh), silhueta, timer de 3–5 s com tique, revelação com "ding" + flash; 3–5 jogadores do fácil ao difícil; CTA "comenta quantos acertou".
+- TER **"Qual desses NUNCA jogou no ___?"** (impostor): grade com 4 cards, timer, o impostor fica vermelho e treme.
+- QUA **"Você prefere?"**: tela dividida A/B, 3–4 dilemas do leve ao cruel; CTA "A ou B e por quê?".
+- QUI **Tier list / Top 5 com o nº 1 escondido**: escudos caindo nas faixas S/A/B/C ou contagem 5→1; deixar uma escolha polêmica para o fim.
+- SEX **Iceberg** (série numerada "#1, #2…"): iceberg 2D com câmera descendo, 1 fato real por camada, o "nível mais sombrio" no fim.
+- SÁB **"E se…?"** / "Um craque por número/letra" (série): campinho, cards lado a lado, placar simulado.
+- DOM **"História que ninguém conta"** (micro-história real, começando pelo ponto mais baixo/mais chocante; modelo: shorts_src/dom29, Arrancada Heroica — sépia + cor voltando no clímax).
+- Fatos grandes (final, rodada decisiva, mercado) passam na frente de qualquer quadro: postar RÁPIDO.
+**Regras anti-repetição:**
+1. Primeiro frame diferente a cada vídeo (nunca o mesmo template de escudo+título). Palavra falada até 0,5 s, texto do gancho até 0,5 s, "tranco" visual (zoom brusco/flash/troca de cor) antes de 1,5 s.
+2. Interrupção de padrão a cada 2–3 s (layout, câmera, cor); nada parado mais de 2–3 s.
+3. SOM: efeito em CADA evento (whoosh na entrada, tique no timer, ding/buzzer na revelação, riser antes do clímax, impacto grave no número final). Trilha com batida e cortes no beat; trocar de faixa por quadro. Testar às vezes vídeo SÓ com música + texto (sem narração).
+4. Voz: variar ritmo e pausas por frase (rate 0,95–1,15), mais energia no clímax; frases bem curtas.
+5. Duração por formato: notícia/quiz 13–30 s; história/ranking até 45–60 s se houver escalada. Não fixar tudo em 20–35 s.
+6. Identidade de torcida no título/gancho ("Só palmeirense raiz acerta…", "O CORINTIANO não vai gostar…"), palavras-chave em CAIXA ALTA; provocar outras torcidas com bom humor para trazer comentários de fora.
+7. CTA específico (quantos acertou, A ou B, qual nível do iceberg), nunca "curte e segue".
+8. Toda semana: o mesmo tema com 2 ganchos diferentes em dias diferentes; repetir o tipo de gancho que vencer (YouTube Studio: "visto vs. deslizado" > 70%).
+9. Metricool é plano PAGO (28/11/2026) e o TikTok @padrenk = conta do canal: postar normalmente nas 3 redes.
+
 ## 0.4 NOVA GRADE + PROCESSO DE QUALIDADE (decisão do usuário 27/11/2026: "tá flopando; um a menos, mas com muito mais atenção e qualidade")
 **GRADE (vale a partir de domingo 29/11/2026):**
 - **2 shorts por dia: 12:30 e 19:30** (America/Sao_Paulo). O 09:00 sai (era o horário mais fraco: mediana 144 views no TikTok). 19:30 continua sendo o EDIT DE LANCE quando chegam clipes (seção 12); senão, o short mais forte do dia.
